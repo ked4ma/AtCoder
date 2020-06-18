@@ -15,7 +15,7 @@ dependencies {
 }
 
 application {
-    mainClassName = "SampleKt"
+    mainClassName = "com.github.khronos227.atcoder.template.SampleKt"
 }
 
 val run: JavaExec by tasks
