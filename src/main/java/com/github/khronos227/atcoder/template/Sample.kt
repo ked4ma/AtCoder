@@ -18,3 +18,6 @@ fun nextList() = next().split(" ")
 fun nextIntList() = next().split(" ").map(String::toInt)
 fun nextLongList() = next().split(" ").map(String::toLong)
 fun nextDoubleList() = next().split(" ").map(String::toDouble)
+
+// ## Array
+inline fun <reified T> sizedArray(size: Int, default: T) = Array(size) { default }
