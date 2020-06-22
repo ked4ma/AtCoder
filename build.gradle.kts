@@ -15,7 +15,22 @@ dependencies {
 }
 
 application {
-    mainClassName = "com.github.khronos227.atcoder.template.SampleKt"
+    mainClassName = "com.github.khronos227.atcoder.template.simple.SampleKt"
+}
+
+tasks.withType<Jar> {
+    // Otherwise you'll get a "No main manifest attribute" error
+    manifest {
+        attributes["Main-Class"] = "com.github.khronos227.atcoder.template.simple.SampleKt"
+    }
+
+    // To add all of the dependencies otherwise a "NoClassDefFoundError" error
+    from(sourceSets.main.get().output)
+
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
 }
 
 val run: JavaExec by tasks

@@ -1,4 +1,4 @@
-package com.github.khronos227.atcoder.template
+package com.github.khronos227.atcoder.template.simple
 
 fun main() {
     println("This is template.")
