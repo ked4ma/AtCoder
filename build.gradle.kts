@@ -1,3 +1,5 @@
+import java.lang.System.getProperty
+
 plugins {
     kotlin("jvm") version "1.3.72"
     application
@@ -15,7 +17,8 @@ dependencies {
 }
 
 application {
-    mainClassName = "com.github.khronos227.atcoder.template.simple.SampleKt"
+    mainClassName =
+        project.properties.getOrDefault("mainClass", "com.github.khronos227.atcoder.template.simple.SampleKt") as String
 }
 
 tasks.withType<Jar> {

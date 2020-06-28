@@ -1,11 +1,15 @@
 package com.github.khronos227.atcoder.template.simple
 
 fun main() {
-    println("This is template.")
-    println("1: Implement solution")
-    println("2: ./gradlew run")
-    println("     or")
-    println("   ./gradlew run < [path/to/input.txt]")
+    val s = next()
+    val t = next()
+    var res = 0
+    (s.indices).forEach {
+        if (s[it] != t[it]) {
+            res++
+        }
+    }
+    println(res)
 }
 
 // # Utils
