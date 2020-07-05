@@ -1,15 +1,11 @@
 package com.github.khronos227.atcoder.template.simple
 
 fun main() {
-    val s = next()
-    val t = next()
-    var res = 0
-    (s.indices).forEach {
-        if (s[it] != t[it]) {
-            res++
-        }
-    }
-    println(res)
+    println("This is template.")
+    println("1: Implement solution")
+    println("2: ./gradlew run")
+    println("     or")
+    println("   ./gradlew run < [path/to/input.txt]")
 }
 
 // # Utils
@@ -35,12 +31,23 @@ fun modinv(num: Long, mod: Long): Long {
     var v = 0L
     while (b > 0) {
         val t = a.div(b)
+        println("t: $t a: $a b: $b u: $u v: $v")
         a -= t * b
         a = b.also { b = a } // swap a and b
         u -= t * v
         u = v.also { v = u } // swap u and v
     }
     u %= mod
+    println("$u $v")
     if (u < 0) u += mod
     return u
+}
+
+fun modinv2(a: Long, b: Long, x: Long, y: Long): Triple<Long, Long, Long> {
+    if (b == 0L) {
+        return Triple(a, 1, 0)
+    }
+    val (d, y2, x2) = modinv2(b, a % b, y, x)
+    println("$d $x2 $y2 ${a / b}")
+    return Triple(d, x2, y2 - a / b * x2)
 }
