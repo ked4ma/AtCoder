@@ -2,34 +2,49 @@ package com.github.khronos227.atcoder.aising2020_na
 
 fun main() {
     val n = nextInt()
-    val x = next().map { it.toString().toInt() }
+    val x = next().map { (it - 48).toInt() }.toIntArray()
     val popcount = x.filter { it == 1 }.size
-    (1 until 2).forEach {
-//        (0 until n).forEach {
-        var count = 0
-        val pcValue = x.mapIndexed { index, c ->
-            if (index == it) {
-                return@mapIndexed c.plus(1).rem(2)
+    val popcountM = popcount.minus(1).coerceAtLeast(1)
+    val popcountP = popcount.plus(1)
+    val less = remInt(x, popcount - 1)
+    val greater = remInt(x, popcount + 1)
+    val lessRems = sizedArray(n, 1.rem(popcountM))
+    val greaterRems = sizedArray(n, 1.rem(popcountP))
+    (n.minus(2) downTo 0).forEach { index ->
+        lessRems[index] = lessRems[index + 1].times(2).rem(popcountM)
+        greaterRems[index] = greaterRems[index + 1].times(2).rem(popcountP)
+    }
+
+    (0 until n).forEach { index ->
+        var count = 1
+        var x2 = when {
+            x[index] == 0 -> {
+                greater.plus(greaterRems[index]).rem(popcountP)
             }
-            c.toString().toInt()
-        }.toMutableList()
-//        var pc = Integer.toBinaryString(if (x[it] == '0') popcount + 1 else popcount - 1).map { it.toString().toInt() }
-        println(pcValue)
-        while (pcValue.any { it == 1 }) {
-            val pc = Integer.toBinaryString(pcValue.count { it == 1 }).map { it.toString().toInt() }
-            (0..pcValue.size.minus(pc.size)).forEach { baseIndex ->
-                if (pcValue[baseIndex] == 1) {
-                    pc.forEachIndexed { index, i ->
-                        pcValue[baseIndex + index] = pcValue[baseIndex + index] xor i
-                    }
-                }
+            popcount == 1 -> {
+                println(0)
+                return@forEach
             }
-            println(pc)
-            println(pcValue)
-            count++
+            else -> {
+                less.minus(lessRems[index]).plus(popcountM).rem(popcountM)
+            }
+        }
+        while (x2 > 0) {
+            val pc = Integer.toBinaryString(x2).count { it == '1' }
+            x2 %= pc
+            count += 1
         }
         println(count)
     }
+}
+
+private fun remInt(values: IntArray, mod: Int): Int {
+    if (mod == 0) return 0
+    var operand = 0
+    values.forEach { value ->
+        operand = operand.shl(1).plus(value).rem(mod)
+    }
+    return operand
 }
 
 // # Utils
