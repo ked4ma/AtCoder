@@ -51,3 +51,28 @@ fun modinv2(a: Long, b: Long, x: Long, y: Long): Triple<Long, Long, Long> {
     println("$d $x2 $y2 ${a / b}")
     return Triple(d, x2, y2 - a / b * x2)
 }
+
+class UnionFindTree(val size: Int) {
+    private val r = com.github.khronos227.atcoder.abc177_na.sizedArray(size, -1)
+    fun root(x: Int): Int {
+        if (r[x] < 0) return x
+        return root(r[x])
+    }
+
+    fun unite(x: Int, y: Int) {
+        var rx = root(x)
+        var ry = root(y)
+        if (rx == ry) return
+        if (r[rx] > r[ry]) {
+            rx = ry.also { ry = rx }
+        }
+        r[rx] += r[ry]
+        r[ry] = rx
+    }
+
+    fun size(x: Int) = -r[root(x)]
+
+    override fun toString(): String {
+        return r.joinToString(separator = ", ")
+    }
+}
