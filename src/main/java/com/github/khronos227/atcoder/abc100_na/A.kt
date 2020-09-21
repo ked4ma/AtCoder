@@ -1,4 +1,4 @@
-package com.github.khronos227.atcoder.abc100
+package com.github.khronos227.atcoder.abc100_na
 
 fun main() {
     val (a, b) = nextIntList()
