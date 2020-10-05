@@ -12,6 +12,12 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    if (hasProperty("contest")) {
+        getByName("main").java.setSrcDirs(setOf("src/main/java/com/github/khronos227/atcoder/${findProperty("contest")}"))
+    }
+}
+
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 }
