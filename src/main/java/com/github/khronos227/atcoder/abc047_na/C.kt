@@ -1,0 +1,14 @@
+package com.github.khronos227.atcoder.abc047_na
+
+fun main() {
+    val s = next()
+    var c = s.first()
+    var count = 1
+    s.forEach {
+        if (c != it) {
+            c = it
+            count++
+        }
+    }
+    println(count - 1)
+}
