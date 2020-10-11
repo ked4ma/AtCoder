@@ -86,6 +86,8 @@ class UnionFindTree(val size: Int) {
     }
 
     fun size(x: Int) = -r[root(x)]
+    val categories: List<Int>
+        get() = r.indices.map { root(it) }
 
     override fun toString(): String {
         return r.joinToString(separator = ", ")
