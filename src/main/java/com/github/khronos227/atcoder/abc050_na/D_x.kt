@@ -1,11 +1,32 @@
-package com.github.khronos227.atcoder.template.simple
+package com.github.khronos227.atcoder.abc050_na
+
+import kotlin.math.floor
+import kotlin.math.log2
 
 fun main() {
-    println("This is template.")
-    println("1: Implement solution")
-    println("2: ./gradlew run")
-    println("     or")
-    println("   ./gradlew run < [path/to/input.txt]")
+    val mod = 1_000_000_007L
+    val n = nextLong()
+    val len = floor(log2(n.toDouble())).toInt() + 1
+    val dp = sized2DArray(len, 3, 0L)
+
+    dp[len - 1][0] = 1
+    dp[len - 1][1] = 1
+    for (i in len - 2 downTo 0) {
+        if ((n shr i) % 2 == 1L) {
+            // diff of previous bit = 0
+            // and if a[i] = 1 && b[i] = 1, a + b will be larger than N
+            dp[i][0] = dp[i + 1][0]
+            // diff of current bit = 0, previous = 1
+            // diff of current bit = 1, previous = 0
+            dp[i][1] = dp[i + 1][1].plus(dp[i + 1][0], mod)
+            dp[i][2] = dp[i + 1][2].times(3).plus(dp[i + 1][1].times(2, mod), mod)
+        } else {
+            dp[i][0] = dp[i + 1][0].plus(dp[i + 1][1], mod)
+            dp[i][1] = dp[i + 1][1]
+            dp[i][2] = dp[i + 1][2].times(3).plus(dp[i + 1][1], mod)
+        }
+    }
+    println(dp[0].sum().rem(mod))
 }
 
 // # Utils
@@ -42,15 +63,6 @@ fun modinv(num: Long, mod: Long): Long {
     println("$u $v")
     if (u < 0) u += mod
     return u
-}
-
-fun modinv2(a: Long, b: Long, x: Long, y: Long): Triple<Long, Long, Long> {
-    if (b == 0L) {
-        return Triple(a, 1, 0)
-    }
-    val (d, y2, x2) = modinv2(b, a % b, y, x)
-    println("$d $x2 $y2 ${a / b}")
-    return Triple(d, x2, y2 - a / b * x2)
 }
 
 fun Long.plus(n: Long, mod: Long) = (this + n) % mod
