@@ -52,6 +52,12 @@ fun modinv2(a: Long, b: Long, x: Long, y: Long): Triple<Long, Long, Long> {
     return Triple(d, x2, y2 - a / b * x2)
 }
 
+fun Long.plus(n: Long, mod: Long) = (this + n) % mod
+fun Long.minus(n: Long, mod: Long) = (this - n + mod) % mod
+fun Long.times(n: Long, mod: Long) = (this * n) % mod
+fun Long.div(n: Long, mod: Long) = this * modinv(n, mod)
+
+// gcd
 fun gcd(x: Int, y: Int): Int {
     fun innerGcd(x: Int, y: Int): Int {
         return if (x % y == 0) y else innerGcd(y, x % y)
