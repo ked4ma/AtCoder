@@ -1,22 +1,18 @@
-package com.github.khronos227.atcoder.abc049_na
-
-import kotlin.math.min
+package com.github.khronos227.atcoder.abc052_na
 
 fun main() {
-    val (n, k, l) = nextIntList()
-    val ufRoad = UnionFindTree(n)
-    repeat(k) {
-        val (a, b) = nextIntList()
-        ufRoad.unite(a - 1, b - 1)
+    val (n, a, b) = nextLongList()
+    val x = nextLongList()
+    var ans = 0L
+    repeat(x.size - 1) {
+        val walk = (x[it + 1] - x[it]) * a
+        ans += if (walk < b) {
+            walk
+        } else {
+            b
+        }
     }
-    val ufTrain = UnionFindTree(n)
-    repeat(l) {
-        val (a, b) = nextIntList()
-        ufTrain.unite(a - 1, b - 1)
-    }
-    val z = ufRoad.roots.zip(ufTrain.roots)
-    val g = z.groupingBy { it }.eachCount()
-    println(z.map { g[it] }.joinToString(separator = " "))
+    println(ans)
 }
 
 // # Utils
@@ -43,16 +39,24 @@ fun modinv(num: Long, mod: Long): Long {
     var v = 0L
     while (b > 0) {
         val t = a.div(b)
+        println("t: $t a: $a b: $b u: $u v: $v")
         a -= t * b
         a = b.also { b = a } // swap a and b
         u -= t * v
         u = v.also { v = u } // swap u and v
     }
     u %= mod
+    println("$u $v")
     if (u < 0) u += mod
     return u
 }
 
+fun Long.plus(n: Long, mod: Long) = (this + n) % mod
+fun Long.minus(n: Long, mod: Long) = (this - n + mod) % mod
+fun Long.times(n: Long, mod: Long) = (this * n) % mod
+fun Long.div(n: Long, mod: Long) = this * modinv(n, mod)
+
+// gcd
 fun gcd(x: Int, y: Int): Int {
     fun innerGcd(x: Int, y: Int): Int {
         return if (x % y == 0) y else innerGcd(y, x % y)
@@ -89,6 +93,8 @@ class UnionFindTree(val size: Int) {
     }
 
     fun size(x: Int) = -r[root(x)]
+    val categories: List<Int>
+        get() = r.indices.map { root(it) }
 
     override fun toString(): String {
         return r.joinToString(separator = ", ")
