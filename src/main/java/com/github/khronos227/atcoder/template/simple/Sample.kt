@@ -81,6 +81,8 @@ class UnionFindTree(val size: Int) {
         return root(r[x])
     }
 
+    val roots: Array<Int> get() = (r.indices).map { root(it) }.toTypedArray()
+
     fun unite(x: Int, y: Int) {
         var rx = root(x)
         var ry = root(y)
