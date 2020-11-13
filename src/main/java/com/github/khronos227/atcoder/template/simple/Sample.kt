@@ -53,6 +53,15 @@ fun modinv2(a: Long, b: Long, x: Long, y: Long): Triple<Long, Long, Long> {
     return Triple(d, x2, y2 - a / b * x2)
 }
 
+const val MOD = 1_000_000_007L
+fun Number.plusMod(n: Number) = this.toLong().plus(n.toLong(), MOD)
+fun Number.minusMod(n: Number) = this.toLong().minus(n.toLong(), MOD)
+fun Number.timesMod(n: Number) = this.toLong().times(n.toLong(), MOD)
+fun Number.divMod(n: Number) = this.toLong().div(n.toLong(), MOD)
+fun Number.plus(n: Number, mod: Number) = this.toLong().plus(n.toLong(), mod.toLong())
+fun Number.minus(n: Number, mod: Number) = this.toLong().minus(n.toLong(), mod.toLong())
+fun Number.times(n: Number, mod: Number) = this.toLong().times(n.toLong(), mod.toLong())
+fun Number.div(n: Number, mod: Number) = this.toLong().div(n.toLong(), mod.toLong())
 fun Long.plus(n: Long, mod: Long) = (this + n) % mod
 fun Long.minus(n: Long, mod: Long) = (this - n + mod) % mod
 fun Long.times(n: Long, mod: Long) = (this * n) % mod
