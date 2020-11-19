@@ -23,6 +23,24 @@ fun nextDoubleList() = nextList().map(String::toDouble)
 inline fun <reified T> sizedArray(size: Int, default: T) = Array(size) { default }
 inline fun <reified T> sized2DArray(row: Int, column: Int, default: T) = Array(row) { Array(column) { default } }
 
+// ## List
+/**
+ * this is coppy of Iterator<>.scanReduce because of its experimentation stage
+ */
+private inline fun <T : Number, R : T> List<R>.cumulative(operation: (acc: T, l: R) -> T): List<T> {
+    val iterator = this.iterator()
+    if (!iterator.hasNext()) return emptyList()
+    var accumulator: T = iterator.next()
+    val result = ArrayList<T>(size).apply { add(accumulator) }
+    while (iterator.hasNext()) {
+        accumulator = operation(accumulator, iterator.next())
+        result.add(accumulator)
+    }
+    return result
+}
+
+private fun List<Long>.cumulativeSum(): List<Long> = (listOf(0L) + this).cumulative { acc, l -> acc + l }
+
 // ## mod^-1
 //    [NOTE] CANNOT use this for 0, mod, 2mod, 3mod ...(return wrong value)
 fun modinv(num: Long, mod: Long): Long {
