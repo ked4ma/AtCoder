@@ -1,11 +1,39 @@
-package com.github.khronos227.atcoder.template.simple
+package com.github.khronos227.atcoder.abc183
 
 fun main() {
-    println("This is template.")
-    println("1: Implement solution")
-    println("2: ./gradlew run")
-    println("     or")
-    println("   ./gradlew run < [path/to/input.txt]")
+    val (n, q) = nextIntList()
+    val c = listOf(-1) + nextIntList()
+
+    val uf = UnionFindTree(n + 1)
+    val m = mutableMapOf<Int, MutableMap<Int, Int>>()
+    repeat(q) {
+        val (k, a, b) = nextIntList()
+        when (k) {
+            1 -> {
+                val ra = uf.root(a)
+                val rb = uf.root(b)
+                if (ra == rb) return@repeat
+                val aMap = m.getOrDefault(ra, mutableMapOf(c[ra] to 1))
+                val bMap = m.getOrDefault(rb, mutableMapOf(c[rb] to 1))
+                uf.unite(a, b)
+                m.remove(a)
+                m.remove(b)
+                val (from, to) = if (aMap.size <= bMap.size) {
+                    aMap to bMap
+                } else {
+                    bMap to aMap
+                }
+                from.forEach { (k, v) ->
+                    to[k] = to.getOrDefault(k, 0) + v
+                }
+                m[uf.root(a)] = to
+            }
+            2 -> {
+                val ra = uf.root(a)
+                println(m.getOrDefault(ra, mutableMapOf(c[ra] to 1)).getOrDefault(b, 0))
+            }
+        }
+    }
 }
 
 // # Utils
@@ -79,7 +107,7 @@ fun gcd(x: Long, y: Long): Long {
 }
 
 // classes
-class UnionFind(val size: Int) {
+class UnionFindTree(val size: Int) {
     private val r = sizedArray(size, -1)
     fun root(x: Int): Int {
         if (r[x] < 0) return x
