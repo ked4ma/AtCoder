@@ -28,7 +28,7 @@ application {
 tasks.withType<Jar> {
     // Otherwise you'll get a "No main manifest attribute" error
     manifest {
-        attributes["Main-Class"] = "com.github.khronos227.atcoder.template.simple.SampleKt"
+        attributes["Main-Class"] = project.properties.getOrDefault("mainClass", "com.github.khronos227.atcoder.template.simple.SampleKt")
     }
 
     // To add all of the dependencies otherwise a "NoClassDefFoundError" error
