@@ -19,7 +19,7 @@ TIMEFORMAT='
 time: %Rs'
 for ((i = 0; i < ${#RES[@]}; i++))
 do
-  echo "[INFO][${i+1}/${#RES[@]}] === Executing Sample Test ==="
+  echo "[INFO][$((i+1))/${#RES[@]}] === Executing Sample Test ==="
   time $JAVA_HOME/bin/java -cp build/libs/AtCoder-1.0-SNAPSHOT.jar com.github.khronos227.atcoder.$1.$2Kt < .input/input$i
   echo "=========="
 done
