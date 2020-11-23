@@ -34,7 +34,7 @@ run: base
 finish: base
 	git commit -a -m "$(CONTEST)"
 	git switch master
-	git merge --no-ff --commit feature/$(CONTEST)
+	git merge --no-ff feature/$(CONTEST)
 	git tag $(CONTEST)
 	git push origin master --tags
 
