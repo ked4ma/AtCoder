@@ -28,3 +28,6 @@ build
 # Project oriented
 .input
 input*
+
+# NodeJS
+node_modules

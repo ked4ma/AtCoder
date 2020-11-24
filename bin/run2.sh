@@ -1,6 +1,6 @@
 #!/bin/bash
 INPUT_FILE_PATH=$(readlink -f $3)
-cd $(dirname $0)
+cd $(dirname $0)/..
 
 # Prepare Input Data
 echo $INPUT_FILE_PATH
