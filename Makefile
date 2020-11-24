@@ -39,6 +39,7 @@ finish: base
 	git commit -a -m "$(CONTEST_BRANCH)"
 	git switch master
 	git merge --no-ff feature/$(CONTEST_BRANCH)
+	git branch -d feature/$(CONTEST_BRANCH)
 	git tag $(CONTEST_BRANCH)
 	git push origin master --tags
 
