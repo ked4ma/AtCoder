@@ -30,18 +30,31 @@ base:
 	$(eval CONTEST=$(subst _na, , $(CONTEST_BRANCH)))
 
 run: base
+	@echo "[Info] Get input data from the web site."
 	@mkdir -p .input
 	$(eval QUESTION=$(subst _x, , $(word 1, $(RUN_ARGS))))
 	node bin/inputParser.js $(CONTEST) $(QUESTION) .input/input$(QUESTION).txt
+	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION) (input: .input/input$(QUESTION).txt"
 	./bin/run2.sh $(CONTEST_BRANCH) $(word 1, $(RUN_ARGS)) .input/input$(QUESTION).txt
 
 finish: base
+	@echo "[Info] Finish $(CONTEST_BRANCH)"
 	git commit -a -m "$(CONTEST_BRANCH)"
 	git switch master
 	git merge --no-ff feature/$(CONTEST_BRANCH)
 	git branch -d feature/$(CONTEST_BRANCH)
 	git tag $(CONTEST_BRANCH)
 	git push origin master --tags
+
+exec:
+	@echo "[Info] Get input data from the web site."
+	@mkdir -p .input
+	$(eval CONTEST_BRANCH=$(subst _x, , $(word 1, $(RUN_ARGS))))
+	$(eval CONTEST=$(subst _na, , $(CONTEST_BRANCH)))
+	$(eval QUESTION=$(subst _x, , $(word 2, $(RUN_ARGS))))
+	node bin/inputParser.js $(CONTEST) $(QUESTION) .input/input$(QUESTION).txt
+	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION) (input: .input/input$(QUESTION).txt"
+	./bin/run2.sh $(CONTEST_BRANCH) $(word 2, $(RUN_ARGS)) .input/input$(QUESTION).txt
 
 sandbox:
 	$(eval FILE=$(word 1, $(RUN_ARGS)))
@@ -50,4 +63,4 @@ sandbox:
 clean:
 	./gradlew clean
 
-.PHONY: clean init base run finish
+.PHONY: clean init base run finish sandbox exec
