@@ -27,15 +27,23 @@ endif
 
 base:
 	$(eval CONTEST_BRANCH=$(word 2, $(subst /, , $(shell git branch --show-current))))
-	$(eval CONTEST=$(subst _na, , $(CONTEST_BRANCH)))
+	$(eval CONTEST=$(subst _na,, $(CONTEST_BRANCH)))
 
-run: base
+run-base: base
+	$(eval QUESTION_FILENAME=$(word 1, $(RUN_ARGS)))
+	$(eval QUESTION=$(subst _x,, $(QUESTION_FILENAME)))
+
+run: run-base
 	@echo "[Info] Get input data from the web site."
 	@mkdir -p .input
-	$(eval QUESTION=$(subst _x, , $(word 1, $(RUN_ARGS))))
 	node bin/inputParser.js $(CONTEST) $(QUESTION) .input/input$(QUESTION).txt
 	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION) (input: .input/input$(QUESTION).txt"
-	./bin/run2.sh $(CONTEST_BRANCH) $(word 1, $(RUN_ARGS)) .input/input$(QUESTION).txt
+	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
+
+format: run-base
+	@echo "[Info] Format for submiting $(CONTEST)/$(QUESTION)."
+	./bin/format.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME)
+	@echo "[Info] Copied to Clipboard."
 
 finish: base
 	@echo "[Info] Finish $(CONTEST_BRANCH)"
@@ -63,4 +71,4 @@ sandbox:
 clean:
 	./gradlew clean
 
-.PHONY: clean init base run finish sandbox exec
+.PHONY: clean init base run run-base finish sandbox exec format
