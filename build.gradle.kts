@@ -12,7 +12,10 @@ repositories {
 
 sourceSets {
     if (hasProperty("contest")) {
-        getByName("main").java.setSrcDirs(setOf("src/main/java/com/github/khronos227/atcoder/${findProperty("contest")}"))
+        getByName("main").java.setSrcDirs(setOf(
+            "src/main/java/com/github/khronos227/atcoder/${findProperty("contest")}",
+            "src/main/java/com/github/khronos227/atcoder/utils/"
+        ))
     }
 }
 
