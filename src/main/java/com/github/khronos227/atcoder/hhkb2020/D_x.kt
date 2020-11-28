@@ -1,16 +1,10 @@
 package com.github.khronos227.atcoder.hhkb2020
 
+import com.github.khronos227.atcoder.utils.*
 import kotlin.math.max
 import kotlin.math.min
 
 fun main() {
-    val mod = 1_000_000_007L
-
-    fun Long.timesMod(x: Long) = this.times(x).rem(mod)
-    fun Long.divMod(x: Long) = this.times(modinv(x, mod))
-    fun Long.plusMod(x: Long) = this.plus(x).rem(mod)
-    fun Long.minusMod(x: Long) = this.plus(mod).minus(x).rem(mod)
-
     fun calc(n: Long, a: Long, b: Long) {
         // (空白)(赤)(空白)(青)(空白) のパターン ※赤と青がかぶらない
         val x4 = if (n - a - b < 0) 0 else (n - a - b + 2).timesMod(n - a - b + 1).divMod(2)

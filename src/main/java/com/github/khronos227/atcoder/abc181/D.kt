@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc181
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val s = next()
     val sCountMap = s.toCharArray().map {
@@ -16,7 +18,7 @@ fun main() {
     }.toMap()
 
     fun dfs(depth: Int = 0, selectArr: Array<Int> = sizedArray(10, 0), remain: Int = 0): Boolean {
-        if (depth == s.length.coerceAtMost(3) ) return remain % 8 == 0
+        if (depth == s.length.coerceAtMost(3)) return remain % 8 == 0
         if (depth == 0) {
             (1..9).forEach { selectArr[it] = 0 }
         }

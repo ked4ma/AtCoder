@@ -1,5 +1,6 @@
 package com.github.khronos227.atcoder.abc182
 
+import com.github.khronos227.atcoder.utils.*
 import kotlin.math.min
 
 fun main() {

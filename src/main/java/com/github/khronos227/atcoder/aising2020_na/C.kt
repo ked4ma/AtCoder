@@ -1,5 +1,6 @@
 package com.github.khronos227.atcoder.aising2020_na
 
+import com.github.khronos227.atcoder.utils.*
 import kotlin.math.ceil
 import kotlin.math.sqrt
 

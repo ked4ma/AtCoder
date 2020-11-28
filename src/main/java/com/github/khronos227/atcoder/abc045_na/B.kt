@@ -1,6 +1,7 @@
 package com.github.khronos227.atcoder.abc045_na
 
-import java.util.ArrayDeque
+import com.github.khronos227.atcoder.utils.*
+import java.util.*
 
 fun main() {
     var current = 0

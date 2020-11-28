@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc171
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     nextInt()
     val valueMap = mutableMapOf<Int, Int>()

@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc100_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     var count = 0
     nextInt()

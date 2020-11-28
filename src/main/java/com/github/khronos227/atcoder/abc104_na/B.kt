@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc104_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val s = next()
     if (s[0] != 'A' || s[1] !in ('a'..'z') || s.last() !in ('a'..'z')) {

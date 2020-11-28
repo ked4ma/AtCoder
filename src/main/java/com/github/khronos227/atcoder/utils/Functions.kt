@@ -31,7 +31,7 @@ private inline fun <T : Number, R : T> List<R>.cumulative(operation: (acc: T, l:
     return result
 }
 
-private fun List<Long>.cumulativeSum(): List<Long> = (listOf(0L) + this).cumulative { acc, l -> acc + l }
+fun List<Long>.cumulativeSum(): List<Long> = (listOf(0L) + this).cumulative { acc, l -> acc + l }
 
 // ## mod^-1
 //    [NOTE] CANNOT use this for 0, mod, 2mod, 3mod ...(return wrong value)

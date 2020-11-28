@@ -1,7 +1,9 @@
 package com.github.khronos227.atcoder.abc178
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
-    val MOD = 1_000_000_007
+    val MOD = 1_000_000_007L
     val s = nextInt()
     if (s < 3) {
         println(0)
@@ -10,7 +12,7 @@ fun main() {
     var a0 = 1L
     var a1 = 0L
     var a2 = 0L
-    (3..s).forEach {
+    (3..s).forEach { _ ->
         val n = (a0 + a2).rem(MOD)
         a0 = a1
         a1 = a2

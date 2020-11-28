@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.aising2020_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     nextInt()
     val list = nextIntList()

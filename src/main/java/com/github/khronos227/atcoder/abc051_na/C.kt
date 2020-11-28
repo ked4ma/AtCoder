@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc051_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val (sx, sy, tx, ty) = nextIntList()
     var res = ""

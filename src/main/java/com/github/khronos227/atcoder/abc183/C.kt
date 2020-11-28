@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc183
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val (n, k) = nextLongList().let { (n, k) ->
         n.toInt() to k

@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.arc104
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val (nStr, s) = nextList()
     val n = nStr.toInt()

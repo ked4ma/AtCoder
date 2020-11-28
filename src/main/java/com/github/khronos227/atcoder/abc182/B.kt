@@ -1,9 +1,10 @@
 package com.github.khronos227.atcoder.abc182
 
+import com.github.khronos227.atcoder.utils.*
 import kotlin.math.sqrt
 
 fun main() {
-    val n = nextInt()
+    nextInt()
     val a = nextIntList()
     val count = sizedArray((a.max() ?: 0) + 1, 0)
     a.forEach { num ->
@@ -17,7 +18,7 @@ fun main() {
         }
     }
     var index = 0
-    var value= 0
+    var value = 0
     count.forEachIndexed { i, v ->
         if (value < v) {
             index = i

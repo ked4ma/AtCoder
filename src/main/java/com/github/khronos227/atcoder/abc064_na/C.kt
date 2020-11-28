@@ -1,7 +1,6 @@
 package com.github.khronos227.atcoder.abc064_na
 
-import com.github.khronos227.atcoder.utils.nextInt
-import com.github.khronos227.atcoder.utils.nextIntList
+import com.github.khronos227.atcoder.utils.*
 
 fun main() {
     val colors = listOf(

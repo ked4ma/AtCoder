@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc181
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val n = nextInt()
     val points = (0 until n).map {

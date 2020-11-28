@@ -1,5 +1,6 @@
 package com.github.khronos227.atcoder.abc102_na
 
+import com.github.khronos227.atcoder.utils.*
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -16,7 +17,7 @@ fun main() {
         }
     }
     println(
-        min (
+        min(
             values.map {
                 abs(it - floor(mid).toLong())
             }.sum(),

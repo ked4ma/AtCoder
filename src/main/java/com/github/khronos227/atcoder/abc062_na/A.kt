@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc062_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val group = mutableMapOf(
         *arrayOf(1, 3, 5, 7, 8, 10, 12).map { it to 0 }.toTypedArray(),

@@ -1,5 +1,6 @@
 package com.github.khronos227.atcoder.abc179
 
+import com.github.khronos227.atcoder.utils.*
 import kotlin.math.sqrt
 
 fun main() {
@@ -18,8 +19,8 @@ fun main() {
     (1..n.minus(1)).forEach { c ->
         var cnt = 1
         var m = n - c
-        primes.forEach { a ->
-            if (m % a != 0) return@forEach
+        primes.forEach inner@ { a ->
+            if (m % a != 0) return@inner
             var ex = 0
 
             while (m % a == 0) {
@@ -33,4 +34,3 @@ fun main() {
     }
     println(count)
 }
-

@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc174
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val (n, d) = nextLongList()
     val d2 = d * d

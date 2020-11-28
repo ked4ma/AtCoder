@@ -1,7 +1,9 @@
 package com.github.khronos227.atcoder.abc048_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
-    val (n, x) = nextLongList()
+    val (_, x) = nextLongList()
     val v = nextLongList().toLongArray()
     var count = 0L
     (0 until v.lastIndex).forEach { index ->

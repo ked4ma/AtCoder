@@ -1,5 +1,6 @@
 package com.github.khronos227.atcoder.abc100_na
 
+import com.github.khronos227.atcoder.utils.*
 import kotlin.math.pow
 
 fun main() {

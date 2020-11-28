@@ -1,5 +1,6 @@
 package com.github.khronos227.atcoder.abc176
 
+import com.github.khronos227.atcoder.utils.*
 import java.util.*
 import kotlin.math.abs
 import kotlin.math.max
@@ -22,7 +23,7 @@ fun main() {
         val v = point.v
         if (arrivalMap[y][x] <= v) continue
         arrivalMap[y][x] = v
-        (max(y - 2, 0)..min(y + 2, h - 1)).forEach {nextY ->
+        (max(y - 2, 0)..min(y + 2, h - 1)).forEach { nextY ->
             (max(x - 2, 0)..min(x + 2, w - 1)).forEach { nextX ->
                 if (abs(nextY - y) + abs(nextX - x) < 2) {
                     if (map[nextY][nextX] == "." && arrivalMap[nextY][nextX] > v) {

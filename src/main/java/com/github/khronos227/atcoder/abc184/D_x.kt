@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc184
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val dp = Array(101) { Array(101) { Array(101) { 0.0 } } }
     fun f(a: Int, b: Int, c: Int): Double {

@@ -1,7 +1,9 @@
 package com.github.khronos227.atcoder.abc175
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
-    val n = nextInt()
+    nextInt()
     val l = nextIntList()
     var count = 0
     (0 until l.size - 2).forEach { i ->

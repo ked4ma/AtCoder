@@ -1,7 +1,6 @@
 package com.github.khronos227.atcoder.abc063_na
 
-import com.github.khronos227.atcoder.utils.nextLong
-import com.github.khronos227.atcoder.utils.nextLongList
+import com.github.khronos227.atcoder.utils.*
 
 // binary search
 fun main() {

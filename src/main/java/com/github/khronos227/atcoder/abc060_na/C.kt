@@ -1,7 +1,9 @@
 package com.github.khronos227.atcoder.abc060_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
-    val (n, T) = nextLongList().let { (n, t) ->
+    val (_, T) = nextLongList().let { (n, t) ->
         n.toInt() to t
     }
     val tMap = sortedMapOf<Long, Int>()

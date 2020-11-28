@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc171
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     var n = 0
     nextInt()
@@ -9,7 +11,7 @@ fun main() {
     }
     values.forEach {
         print(n xor it)
-        if (it == values.lastIndex){
+        if (it == values.lastIndex) {
             println()
         } else {
             print(' ')

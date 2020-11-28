@@ -1,6 +1,6 @@
 package com.github.khronos227.atcoder.abc171
 
-import java.lang.StringBuilder
+import com.github.khronos227.atcoder.utils.*
 
 fun main() {
     var n = nextLong()

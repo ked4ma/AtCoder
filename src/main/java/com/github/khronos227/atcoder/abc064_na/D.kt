@@ -1,7 +1,6 @@
 package com.github.khronos227.atcoder.abc064_na
 
-import com.github.khronos227.atcoder.utils.next
-import com.github.khronos227.atcoder.utils.nextInt
+import com.github.khronos227.atcoder.utils.*
 import java.util.*
 
 fun main() {

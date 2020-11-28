@@ -1,13 +1,15 @@
 package com.github.khronos227.atcoder.abc173
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val (h, w, k) = nextIntList()
     val mat = (0 until h).map {
         next()
     }
     var res = 0
-    val rowSelection = sizedArray(h, false)
-    val columnSelection = sizedArray(w, false)
+//    val rowSelection = sizedArray(h, false)
+//    val columnSelection = sizedArray(w, false)
 
     fun calcW(index: Int, selecH: Array<Int>, selecW: List<Boolean>) {
         if (index == w) {

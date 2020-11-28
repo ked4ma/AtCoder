@@ -1,7 +1,9 @@
 package com.github.khronos227.atcoder.abc184
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
-    val (n, x) = nextIntList()
+    val (_, x) = nextIntList()
     var ans = x
     next().forEach {
         when (it) {

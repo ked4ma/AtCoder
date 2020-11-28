@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc044_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val (n, a) = nextIntList()
     val x = nextIntList()

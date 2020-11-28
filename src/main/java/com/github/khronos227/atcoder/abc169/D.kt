@@ -1,5 +1,6 @@
 package com.github.khronos227.atcoder.abc169
 
+import com.github.khronos227.atcoder.utils.*
 import kotlin.math.sqrt
 
 fun main() {
@@ -26,7 +27,7 @@ fun main() {
         primeCounts[n] = 1
     }
     var res = 0
-    primeCounts.forEach { _, value ->
+    primeCounts.forEach { (_, value) ->
         var count = value
         var num = 1
         while (num <= count) {

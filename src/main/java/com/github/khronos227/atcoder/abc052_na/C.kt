@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc052_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val mod = 1_000_000_007L
     val sieve = sizedArray(1_000 + 1, true)

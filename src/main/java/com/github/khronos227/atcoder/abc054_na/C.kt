@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc054_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val (n, m) = nextIntList()
     val edgeArr = sized2DArray(n, n, 0)

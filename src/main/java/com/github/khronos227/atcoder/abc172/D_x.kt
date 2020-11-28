@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc172
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val n = nextInt()
 

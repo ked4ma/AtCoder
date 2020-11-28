@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.abc053_na
 
+import com.github.khronos227.atcoder.utils.*
+
 fun main() {
     val x = nextLong()
     val loop = x / 11
