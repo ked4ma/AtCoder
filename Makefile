@@ -54,15 +54,23 @@ finish: base
 	git tag $(CONTEST_BRANCH)
 	git push origin master --tags
 
-exec:
-	@echo "[Info] Get input data from the web site."
-	@mkdir -p .input
+exec-base:
 	$(eval CONTEST_BRANCH=$(subst _x, , $(word 1, $(RUN_ARGS))))
 	$(eval CONTEST=$(subst _na, , $(CONTEST_BRANCH)))
-	$(eval QUESTION=$(subst _x, , $(word 2, $(RUN_ARGS))))
+	$(eval QUESTION_FILENAME=$(word 2, $(RUN_ARGS)))
+	$(eval QUESTION=$(subst _x, , $(QUESTION_FILENAME)))
+
+exec: exec-base
+	@echo "[Info] Get input data from the web site."
+	@mkdir -p .input
 	node bin/inputParser.js $(CONTEST) $(QUESTION) .input/input$(QUESTION).txt
 	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION) (input: .input/input$(QUESTION).txt"
-	./bin/run2.sh $(CONTEST_BRANCH) $(word 2, $(RUN_ARGS)) .input/input$(QUESTION).txt
+	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
+
+reformat: exec-base
+	@echo "[Info] Format for submiting $(CONTEST)/$(QUESTION)."
+	./bin/format.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME)
+	@echo "[Info] Copied to Clipboard."
 
 sandbox:
 	$(eval FILE=$(word 1, $(RUN_ARGS)))
@@ -71,4 +79,4 @@ sandbox:
 clean:
 	./gradlew clean
 
-.PHONY: clean init base run run-base finish sandbox exec format
+.PHONY: clean init base run run-base format finish sandbox exec-base exec reformat
