@@ -27,7 +27,7 @@ build
 
 # Project oriented
 .input
-input*
+/input*
 
 # NodeJS
 node_modules
