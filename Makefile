@@ -40,6 +40,9 @@ run: run-base
 	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION) (input: .input/input$(QUESTION).txt"
 	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
 
+runOnly: run-base
+	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
+
 format: run-base
 	@echo "[Info] Format for submiting $(CONTEST)/$(QUESTION)."
 	./bin/format.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME)
@@ -79,4 +82,4 @@ sandbox:
 clean:
 	./gradlew clean
 
-.PHONY: clean init base run run-base format finish sandbox exec-base exec reformat
+.PHONY: clean init base run runOnly run-base format finish sandbox exec-base exec reformat

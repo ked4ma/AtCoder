@@ -1,6 +1,10 @@
 package com.github.khronos227.atcoder.utils
 
-// # Utils
+/**
+ * ----------
+ * Utils
+ * ----------
+ */
 // ## Input
 fun next() = readLine()!!
 fun nextInt() = next().toInt()
@@ -17,7 +21,7 @@ inline fun <reified T> sized2DArray(row: Int, column: Int, default: T) = Array(r
 
 // ## List
 /**
- * this is coppy of Iterator<>.scanReduce because of its experimentation stage
+ * this is copy of Iterator<>.scanReduce because of its experimentation stage
  */
 private inline fun <T : Number, R : T> List<R>.cumulative(operation: (acc: T, l: R) -> T): List<T> {
     val iterator = this.iterator()
@@ -183,5 +187,38 @@ class SegmentTree<T> private constructor(
         }
 
         fun <T> newInstance(innerArr: Array<T>, n: Int, operator: (T, T) -> T) = SegmentTree(innerArr, n, operator)
+    }
+}
+
+// https://qiita.com/R_olldIce/items/f2f7930e7f67963f0493
+// http://hos.ac/slides/20140319_bit.pdf
+// Also Called BIT (binary indexed tree)
+class FenwickTree(private val size: Int) {
+    private val arr = sizedArray(size, 0L)
+
+    fun add(index: Int, value: Long) {
+        if (index !in 0 until size) throw IllegalArgumentException("index must be in range [0,$this)")
+        var i = index + 1
+        while (i <= size) {
+            arr[i - 1] += value
+            i += i and -i
+        }
+    }
+
+    private fun sum(right: Int): Long {
+        var ans = 0L
+        var r = right
+        while (r > 0) {
+            ans += arr[r - 1]
+            r -= r and -r
+        }
+        return ans
+    }
+
+    fun sum(left: Int, right: Int): Long {
+        if (left < 0 || size < right || right < left) {
+            throw IllegalArgumentException("need: 0 <= left <= right <= $size")
+        }
+        return sum(right) - sum(left)
     }
 }

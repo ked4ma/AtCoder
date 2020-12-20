@@ -6,4 +6,4 @@ if [ $? -eq 0 ]; then
   alias pbcopy='xsel --clipboard --input'
 fi
 
-cat src/main/java/com/github/khronos227/atcoder/$1/$2.kt src/main/java/com/github/khronos227/atcoder/utils/Functions.kt | grep -v com.github.khronos227.atcoder | pbcopy
+awk 1 src/main/java/com/github/khronos227/atcoder/$1/$2.kt src/main/java/com/github/khronos227/atcoder/utils/Functions.kt | grep -v com.github.khronos227.atcoder | grep -v -e "^\s*\/\/.*" | pbcopy
