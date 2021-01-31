@@ -18,7 +18,7 @@ async function parseContest(contest, question) {
   })
 }
 
-function parse(body, outputFile) {
+function parse(body, outputFile, ansOutputFile) {
   const doc = (new JSDOM(body)).window.document
   const text = [...doc.querySelectorAll('.lang-ja .part > section:nth-child(1) > pre:nth-of-type(1)')].filter((t, i) => {
     return i % 2 == 1
@@ -31,16 +31,31 @@ function parse(body, outputFile) {
       console.log(err)
     }
   })
+
+  const ansText = [...doc.querySelectorAll('.lang-ja .part > section:nth-child(1) > pre:nth-of-type(1)')]
+    .filter((t, i) => {
+    return i > 0 && i % 2 == 0
+  })
+    .map((elem) => {
+    return elem.textContent
+  }).join('---\n')
+
+  fs.writeFile(ansOutputFile, ansText, err => {
+    if (err) {
+      console.log(err)
+    }
+  })
 }
 
 ;(async () => {
-  if (process.argv.length < 5) {
+  if (process.argv.length < 6) {
     console.log('[Err] contest and question name is needed')
     process.exit(1)
   }
   const contest = process.argv[2]
   const question = process.argv[3]
   const outputFile = process.argv[4]
+  const ansOutputFile = process.argv[5]
 
   const links = await parseContest(contest, question)
   request.get(links[question], (err, res, body) => {
@@ -48,6 +63,6 @@ function parse(body, outputFile) {
       console.log(`[Err] question page(${question}) of contest(${contest}) is not found.`)
       process.exit(1)
     }
-    parse(body, outputFile)
+    parse(body, outputFile, ansOutputFile)
   })
 })()

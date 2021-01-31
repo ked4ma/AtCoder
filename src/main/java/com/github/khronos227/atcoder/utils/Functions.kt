@@ -64,6 +64,18 @@ fun modinv2(a: Long, b: Long, x: Long, y: Long): Triple<Long, Long, Long> {
     return Triple(d, x2, y2 - a / b * x2)
 }
 
+// calc "x!"
+fun factorial(x: Int): Long {
+    if (x < 0) throw RuntimeException("this need positive param")
+    var res = 1L
+    var i = 2
+    while (i <= x) {
+        res *= i
+        i++
+    }
+    return res
+}
+
 const val MOD = 1_000_000_007L
 fun Long.plusMod(n: Long, mod: Long = MOD) = this.plus(n, mod)
 fun Long.minusMod(n: Long, mod: Long = MOD) = this.minus(n, mod)
