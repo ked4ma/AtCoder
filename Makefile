@@ -36,9 +36,11 @@ run-base: base
 run: run-base
 	@echo "[Info] Get input data from the web site."
 	@mkdir -p .input
-	node bin/inputParser.js $(CONTEST) $(QUESTION) .input/input$(QUESTION).txt
-	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION) (input: .input/input$(QUESTION).txt"
-	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
+	node bin/inputParser.js $(CONTEST) $(QUESTION) .input/input$(QUESTION).txt .input/ans$(QUESTION).txt
+	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION)"
+	@echo "[Info]  (input: .input/input$(QUESTION).txt)"
+	@echo "[Info]  (ans  : .input/ans$(QUESTION).txt)"
+	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt .input/ans$(QUESTION).txt
 
 runOnly: run-base
 	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
