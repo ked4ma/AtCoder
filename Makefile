@@ -5,7 +5,7 @@ RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 $(eval $(RUN_ARGS):;@:)
 RUN_ARGS_LEN := $(words $(RUN_ARGS))
 
-init:
+init: clean
 	npm ci
 ifeq ($(shell expr $(RUN_ARGS_LEN) \>= 1), 1)
 	$(eval CONTEST_BRANCH=$(word 1, $(RUN_ARGS)))
