@@ -20,26 +20,30 @@ async function parseContest(contest, question) {
 
 function parse(body, outputFile, ansOutputFile) {
   const doc = (new JSDOM(body)).window.document
-  const text = [...doc.querySelectorAll('.lang-ja .part > section:nth-child(1) > pre:nth-of-type(1)')].filter((t, i) => {
-    return i % 2 == 1
+//  const text = [...doc.querySelectorAll('.lang-ja .part > section:nth-child(1) > pre:nth-of-type(1)')].filter((t, i) => {
+//    return i % 2 == 1
+//  }).map((elem) => {
+//    return elem.textContent
+//  }).join('---\n')
+  const re = new RegExp('(入|出)力例 .*')
+  const data = [...doc.querySelectorAll('.lang-ja .part > section:nth-child(1)')].filter((t, i) => {
+    return t.querySelectorAll('h3')[0].textContent.match(re)
   }).map((elem) => {
-    return elem.textContent
-  }).join('---\n')
+    return elem.querySelectorAll('pre')[0].textContent
+  })
 
+  const text = data.filter((t, i) => {
+    return i % 2 == 0
+  }).join('---\n')
   fs.writeFile(outputFile, text, err => {
     if (err) {
       console.log(err)
     }
   })
 
-  const ansText = [...doc.querySelectorAll('.lang-ja .part > section:nth-child(1) > pre:nth-of-type(1)')]
-    .filter((t, i) => {
-    return i > 0 && i % 2 == 0
-  })
-    .map((elem) => {
-    return elem.textContent
+  const ansText = data.filter((t, i) => {
+    return i % 2 == 1
   }).join('---\n')
-
   fs.writeFile(ansOutputFile, ansText, err => {
     if (err) {
       console.log(err)
