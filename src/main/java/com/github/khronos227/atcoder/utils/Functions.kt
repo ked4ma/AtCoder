@@ -1,5 +1,7 @@
 package com.github.khronos227.atcoder.utils
 
+import java.io.BufferedReader // # _debug_
+
 /**
  * ----------
  * Utils
@@ -14,6 +16,16 @@ fun nextList() = next().split(" ")
 fun nextIntList() = nextList().map(String::toInt)
 fun nextLongList() = nextList().map(String::toLong)
 fun nextDoubleList() = nextList().map(String::toDouble)
+
+// ## Input (with BufferedReader)
+fun next(br: BufferedReader) = br.readLine()!!
+fun nextInt(br: BufferedReader) = next(br).toInt()
+fun nextLong(br: BufferedReader) = next(br).toLong()
+fun nextDouble(br: BufferedReader) = next(br).toDouble()
+fun nextList(br: BufferedReader) = next(br).split(" ")
+fun nextIntList(br: BufferedReader) = nextList(br).map(String::toInt)
+fun nextLongList(br: BufferedReader) = nextList(br).map(String::toLong)
+fun nextDoubleList(br: BufferedReader) = nextList(br).map(String::toDouble)
 
 // ## Array
 inline fun <reified T> sizedArray(size: Int, default: T) = Array(size) { default }
