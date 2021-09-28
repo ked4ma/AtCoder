@@ -1,7 +1,5 @@
 package com.github.khronos227.atcoder.utils
 
-import java.io.BufferedReader // # _debug_
-
 /**
  * ----------
  * Utils
@@ -18,14 +16,14 @@ fun nextLongList() = nextList().map(String::toLong)
 fun nextDoubleList() = nextList().map(String::toDouble)
 
 // ## Input (with BufferedReader)
-fun next(br: BufferedReader) = br.readLine()!!
-fun nextInt(br: BufferedReader) = next(br).toInt()
-fun nextLong(br: BufferedReader) = next(br).toLong()
-fun nextDouble(br: BufferedReader) = next(br).toDouble()
-fun nextList(br: BufferedReader) = next(br).split(" ")
-fun nextIntList(br: BufferedReader) = nextList(br).map(String::toInt)
-fun nextLongList(br: BufferedReader) = nextList(br).map(String::toLong)
-fun nextDoubleList(br: BufferedReader) = nextList(br).map(String::toDouble)
+fun next(br: java.io.BufferedReader) = br.readLine()!!
+fun nextInt(br: java.io.BufferedReader) = next(br).toInt()
+fun nextLong(br: java.io.BufferedReader) = next(br).toLong()
+fun nextDouble(br: java.io.BufferedReader) = next(br).toDouble()
+fun nextList(br: java.io.BufferedReader) = next(br).split(" ")
+fun nextIntList(br: java.io.BufferedReader) = nextList(br).map(String::toInt)
+fun nextLongList(br: java.io.BufferedReader) = nextList(br).map(String::toLong)
+fun nextDoubleList(br: java.io.BufferedReader) = nextList(br).map(String::toDouble)
 
 // ## Array
 inline fun <reified T> sizedArray(size: Int, default: T) = Array(size) { default }
@@ -111,6 +109,36 @@ fun gcd(x: Long, y: Long): Long {
         return if (x % y == 0L) y else innerGcd(y, x % y)
     }
     return if (x >= y) innerGcd(x, y) else innerGcd(y, x)
+}
+
+fun extGcd(a: Long, b: Long): Triple<Long, Long, Long> {
+    fun logic(a: Long, b: Long, x: Long = 0L, y: Long = 0L): Triple<Long, Long, Long> {
+        if (b == 0L) {
+            return Triple(1L, 0L, a)
+        }
+        val (ny, nx, d) = logic(b, a % b, y, x)
+        return Triple(nx, ny - ((a / b) * nx), d)
+    }
+    return logic(a, b)
+}
+
+// crt
+/**
+ * calc crt(Chinese Remainder Theorem) with extGcd.
+ * solve [x≡b1(mod. m1), x≡b2(mod. m2),...] -> x≡r(mod. m)
+ * @return r(mod. m)
+ */
+fun crt(b: List<Long>, m: List<Long>): Pair<Long, Long> {
+    var r = 0L
+    var M = 1L
+    b.zip(m).forEach { (bi, mi) ->
+        val (p, _, d) = extGcd(M, mi)
+        if ((bi - r) % d != 0L) return 0L to -1L
+        val tmp = (bi - r) / d * p % (mi / d)
+        r += M * tmp
+        M *= mi / d
+    }
+    return (r % M + M) % M to M
 }
 
 // classes
