@@ -12,10 +12,12 @@ repositories {
 
 sourceSets {
     if (hasProperty("contest")) {
-        getByName("main").java.setSrcDirs(setOf(
-            "src/main/java/com/github/khronos227/atcoder/${findProperty("contest")}",
-            "src/main/java/com/github/khronos227/atcoder/utils/"
-        ))
+        getByName("main").java.setSrcDirs(
+            setOf(
+                "src/main/java/com/github/khronos227/atcoder/${findProperty("contest")}",
+                "src/main/java/com/github/khronos227/atcoder/utils/"
+            )
+        )
     }
 }
 
@@ -24,14 +26,27 @@ dependencies {
 }
 
 application {
-    mainClassName =
-        project.properties.getOrDefault("mainClass", "com.github.khronos227.atcoder.template.simple.SampleKt") as String
+    mainClass.set(
+        project.properties.getOrDefault(
+            "mainClass",
+            "com.github.khronos227.atcoder.template.simple.SampleKt"
+        ) as String
+    )
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
 }
 
 tasks.withType<Jar> {
     // Otherwise you'll get a "No main manifest attribute" error
     manifest {
-        attributes["Main-Class"] = project.properties.getOrDefault("mainClass", "com.github.khronos227.atcoder.template.simple.SampleKt")
+        attributes["Main-Class"] = project.properties.getOrDefault(
+            "mainClass",
+            "com.github.khronos227.atcoder.template.simple.SampleKt"
+        )
     }
 
     // To add all of the dependencies otherwise a "NoClassDefFoundError" error
