@@ -43,21 +43,22 @@ fun main() {
             counts[C[-1 - cur]]--
         }
     }
-// [NOTE] dfs will throw stack overflow for too deep tree
-//    fun dfs(cur: Int, par: Int = -1) {
-//        if (counts[C[cur]] == 0) {
-//            res[cur] = true
-//        }
-//        counts[C[cur]]++
-//        for (dest in mapping[cur]) {
-//            if (dest != par) {
-//                dfs(dest, cur)
-//            }
-//        }
-//        counts[C[cur]]--
-//    }
-//
-//    dfs(0)
+
+    // [NOTE] dfs will throw stack overflow for too deep tree
+    //    fun dfs(cur: Int, par: Int = -1) {
+    //        if (counts[C[cur]] == 0) {
+    //            res[cur] = true
+    //        }
+    //        counts[C[cur]]++
+    //        for (dest in mapping[cur]) {
+    //            if (dest != par) {
+    //                dfs(dest, cur)
+    //            }
+    //        }
+    //        counts[C[cur]]--
+    //    }
+    //
+    //    dfs(0)
 
     res.forEachIndexed { index, b ->
         if (b) println(index + 1)
