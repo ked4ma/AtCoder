@@ -1,6 +1,12 @@
 #!/bin/bash
-INPUT_FILE_PATH=$(readlink -f $3)
-ANS_FILE_PATH=$(readlink -f $4 2> /dev/null)
+CSPLIT='csplit'
+READLINK='readlink'
+if [ "$(uname)" == 'Darwin' ]; then
+  CSPLIT='gcsplit'
+  READLINK='greadlink'
+fi
+INPUT_FILE_PATH=$($READLINK -f $3)
+ANS_FILE_PATH=$($READLINK -f $4 2> /dev/null)
 cd $(dirname $0)/..
 
 mkdir -p .input
@@ -9,13 +15,13 @@ rm ans_* 2> /dev/null
 
 # Prepare Input Data
 echo "inputs: $INPUT_FILE_PATH"
-RES=$(csplit -z -f input -n 1 --suppress-matched $INPUT_FILE_PATH /^---/ {*})
+RES=$($CSPLIT -z -f input -n 1 --suppress-matched $INPUT_FILE_PATH /^---/ {*})
 RES=(${RES// /})
 
 # Prepare Ans Data
 if [ -f "${ANS_FILE_PATH}" ]; then
   echo "ans   : $ANS_FILE_PATH"
-  csplit -z -f ans_ -n 1 --suppress-matched $ANS_FILE_PATH /^---/ {*} > /dev/null
+  $CSPLIT -z -f ans_ -n 1 --suppress-matched $ANS_FILE_PATH /^---/ {*} > /dev/null
 fi
 
 cd ..
