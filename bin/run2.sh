@@ -27,7 +27,7 @@ fi
 cd ..
 
 # Build Executable Jar
-#./gradlew -PmainClass=com.github.khronos227.atcoder.$1.$2Kt -Pcontest=$1 jar
+#./gradlew -PmainClass=com.github.ked4ma.atcoder.$1.$2Kt -Pcontest=$1 jar
 echo "[INFO] Build Executable Jar"
 ./gradlew -Pcontest=$1 jar
 
@@ -36,7 +36,7 @@ time: %Rs'
 for ((i = 0; i < ${#RES[@]}; i++))
 do
   echo "[INFO][$((i+1))/${#RES[@]}] === Executing Sample Test ==="
-  time $JAVA_HOME/bin/java -cp build/libs/AtCoder-1.0-SNAPSHOT.jar com.github.khronos227.atcoder.$1.$2Kt < .input/input$i
+  time $JAVA_HOME/bin/java -cp build/libs/AtCoder-1.0-SNAPSHOT.jar com.github.ked4ma.atcoder.$1.$2Kt < .input/input$i
   if [ -e .input/ans_$i ]; then
     echo "--[ans]--"
     cat .input/ans_$i

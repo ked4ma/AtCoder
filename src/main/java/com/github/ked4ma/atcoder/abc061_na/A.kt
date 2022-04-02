@@ -1,0 +1,8 @@
+package com.github.ked4ma.atcoder.abc061_na
+
+import com.github.ked4ma.atcoder.utils.*
+
+fun main() {
+    val (a, b, c) = nextIntList()
+    println(if (c in a..b) "Yes" else "No")
+}
