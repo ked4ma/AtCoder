@@ -3,7 +3,7 @@ plugins {
     application
 }
 
-group = "com.github.khronos227.atcoder"
+group = "com.github.ked4ma.atcoder"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -14,8 +14,8 @@ sourceSets {
     if (hasProperty("contest")) {
         getByName("main").java.setSrcDirs(
             setOf(
-                "src/main/java/com/github/khronos227/atcoder/${findProperty("contest")}",
-                "src/main/java/com/github/khronos227/atcoder/utils/"
+                "src/main/java/com/github/ked4ma/atcoder/${findProperty("contest")}",
+                "src/main/java/com/github/ked4ma/atcoder/utils/"
             )
         )
     }
@@ -29,7 +29,7 @@ application {
     mainClass.set(
         project.properties.getOrDefault(
             "mainClass",
-            "com.github.khronos227.atcoder.template.simple.SampleKt"
+            "com.github.ked4ma.atcoder.template.simple.SampleKt"
         ) as String
     )
 }
@@ -45,7 +45,7 @@ tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = project.properties.getOrDefault(
             "mainClass",
-            "com.github.khronos227.atcoder.template.simple.SampleKt"
+            "com.github.ked4ma.atcoder.template.simple.SampleKt"
         )
     }
 
