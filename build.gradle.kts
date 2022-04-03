@@ -19,19 +19,22 @@ sourceSets {
             )
         )
     }
-    getByName("main").java.setSrcDirs(
-        setOf(
-            "src/main/java/com/github/ked4ma/atcoder/abc042_na",
-            "src/main/java/com/github/ked4ma/atcoder/utils/"
-        )
-    )
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("io.ktor:ktor-client-core:1.4.0")
-    implementation("io.ktor:ktor-client-cio:1.4.0")
+    implementation("io.ktor:ktor-client-core:1.3.1")
+    implementation("io.ktor:ktor-client-cio:1.3.1")
     implementation("org.jsoup:jsoup:1.14.3")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+
+    systemProperty("task", System.getProperty("task"))
 }
 
 application {

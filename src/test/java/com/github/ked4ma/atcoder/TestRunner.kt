@@ -8,6 +8,11 @@ import io.ktor.client.request.*
 import io.ktor.util.*
 import kotlinx.coroutines.*
 import org.jsoup.Jsoup
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.PipedInputStream
@@ -35,7 +40,7 @@ private suspend fun HttpClient.parseContest(contest: String): Map<String, String
 private suspend fun HttpClient.parseTask(contest: String, task: String): List<Pair<String, String>> {
     val linkMap = parseContest(contest)
     val html = get<String>(linkMap.getValue(task))
-    val re = "(入|出)力例 .*".toRegex()
+    val re = "[入出]力例 .*".toRegex()
     return Jsoup.parse(html)
         .select(".lang-ja .part > section:nth-child(1)")
         .filter {
@@ -76,7 +81,6 @@ private suspend fun execSample(
     sample: Pair<String, String>,
     outputStream: PipedOutputStream
 ) = coroutineScope {
-    println("=====")
     listOf(
         launch {
             method.invoke(null)
@@ -86,29 +90,76 @@ private suspend fun execSample(
             outputStream.flush()
         }
     ).joinAll()
-    println("-----")
-    println(sample.second)
-    println("=====")
 }
 
-fun main() {
-    val branch = runShell("git branch --show-current")
-    val contestRegex = "feature/(.+)".toRegex()
-    val contestDirName = contestRegex.matchEntire(branch)?.groupValues?.get(1)?.let {
-        it.replace("_test", "")
-    } ?: run {
-        println("[CAUTION]: Nothing to execute because current branch is \"$branch\".")
-        return
-    }
-    val task = "A"
-    println(branch)
-    println(contestDirName)
-    val samples = runBlocking {
-        val client = HttpClient(CIO)
-        val samples = client.parseTask(contestDirName.split("_")[0], task)
-        client.close()
-        return@runBlocking samples
+class TestRunner {
+
+    @ParameterizedTest
+    @MethodSource("sampleProvider")
+    fun testEachSample(input: String, expected: String) = runBlocking {
+        println("==================")
+        println(input)
+        println("----- actual -----")
+        execSample(METHOD!!, input to expected, OUTPUT_STREAM)
+        println("---- expected ----")
+        println(expected)
     }
 
-    execSamples(contestDirName, task, samples)
+    companion object {
+        private lateinit var TASK: String
+        private lateinit var BRANCH: String
+        private var CONTEST_DIR: String? = null
+        private var METHOD: Method? = null
+
+        private val ORIGINAL_INPUT_STREAM = System.`in`
+        private val INPUT_STREAM = PipedInputStream()
+        private val OUTPUT_STREAM = PipedOutputStream(INPUT_STREAM)
+
+        @Suppress("unused")
+        @BeforeAll
+        @JvmStatic
+        fun setup() {
+            TASK = System.getProperty("task")?.takeIf(String::isNotBlank) ?: "A"
+            BRANCH = runShell("git branch --show-current")
+            val contestRegex = "feature/(.+)".toRegex()
+            CONTEST_DIR = contestRegex.matchEntire(BRANCH)?.groupValues?.get(1)
+                ?.replace("_test", "")
+            println("$BRANCH, $TASK")
+
+            METHOD = Class.forName("com.github.ked4ma.atcoder.$CONTEST_DIR.${TASK}Kt")
+                .getMethod("main")
+
+            System.setIn(INPUT_STREAM)
+        }
+
+        @Suppress("unused")
+        @AfterAll
+        @JvmStatic
+        fun teardown() {
+            System.setIn(ORIGINAL_INPUT_STREAM)
+        }
+
+        @JvmStatic
+        fun sampleProvider(): List<Arguments> {
+            METHOD ?: run {
+                println("target method is not found ($CONTEST_DIR/$TASK)")
+                return emptyList()
+            }
+            val contestDir = CONTEST_DIR ?: run {
+                println("[CAUTION]: Nothing to execute because current branch is \"$BRANCH\".")
+                return emptyList()
+            }
+            return runBlocking {
+                val client = HttpClient(CIO)
+                val samples = client.parseTask(
+                    contestDir.split("_")[0],
+                    TASK.split("_")[0]
+                )
+                client.close()
+                return@runBlocking samples
+            }.map { (input, expected) ->
+                Arguments.of(input, expected)
+            }
+        }
+    }
 }
