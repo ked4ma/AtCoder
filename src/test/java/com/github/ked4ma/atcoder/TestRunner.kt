@@ -20,6 +20,7 @@ import java.io.PipedInputStream
 import java.io.PipedOutputStream
 import java.lang.reflect.Method
 
+@Suppress("SameParameterValue")
 private fun runShell(command: String): String {
     val process = Runtime.getRuntime().exec(command)
     val reader = BufferedReader(InputStreamReader(process.inputStream))
