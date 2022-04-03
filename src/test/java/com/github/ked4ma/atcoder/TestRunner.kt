@@ -9,6 +9,7 @@ import io.ktor.util.*
 import kotlinx.coroutines.*
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -93,16 +94,27 @@ private suspend fun execSample(
 }
 
 class TestRunner {
-
     @ParameterizedTest
     @MethodSource("sampleProvider")
     fun testEachSample(input: String, expected: String) = runBlocking {
-        println("==================")
+        val out = PrintCaptureStream()
+        println("----- input ------")
         println(input)
         println("----- actual -----")
+        withContext(Dispatchers.IO) {
+            System.setOut(out)
+        }
         execSample(METHOD!!, input to expected, OUTPUT_STREAM)
+        val actual = withContext(Dispatchers.IO) {
+            val s = out.read()
+            System.setOut(ORIGINAL_OUTPUT_STREAM)
+            out.close()
+            return@withContext s
+        }
+        println(actual)
         println("---- expected ----")
         println(expected)
+        assertEquals(actual, expected)
     }
 
     companion object {
@@ -112,6 +124,7 @@ class TestRunner {
         private var METHOD: Method? = null
 
         private val ORIGINAL_INPUT_STREAM = System.`in`
+        private val ORIGINAL_OUTPUT_STREAM = System.out
         private val INPUT_STREAM = PipedInputStream()
         private val OUTPUT_STREAM = PipedOutputStream(INPUT_STREAM)
 

@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
     kotlin("jvm") version "1.3.72"
     application
@@ -30,9 +33,16 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
 }
 
+
 tasks.withType<Test> {
     useJUnitPlatform()
-    testLogging.showStandardStreams = true
+    testLogging {
+        events(TestLogEvent.FAILED, TestLogEvent.PASSED)
+        exceptionFormat = TestExceptionFormat.FULL
+        showStandardStreams = true
+        showStackTraces = true
+        showExceptions = true
+    }
 
     systemProperty("task", System.getProperty("task"))
 }
