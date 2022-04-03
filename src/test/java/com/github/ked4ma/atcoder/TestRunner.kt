@@ -54,33 +54,9 @@ private suspend fun HttpClient.parseTask(contest: String, task: String): List<Pa
         }
 }
 
-private fun execSamples(contest: String, task: String, samples: List<Pair<String, String>>) {
-    val originalInputStream = System.`in`
-    val inputStream = PipedInputStream()
-    val outputStream = PipedOutputStream(inputStream)
-    System.setIn(inputStream)
-
-    val method = Class.forName("com.github.ked4ma.atcoder.$contest.${task}Kt")
-        .getMethod("main") ?: run {
-        println("target method is not found ($contest/$task)")
-        return
-    }
-
-    runBlocking {
-        samples.forEach {
-            execSample(method, it, outputStream)
-        }
-    }
-
-    // rollback input stream
-    System.setIn(originalInputStream)
-    outputStream.close()
-    inputStream.close()
-}
-
 private suspend fun execSample(
     method: Method,
-    sample: Pair<String, String>,
+    input: String,
     outputStream: PipedOutputStream
 ) = coroutineScope {
     listOf(
@@ -88,7 +64,7 @@ private suspend fun execSample(
             method.invoke(null)
         },
         launch(Dispatchers.IO) {
-            outputStream.write("${sample.first}\n".toByteArray())
+            outputStream.write("$input\n".toByteArray())
             outputStream.flush()
         }
     ).joinAll()
@@ -105,7 +81,7 @@ class TestRunner {
         withContext(Dispatchers.IO) {
             System.setOut(out)
         }
-        execSample(METHOD!!, input to expected, OUTPUT_STREAM)
+        execSample(METHOD!!, input, OUTPUT_STREAM)
         val actual = withContext(Dispatchers.IO) {
             val s = out.read()
             System.setOut(ORIGINAL_OUTPUT_STREAM)
