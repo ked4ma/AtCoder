@@ -26,11 +26,12 @@ sourceSets {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("io.ktor:ktor-client-core:1.3.1")
-    implementation("io.ktor:ktor-client-cio:1.3.1")
-    implementation("org.jsoup:jsoup:1.14.3")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4")
+    testImplementation("io.ktor:ktor-client-core:1.3.1")
+    testImplementation("io.ktor:ktor-client-cio:1.3.1")
+    testImplementation("org.jsoup:jsoup:1.14.3")
 }
 
 
