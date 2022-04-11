@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
     kotlin("jvm") version "1.3.72"
     application
@@ -23,6 +26,26 @@ sourceSets {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4")
+    testImplementation("io.ktor:ktor-client-core:1.3.1")
+    testImplementation("io.ktor:ktor-client-cio:1.3.1")
+    testImplementation("org.jsoup:jsoup:1.14.3")
+}
+
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    testLogging {
+        events(TestLogEvent.FAILED, TestLogEvent.PASSED)
+        exceptionFormat = TestExceptionFormat.FULL
+        showStandardStreams = true
+        showStackTraces = true
+        showExceptions = true
+    }
+
+    systemProperty("task", System.getProperty("task"))
 }
 
 application {

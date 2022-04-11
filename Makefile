@@ -6,7 +6,6 @@ $(eval $(RUN_ARGS):;@:)
 RUN_ARGS_LEN := $(words $(RUN_ARGS))
 
 init: clean
-	npm ci
 ifeq ($(shell expr $(RUN_ARGS_LEN) \>= 1), 1)
 	$(eval CONTEST_BRANCH=$(word 1, $(RUN_ARGS)))
 	$(eval BRANCH=$(shell git branch --show-current))
@@ -29,21 +28,16 @@ base:
 	$(eval CONTEST_BRANCH=$(word 2, $(subst /, , $(shell git branch --show-current))))
 	$(eval CONTEST=$(subst _na,, $(CONTEST_BRANCH)))
 
-run-base: base
+run-base:
 	$(eval QUESTION_FILENAME=$(word 1, $(RUN_ARGS)))
 	$(eval QUESTION=$(subst _x,, $(QUESTION_FILENAME)))
 
 run: run-base
-	@echo "[Info] Get input data from the web site."
-	@mkdir -p .input
-	node bin/inputParser.js $(CONTEST) $(QUESTION) .input/input$(QUESTION).txt .input/ans$(QUESTION).txt
-	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION)"
-	@echo "[Info]  (input: .input/input$(QUESTION).txt)"
-	@echo "[Info]  (ans  : .input/ans$(QUESTION).txt)"
-	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt .input/ans$(QUESTION).txt
+	@source ./secret.conf && \
+	  ./gradlew cleanTest test --tests "com.github.ked4ma.atcoder.TestRunner" -Dtask=$(QUESTION_FILENAME)
 
-runOnly: run-base
-	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
+#runOnly: run-base
+#	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
 
 format: run-base
 	@echo "[Info] Format for submiting $(CONTEST)/$(QUESTION)."
@@ -59,29 +53,7 @@ finish: base
 	git tag $(CONTEST_BRANCH)
 	git push origin master --tags
 
-exec-base:
-	$(eval CONTEST_BRANCH=$(subst _x, , $(word 1, $(RUN_ARGS))))
-	$(eval CONTEST=$(subst _na, , $(CONTEST_BRANCH)))
-	$(eval QUESTION_FILENAME=$(word 2, $(RUN_ARGS)))
-	$(eval QUESTION=$(subst _x, , $(QUESTION_FILENAME)))
-
-exec: exec-base
-	@echo "[Info] Get input data from the web site."
-	@mkdir -p .input
-	node bin/inputParser.js $(CONTEST) $(QUESTION) .input/input$(QUESTION).txt
-	@echo "[Info] Run $(CONTEST_BRANCH)/$(QUESTION) (input: .input/input$(QUESTION).txt"
-	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
-
-reformat: exec-base
-	@echo "[Info] Format for submiting $(CONTEST)/$(QUESTION)."
-	./bin/format.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME)
-	@echo "[Info] Copied to Clipboard."
-
-sandbox:
-	$(eval FILE=$(word 1, $(RUN_ARGS)))
-	./gradlew -PmainClass=com.github.ked4ma.atcoder.sandbox.$(FILE)Kt -Pcontest=sandbox run
-
 clean:
 	./gradlew clean
 
-.PHONY: clean init base run runOnly run-base format finish sandbox exec-base exec reformat
+.PHONY: clean init base run runOnly run-base format finish
