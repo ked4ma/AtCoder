@@ -6,7 +6,6 @@ import io.ktor.client.features.HttpClientFeature
 import io.ktor.client.features.cookies.HttpCookies
 import io.ktor.client.statement.HttpReceivePipeline
 import io.ktor.client.statement.HttpResponse
-import io.ktor.http.isSuccess
 import io.ktor.util.AttributeKey
 import io.ktor.util.KtorExperimentalAPI
 
@@ -22,7 +21,7 @@ class AtcoderCookies {
         @OptIn(KtorExperimentalAPI::class)
         override fun install(feature: TestAppender, scope: HttpClient) {
             scope.receivePipeline.intercept(HttpReceivePipeline.Before) { response ->
-                if (response.status.isSuccess()) {
+                if (response.status.value in 200 until 400) {
                     val savedCall = response.call.save()
                     proceedWith(feature.convert(savedCall.response))
                     return@intercept

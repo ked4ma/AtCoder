@@ -1,7 +1,6 @@
 package com.github.ked4ma.atcoder.util
 
 import com.github.ked4ma.atcoder.util.http.AtcoderCookies
-import com.github.ked4ma.atcoder.utils._debug_println
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.features.cookies.HttpCookies
@@ -9,7 +8,7 @@ import io.ktor.client.request.forms.submitForm
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.readText
-import io.ktor.http.*
+import io.ktor.http.Parameters
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -27,26 +26,21 @@ fun runShell(command: String): String {
     return text
 }
 
-suspend fun HttpClient.login() {
+suspend fun HttpClient.login(user: String, password: String) {
     val url = "https://atcoder.jp/login"
     val loginPage = get<HttpResponse>(url)
     val csrfToken = Jsoup.parse(loginPage.readText())
         .select("input[name=\"csrf_token\"]")[0]
         .attr("value")
-    _debug_println(csrfToken)
-    _debug_println(loginPage.headers)
 
-    val response = submitForm<HttpResponse>(
+    submitForm<HttpResponse>(
         url = url,
         formParameters = Parameters.build {
             append("csrf_token", csrfToken)
-            append("username", "")
-            append("password", "")
+            append("username", user)
+            append("password", password)
         }
     )
-    _debug_println(response)
-    _debug_println(response.headers)
-    _debug_println(response.setCookie())
 }
 
 suspend fun HttpClient.parseTask(contest: String, task: String): List<Pair<String, String>> {
@@ -74,17 +68,13 @@ suspend fun HttpClient.parseContest(contest: String): Map<String, String> {
 }
 
 @OptIn(KtorExperimentalAPI::class)
-fun HttpMessage.setCookie(): List<Cookie> = headers.getAll(HttpHeaders.SetCookie)?.map {
-    parseServerSetCookieHeader(it + "; \$x-enc=RAW")
-} ?: emptyList()
-
-@OptIn(KtorExperimentalAPI::class)
 fun main() {
     runBlocking {
         val client = HttpClient(CIO) {
             install(AtcoderCookies)
             install(HttpCookies)
         }
-        client.login()
+        client.login("", "")
+        println(client.parseContest("practice2"))
     }
 }
