@@ -2,10 +2,13 @@
 
 package com.github.ked4ma.atcoder
 
+import com.github.ked4ma.atcoder.util.http.AtcoderCookies
+import com.github.ked4ma.atcoder.util.login
 import com.github.ked4ma.atcoder.util.parseTask
 import com.github.ked4ma.atcoder.util.runShell
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.features.cookies.HttpCookies
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.*
 import org.junit.jupiter.api.AfterAll
@@ -63,6 +66,7 @@ class TestRunner {
         private lateinit var BRANCH: String
         private var CONTEST_DIR: String? = null
         private var METHOD: Method? = null
+        private lateinit var CLIENT: HttpClient
 
         private val ORIGINAL_INPUT_STREAM = System.`in`
         private val ORIGINAL_OUTPUT_STREAM = System.out
@@ -84,6 +88,18 @@ class TestRunner {
                 .getMethod("main")
 
             System.setIn(INPUT_STREAM)
+
+            CLIENT = HttpClient(CIO) {
+                install(AtcoderCookies)
+                install(HttpCookies)
+            }
+            if (!BRANCH.endsWith("_na")) {
+                runBlocking(Dispatchers.IO) {
+                    val user = System.getenv("ATCODER_USER")
+                    val password = System.getenv("ATCODER_PASSWORD")
+                    CLIENT.login(user, password)
+                }
+            }
         }
 
         @Suppress("unused")
@@ -91,6 +107,7 @@ class TestRunner {
         @JvmStatic
         fun teardown() {
             System.setIn(ORIGINAL_INPUT_STREAM)
+            CLIENT.close()
         }
 
         @JvmStatic
@@ -103,13 +120,13 @@ class TestRunner {
                 println("[CAUTION]: Nothing to execute because current branch is \"$BRANCH\".")
                 return emptyList()
             }
+
             return runBlocking {
-                val client = HttpClient(CIO)
-                val samples = client.parseTask(
+                val samples = CLIENT.parseTask(
                     contestDir.split("_")[0],
                     TASK.split("_")[0]
                 )
-                client.close()
+                CLIENT.close()
                 return@runBlocking samples
             }.map { (input, expected) ->
                 Arguments.of(input, expected)

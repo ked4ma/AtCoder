@@ -31,3 +31,6 @@ build
 
 # NodeJS
 node_modules
+
+# conf
+secret.conf
