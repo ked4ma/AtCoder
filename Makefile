@@ -39,7 +39,7 @@ run: run-base
 #runOnly: run-base
 #	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
 
-format: run-base
+format: base run-base
 	@echo "[Info] Format for submiting $(CONTEST)/$(QUESTION)."
 	./bin/format.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME)
 	@echo "[Info] Copied to Clipboard."
