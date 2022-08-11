@@ -52,7 +52,8 @@ suspend fun HttpClient.parseTask(contest: String, task: String): List<Pair<Strin
         .filter {
             it.selectFirst("h3")?.text()?.matches(re) ?: false
         }.mapNotNull {
-            it.selectFirst("pre")?.text()
+            it.selectFirst("pre")?.text()?.split("\n")
+                ?.joinToString(separator = "\n", transform = String::trim)
         }.chunked(2) {
             it[0] to it[1]
         }
