@@ -76,7 +76,7 @@ fun modinv2(a: Long, b: Long, x: Long, y: Long): Triple<Long, Long, Long> {
 
 // calc "x!"
 fun factorial(x: Int): Long {
-    if (x < 0) throw RuntimeException("this need positive param")
+    if (x < 0) throw IllegalArgumentException("this need positive param")
     var res = 1L
     var i = 2
     while (i <= x) {
@@ -84,6 +84,27 @@ fun factorial(x: Int): Long {
         i++
     }
     return res
+}
+
+fun combination(m: Int, n: Int): Long = combination(m, n, mutableMapOf()).first
+
+fun combination(m: Int, n: Int, memo: MutableMap<Pair<Int, Int>, Long>): Pair<Long, Map<Pair<Int, Int>, Long>> {
+    if (m < 0 || n < 0) throw IllegalArgumentException("m and n must be positive")
+    if (m < n) throw IllegalArgumentException("m must be larger than n")
+
+    fun comb(a: Int, b: Int): Long {
+        if (b == 0 || a == b) return 1L
+        if (b == 1) return a.toLong()
+        val l = memo.getOrPut(a - 1 to b - 1) {
+            comb(a - 1, b - 1)
+        }
+        val r = memo.getOrPut(a - 1 to b) {
+            comb(a - 1, b)
+        }
+        return l + r
+    }
+
+    return comb(m, n) to memo
 }
 
 const val MOD = 1_000_000_007L

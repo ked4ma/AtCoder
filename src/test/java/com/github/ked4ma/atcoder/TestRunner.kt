@@ -40,9 +40,14 @@ class TestRunner {
             return@withContext s
         }
         println(actual)
+        val actualWithoutDebug = actual.split("\n")
+            .filterNot { it.startsWith("[DEBUG]") }
+            .joinToString(separator = "\n")
         println("---- expected ----")
         println(expected)
-        assertEquals(actual, expected)
+        assertEquals(actualWithoutDebug, expected)//.split("\n").map { it.trim() }.joinToString(separator = "\n"))
+//        println(actual == expected)
+//        assertEquals(actual, expected)
     }
 
     private suspend fun execSample(
