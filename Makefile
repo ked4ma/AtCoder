@@ -32,9 +32,10 @@ run-base:
 	$(eval QUESTION_FILENAME=$(word 1, $(RUN_ARGS)))
 	$(eval QUESTION=$(subst _x,, $(QUESTION_FILENAME)))
 
-run: run-base
+run: base run-base
 	@source ./secret.conf && \
-	  ./gradlew cleanTest test --tests "com.github.ked4ma.atcoder.TestRunner" -Dtask=$(QUESTION_FILENAME)
+	  ./gradlew -Pcontest=$(CONTEST_BRANCH) cleanTest \
+	    test --tests "com.github.ked4ma.atcoder.TestRunner" -Dtask=$(QUESTION_FILENAME)
 
 #runOnly: run-base
 #	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
