@@ -49,7 +49,7 @@ suspend fun HttpClient.parseTask(contest: String, task: String): List<Pair<Strin
     val re = "[入出]力例 .*".toRegex()
     return Jsoup.parse(html)
         .select(".lang-ja .part > section:nth-child(1)")
-        .filter {
+        .filter { it ->
             it.selectFirst("h3")?.text()?.matches(re) ?: false
         }.mapNotNull {
             it.selectFirst("pre")?.text()?.split("\n")

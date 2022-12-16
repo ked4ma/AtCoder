@@ -4,6 +4,7 @@ RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 # ...and turn them into do-nothing targets
 $(eval $(RUN_ARGS):;@:)
 RUN_ARGS_LEN := $(words $(RUN_ARGS))
+JAVA_VERSION := $(word 3, $(subst ", , $(shell java -version 2>&1)))
 
 init: clean
 ifeq ($(shell expr $(RUN_ARGS_LEN) \>= 1), 1)
@@ -25,6 +26,14 @@ else
 endif
 
 base:
+	@echo "enabled java version: $(JAVA_VERSION)"
+	@if [[ "$(JAVA_VERSION)" =~ 11\.[0-9]+\.[0-9]+ ]]; then \
+		echo "java version check passed"; \
+	else \
+		echo "This repo need to use java11."; \
+		echo "If you run on ubuntu, following command is available."; \
+		echo "$ sudo update-alternatives --config java"; \
+	fi
 	$(eval CONTEST_BRANCH=$(word 2, $(subst /, , $(shell git branch --show-current))))
 	$(eval CONTEST=$(subst _na,, $(CONTEST_BRANCH)))
 
