@@ -1,5 +1,4 @@
 SHELL := /bin/bash
-TARGET := $(firstword $(MAKECMDGOALS))
 RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 # ...and turn them into do-nothing targets
 $(eval $(RUN_ARGS):;@:)
@@ -27,7 +26,7 @@ endif
 
 base:
 	@echo "enabled java version: $(JAVA_VERSION)"
-	@if [[ "$(JAVA_VERSION)" =~ 11\.[0-9]+\.[0-9]+ ]]; then \
+	@if [[ "$(JAVA_VERSION)" =~ 17\.[0-9]+\.[0-9]+ ]]; then \
 		echo "java version check passed"; \
 	else \
 		echo "This repo need to use java11."; \

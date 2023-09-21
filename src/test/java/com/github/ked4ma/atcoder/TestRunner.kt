@@ -1,5 +1,3 @@
-@file:OptIn(KtorExperimentalAPI::class)
-
 package com.github.ked4ma.atcoder
 
 import com.github.ked4ma.atcoder.util.http.AtcoderCookies
@@ -8,8 +6,7 @@ import com.github.ked4ma.atcoder.util.parseTask
 import com.github.ked4ma.atcoder.util.runShell
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
-import io.ktor.client.features.cookies.HttpCookies
-import io.ktor.util.KtorExperimentalAPI
+import io.ktor.client.plugins.cookies.HttpCookies
 import kotlinx.coroutines.*
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -88,6 +85,7 @@ class TestRunner {
             CONTEST_DIR = contestRegex.matchEntire(BRANCH)?.groupValues?.get(1)
                 ?.replace("_test", "")
             println("$BRANCH, $TASK")
+            println("$CONTEST_DIR")
 
             METHOD = Class.forName("com.github.ked4ma.atcoder.$CONTEST_DIR.${TASK}Kt")
                 .getMethod("main")

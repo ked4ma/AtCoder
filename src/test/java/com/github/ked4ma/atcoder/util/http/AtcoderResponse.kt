@@ -2,9 +2,11 @@ package com.github.ked4ma.atcoder.util.http
 
 import io.ktor.client.call.HttpClientCall
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.Headers
 import io.ktor.http.HttpProtocolVersion
 import io.ktor.http.HttpStatusCode
+import io.ktor.util.InternalAPI
 import io.ktor.util.StringValues
 import io.ktor.util.date.GMTDate
 import io.ktor.utils.io.ByteReadChannel
@@ -25,5 +27,7 @@ class AtcoderResponse(origin: HttpResponse) : HttpResponse() {
         }
     }
     override val coroutineContext: CoroutineContext = origin.coroutineContext
+
+    @OptIn(InternalAPI::class)
     override val content: ByteReadChannel = origin.content
 }

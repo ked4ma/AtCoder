@@ -2,7 +2,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    kotlin("jvm") version "1.3.72"
+    alias(libs.plugins.kotlin.jvm)
     application
 }
 
@@ -15,6 +15,7 @@ repositories {
 
 sourceSets {
     if (hasProperty("contest")) {
+        println( "src/main/java/com/github/ked4ma/atcoder/${findProperty("contest")}")
         getByName("main").java.setSrcDirs(
             setOf(
                 "src/main/java/com/github/ked4ma/atcoder/${findProperty("contest")}",
@@ -25,17 +26,12 @@ sourceSets {
 }
 
 dependencies {
-    // it will be removable form kotlin 1.4
-    // https://kotlinlang.org/docs/whatsnew14.html#dependency-on-the-standard-library-added-by-default
-    implementation(kotlin("stdlib-jdk8", "1.3.72"))
-
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4")
-    testImplementation("io.ktor:ktor-client-core:1.3.1")
-    testImplementation("io.ktor:ktor-client-cio:1.3.1")
-    testImplementation("org.jsoup:jsoup:1.15.3")
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.kotlinx.coroutines.core)
+    testImplementation(libs.ktor.client.core)
+    testImplementation(libs.ktor.client.cio)
+    testImplementation(libs.jsoup)
 }
-
 
 tasks.withType<Test> {
     useJUnitPlatform()
@@ -61,8 +57,8 @@ application {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
-        vendor.set(JvmVendorSpec.ADOPTOPENJDK)
+        languageVersion.set(JavaLanguageVersion.of(17))
+//        vendor.set(JvmVendorSpec.ADOPTIUM)
     }
 }
 
@@ -89,10 +85,10 @@ run.standardInput = System.`in`
 
 tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.jvmTarget = "17"
     }
     compileTestKotlin {
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.jvmTarget = "17"
     }
 }
 

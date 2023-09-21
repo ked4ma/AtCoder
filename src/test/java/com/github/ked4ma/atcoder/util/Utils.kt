@@ -3,13 +3,15 @@ package com.github.ked4ma.atcoder.util
 import com.github.ked4ma.atcoder.util.http.AtcoderCookies
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
-import io.ktor.client.features.cookies.HttpCookies
+import io.ktor.client.plugins.cookies.HttpCookies
 import io.ktor.client.request.forms.submitForm
 import io.ktor.client.request.get
+import io.ktor.client.request.url
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsText
 import io.ktor.client.statement.readText
 import io.ktor.http.Parameters
-import io.ktor.util.KtorExperimentalAPI
+import io.ktor.http.parameters
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
 import java.io.BufferedReader
@@ -28,24 +30,26 @@ fun runShell(command: String): String {
 
 suspend fun HttpClient.login(user: String, password: String) {
     val url = "https://atcoder.jp/login"
-    val loginPage = get<HttpResponse>(url)
-    val csrfToken = Jsoup.parse(loginPage.readText())
+    val loginPage = get {
+        url(url)
+    }
+    val csrfToken = Jsoup.parse(loginPage.bodyAsText())
         .select("input[name=\"csrf_token\"]")[0]
         .attr("value")
 
-    submitForm<HttpResponse>(
-        url = url,
-        formParameters = Parameters.build {
+    submitForm {
+        url(url)
+        parameters {
             append("csrf_token", csrfToken)
             append("username", user)
             append("password", password)
         }
-    )
+    }
 }
 
 suspend fun HttpClient.parseTask(contest: String, task: String): List<Pair<String, String>> {
     val linkMap = parseContest(contest)
-    val html = get<String>(linkMap.getValue(task))
+    val html = get { url(linkMap.getValue(task)) }.bodyAsText()
     val re = "[入出]力例 .*".toRegex()
     return Jsoup.parse(html)
         .select(".lang-ja .part > section:nth-child(1)")
@@ -60,7 +64,7 @@ suspend fun HttpClient.parseTask(contest: String, task: String): List<Pair<Strin
 }
 
 suspend fun HttpClient.parseContest(contest: String): Map<String, String> {
-    val html = get<String>("https://atcoder.jp/contests/$contest/tasks?lang=ja")
+    val html = get { url("https://atcoder.jp/contests/$contest/tasks?lang=ja") }.bodyAsText()
     return Jsoup.parse(html)
         .select("div.panel table.table tbody tr td:first-child a")
         .associate {
@@ -68,7 +72,6 @@ suspend fun HttpClient.parseContest(contest: String): Map<String, String> {
         }
 }
 
-@OptIn(KtorExperimentalAPI::class)
 fun main() {
     runBlocking {
         val client = HttpClient(CIO) {
