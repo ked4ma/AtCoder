@@ -6,7 +6,7 @@ package com.github.ked4ma.atcoder.utils
  * ----------
  */
 // ## Input
-fun next() = readLine()!!
+fun next() = readln()
 fun nextInt() = next().toInt()
 fun nextLong() = next().toLong()
 fun nextDouble() = next().toDouble()
