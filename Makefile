@@ -1,9 +1,16 @@
 SHELL := /bin/bash
+TARGET := $(firstword $(MAKECMDGOALS))
 RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-# ...and turn them into do-nothing targets
+# not to handle RUN_ARGS as "make" tasks
 $(eval $(RUN_ARGS):;@:)
 RUN_ARGS_LEN := $(words $(RUN_ARGS))
-JAVA_VERSION := $(word 3, $(subst ", , $(shell java -version 2>&1)))
+
+# task for checking global vars
+check-vars:
+	@echo "SHELL: $(SHELL)"
+	@echo "TARGET: $(TARGET)"
+	@echo "RUN_ARGS: $(RUN_ARGS)"
+	@echo "RUN_ARGS_LEN $(RUN_ARGS_LEN)"
 
 init: clean
 ifeq ($(shell expr $(RUN_ARGS_LEN) \>= 1), 1)
@@ -25,14 +32,6 @@ else
 endif
 
 base:
-	@echo "enabled java version: $(JAVA_VERSION)"
-	@if [[ "$(JAVA_VERSION)" =~ 17\.[0-9]+\.[0-9]+ ]]; then \
-		echo "java version check passed"; \
-	else \
-		echo "This repo need to use java11."; \
-		echo "If you run on ubuntu, following command is available."; \
-		echo "$ sudo update-alternatives --config java"; \
-	fi
 	$(eval CONTEST_BRANCH=$(word 2, $(subst /, , $(shell git branch --show-current))))
 	$(eval CONTEST=$(subst _na,, $(CONTEST_BRANCH)))
 
@@ -56,13 +55,13 @@ format: base run-base
 finish: base
 	@echo "[Info] Finish $(CONTEST_BRANCH)"
 	git commit -a -m "$(CONTEST_BRANCH)"
-	git switch master
+	git switch main
 	git merge --no-ff feature/$(CONTEST_BRANCH)
 	git branch -d feature/$(CONTEST_BRANCH)
 	git tag $(CONTEST_BRANCH)
-	git push origin master --tags
+	git push origin main --tags
 
 clean:
 	./gradlew clean
 
-.PHONY: clean init base run runOnly run-base format finish
+.PHONY: clean init base run runOnly run-base format finish check-vars
