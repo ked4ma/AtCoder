@@ -16,9 +16,7 @@ fun main() {
 //        8 to 10,
 //        1 to 8,
 //    ).map { (u, v) ->
-////        it.toList().sortedDescending().let { (u, v) ->
 //        u.coerceAtMost(N + 1) to v.coerceAtMost(N + 1)
-////        }
 //    }
 //    val Q = 6
 //    val queries = listOf(
@@ -39,7 +37,9 @@ fun main() {
     val queries = (0 until Q).map { nextInt() }
 
     val uf = UnionFind(N + 2)
-    edges.filterIndexed { index, _ -> !queries.contains(index + 1) }.forEach {
+    val broken = queries.toSet()
+    // [NOTE] following filter operation will be a bottleneck for execution
+    edges.filterIndexed { index, _ -> !broken.contains(index + 1) }.forEach {
         uf.unite(it.first, it.second)
     }
     val res = mutableListOf<Int>()
@@ -48,7 +48,5 @@ fun main() {
         val (u, v) = edges[it - 1]
         uf.unite(u, v)
     }
-    res.asReversed().forEach {
-        println(it)
-    }
+    println(res.asReversed().joinToString(separator = "\n"))
 }
