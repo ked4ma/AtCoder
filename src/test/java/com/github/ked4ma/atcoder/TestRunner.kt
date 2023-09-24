@@ -42,7 +42,7 @@ class TestRunner {
             .joinToString(separator = "\n")
         println("---- expected ----")
         println(expected)
-        assertEquals(actualWithoutDebug, expected)//.split("\n").map { it.trim() }.joinToString(separator = "\n"))
+        assertEquals(expected, actualWithoutDebug)//.split("\n").map { it.trim() }.joinToString(separator = "\n"))
 //        println(actual == expected)
 //        assertEquals(actual, expected)
     }
