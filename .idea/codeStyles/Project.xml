@@ -4,6 +4,7 @@
       <option name="PACKAGES_TO_USE_STAR_IMPORTS">
         <value>
           <package name="java.util" alias="false" withSubpackages="false" />
+          <package name="com.github.ked4ma.atcoder.utils" alias="false" withSubpackages="true" />
           <package name="kotlinx.android.synthetic" alias="false" withSubpackages="true" />
           <package name="io.ktor" alias="false" withSubpackages="false" />
         </value>
