@@ -45,6 +45,11 @@ private inline fun <T : Number, R : T> List<R>.cumulative(operation: (acc: T, l:
     return result
 }
 
+// repeat
+inline fun <T> times(num: Int, block: (Int) -> T) = (0 until num).map {
+    block.invoke(it)
+}
+
 fun List<Long>.cumulativeSum(): List<Long> = (listOf(0L) + this).cumulative { acc, l -> acc + l }
 
 // ## mod^-1
