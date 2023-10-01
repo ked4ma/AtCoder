@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc189_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.buffered.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.PrintWriter

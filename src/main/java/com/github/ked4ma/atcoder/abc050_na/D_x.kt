@@ -1,6 +1,8 @@
 package com.github.ked4ma.atcoder.abc050_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.math.*
 import kotlin.math.floor
 import kotlin.math.log2
 

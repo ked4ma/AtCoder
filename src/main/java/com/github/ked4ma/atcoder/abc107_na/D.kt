@@ -1,6 +1,9 @@
 package com.github.ked4ma.atcoder.abc107_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.tree.fenwick.*
 
 fun main() {
     val N = nextInt()

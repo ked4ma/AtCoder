@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc184
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.abs
 
 fun main() {

@@ -1,7 +1,6 @@
 package com.github.ked4ma.atcoder.template.fastinput
 
 import java.io.IOException
-import java.util.*
 
 fun main() {
     println("This is template.")

@@ -1,6 +1,8 @@
 package com.github.ked4ma.atcoder.abc192
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import java.util.*
 
 fun main() {

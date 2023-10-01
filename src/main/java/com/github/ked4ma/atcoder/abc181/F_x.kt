@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc181
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.unionfind.*
 import kotlin.math.hypot
 
 fun main() {

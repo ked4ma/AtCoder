@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc173
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.absoluteValue
 
 private const val MOD = 1_000_000_007
@@ -9,7 +9,9 @@ fun main() {
     val (n, k) = nextIntList()
 
     if (n == k) {
-        println(nextLongList().stream().map { it.plus(MOD).rem(MOD) }.reduce { acc, l -> acc.times(l).rem(MOD) })
+        println(
+            nextLongList()
+                .stream().map { it.plus(MOD).rem(MOD) }.reduce { acc, l -> acc.times(l).rem(MOD) })
         return
     }
 

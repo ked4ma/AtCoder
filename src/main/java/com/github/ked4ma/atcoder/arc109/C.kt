@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.arc109
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     val (n, k) = nextIntList()

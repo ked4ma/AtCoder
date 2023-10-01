@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc201_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 @OptIn(ExperimentalStdlibApi::class)
 fun main() {
@@ -8,7 +9,8 @@ fun main() {
     val edge = Array(n + 1) { mutableListOf<Int>() }
     val weight = Array(n + 1) { mutableListOf<Long>() }
     for (i in 1 until n) {
-        val (u, v, w) = nextLongList().let { (u, v, w) -> Triple(u.toInt(), v.toInt(), w) }
+        val (u, v, w) = nextLongList()
+            .let { (u, v, w) -> Triple(u.toInt(), v.toInt(), w) }
         edge[u].add(v)
         edge[v].add(u)
         weight[u].add(w)

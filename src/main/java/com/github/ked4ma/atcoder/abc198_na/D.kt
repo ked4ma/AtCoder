@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc198_na
 
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.pow
-import com.github.ked4ma.atcoder.utils.*
 
 private fun toVal(s: CharArray, mapping: Map<Char, Int>): Long {
     return s.reversed().foldIndexed(0L) { i, acc, c ->

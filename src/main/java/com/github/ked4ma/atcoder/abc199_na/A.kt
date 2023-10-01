@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc199_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     val (A, B, C) = nextIntList()

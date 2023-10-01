@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc052_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     val (_, a, b) = nextLongList()
