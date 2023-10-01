@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc201_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     var first = (0 to "")

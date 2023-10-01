@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.arc109
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.min
 
 fun main() {

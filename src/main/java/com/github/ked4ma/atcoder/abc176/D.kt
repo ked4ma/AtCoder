@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc176
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import java.util.*
 import kotlin.math.abs
 import kotlin.math.max

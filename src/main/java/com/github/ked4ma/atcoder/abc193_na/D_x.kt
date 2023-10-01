@@ -1,6 +1,8 @@
 package com.github.ked4ma.atcoder.abc193_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.pow
 
 fun main() {

@@ -1,4 +1,4 @@
-package com.github.ked4ma.atcoder.utils
+package com.github.ked4ma.atcoder.utils.debug
 
 // Debug Functions
 // set "_debug_" prefix for delete this output for submit.

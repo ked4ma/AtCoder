@@ -1,6 +1,10 @@
 package com.github.ked4ma.atcoder.abc322
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils.input.*
+import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.loop.*
 import kotlin.math.min
 
 fun main() {

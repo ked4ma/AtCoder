@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc057_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.log10
 import kotlin.math.max
 import kotlin.math.sqrt

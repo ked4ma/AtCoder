@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc182
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 /**
  * [ref] https://maspypy.com/atcoder-%E5%8F%82%E5%8A%A0%E6%84%9F%E6%83%B3-2020-11-08abc-182#toc3

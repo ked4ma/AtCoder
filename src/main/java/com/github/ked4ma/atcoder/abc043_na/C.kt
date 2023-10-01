@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc043_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.roundToInt
 
 fun main() {

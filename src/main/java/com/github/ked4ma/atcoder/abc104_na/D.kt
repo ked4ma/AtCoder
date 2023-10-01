@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc104_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 // dp[s.length][3] = 1
 // dp[s.length][j < 3] = 0

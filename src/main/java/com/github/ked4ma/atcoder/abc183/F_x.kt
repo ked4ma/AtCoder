@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc183
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.unionfind.*
 
 fun main() {
     val (n, q) = nextIntList()

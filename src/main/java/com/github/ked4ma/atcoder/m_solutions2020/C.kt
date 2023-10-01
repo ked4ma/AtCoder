@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.m_solutions2020
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     val (N, K) = nextIntList()

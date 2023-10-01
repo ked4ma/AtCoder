@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc193_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.gcd.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     repeat(nextInt()) {

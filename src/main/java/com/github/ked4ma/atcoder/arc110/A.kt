@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.arc110
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     val nums = mutableListOf<Int>()

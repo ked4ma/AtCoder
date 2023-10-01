@@ -1,8 +1,8 @@
 package com.github.ked4ma.atcoder.abc187_na
 
-import com.github.ked4ma.atcoder.utils.*
+import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 fun main() {
     val n = nextInt()
