@@ -7,10 +7,7 @@ import io.ktor.client.plugins.cookies.HttpCookies
 import io.ktor.client.request.forms.submitForm
 import io.ktor.client.request.get
 import io.ktor.client.request.url
-import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.bodyAsText
-import io.ktor.client.statement.readText
-import io.ktor.http.Parameters
 import io.ktor.http.parameters
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -30,26 +27,24 @@ fun runShell(command: String): String {
 
 suspend fun HttpClient.login(user: String, password: String) {
     val url = "https://atcoder.jp/login"
-    val loginPage = get {
-        url(url)
-    }
+    val loginPage = get(url)
     val csrfToken = Jsoup.parse(loginPage.bodyAsText())
         .select("input[name=\"csrf_token\"]")[0]
         .attr("value")
 
-    submitForm {
-        url(url)
-        parameters {
+    submitForm(
+        url,
+        formParameters = parameters {
             append("csrf_token", csrfToken)
             append("username", user)
             append("password", password)
         }
-    }
+    )
 }
 
 suspend fun HttpClient.parseTask(contest: String, task: String): List<Pair<String, String>> {
     val linkMap = parseContest(contest)
-    val html = get { url(linkMap.getValue(task)) }.bodyAsText()
+    val html = get(linkMap.getValue(task)).bodyAsText()
     val re = "[入出]力例 .*".toRegex()
     return Jsoup.parse(html)
         .select(".lang-ja .part > section:nth-child(1)")
