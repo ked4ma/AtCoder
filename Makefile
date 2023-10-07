@@ -36,7 +36,6 @@ ifeq ($(RUN_ARGS_LEN), 1)
 	elif [ -d src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH) ]; then \
 	  echo "[Info] $(CONTEST_BRANCH) is already finished."; \
 	else \
-	  echo "here" \
 	  git switch -c feature/$(CONTEST_BRANCH); \
 	  mkdir -p src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH); \
 	fi
