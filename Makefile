@@ -5,17 +5,29 @@ RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 $(eval $(RUN_ARGS):;@:)
 RUN_ARGS_LEN := $(words $(RUN_ARGS))
 
+BRANCH=$(shell git branch --show-current)
+CONTEST_BRANCH=$(word 2, $(subst /, , $(BRANCH)))
+CONTEST=$(subst _na,, $(CONTEST_BRANCH))
+QUESTION_FILENAME=$(word 1, $(RUN_ARGS))
+QUESTION=$(subst _x,, $(QUESTION_FILENAME))
+
 # task for checking global vars
 check-vars:
-	@echo "SHELL: $(SHELL)"
-	@echo "TARGET: $(TARGET)"
-	@echo "RUN_ARGS: $(RUN_ARGS)"
-	@echo "RUN_ARGS_LEN $(RUN_ARGS_LEN)"
+	@echo SHELL: $(SHELL)
+	@echo TARGET: $(TARGET)
+	@echo RUN_ARGS: $(RUN_ARGS)
+	@echo RUN_ARGS_LEN $(RUN_ARGS_LEN)
+	@echo "=========="
+	@echo BRANCH $(BRANCH)
+	@echo CONTEST_BRANCH $(CONTEST_BRANCH)
+	@echo CONTEST $(CONTEST)
+	@echo QUESTION_FILENAME $(QUESTION_FILENAME)
+	@echo QUESTION $(QUESTION)
+	@echo "=========="
 
 init: clean
-ifeq ($(shell expr $(RUN_ARGS_LEN) \>= 1), 1)
+ifeq ($(RUN_ARGS_LEN), 1)
 	$(eval CONTEST_BRANCH=$(word 1, $(RUN_ARGS)))
-	$(eval BRANCH=$(shell git branch --show-current))
 	@if [ $(BRANCH) = "feature/$(CONTEST_BRANCH)" ]; then \
 	  echo "[Info] Already in feature/$(CONTEST_BRANCH) branch"; \
 	  if [ ! -d src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH) ]; then \
@@ -24,35 +36,25 @@ ifeq ($(shell expr $(RUN_ARGS_LEN) \>= 1), 1)
 	elif [ -d src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH) ]; then \
 	  echo "[Info] $(CONTEST_BRANCH) is already finished."; \
 	else \
+	  echo "here" \
 	  git switch -c feature/$(CONTEST_BRANCH); \
 	  mkdir -p src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH); \
 	fi
 else
-	@echo "[Err] Contest name is Required."
+	@echo "[Usage] make init <CONTEST NAME>"
 endif
 
-base:
-	$(eval CONTEST_BRANCH=$(word 2, $(subst /, , $(shell git branch --show-current))))
-	$(eval CONTEST=$(subst _na,, $(CONTEST_BRANCH)))
-
-run-base:
-	$(eval QUESTION_FILENAME=$(word 1, $(RUN_ARGS)))
-	$(eval QUESTION=$(subst _x,, $(QUESTION_FILENAME)))
-
-run: base run-base
+run:
 	@source ./secret.conf && \
 	  ./gradlew -Pcontest=$(CONTEST_BRANCH) cleanTest \
-	    test --tests "com.github.ked4ma.atcoder.TestRunner" -Dtask=$(QUESTION_FILENAME)
+	    test --tests "com.github.ked4ma.atcoder.TestRunner" -Dtask=$(QUESTION_FILENAME) -Dbranch=$(BRANCH)
 
-#runOnly: run-base
-#	./bin/run2.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME) .input/input$(QUESTION).txt
-
-format: base run-base
+format:
 	@echo "[Info] Format for submiting $(CONTEST)/$(QUESTION)."
 	./bin/format.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME)
 	@echo "[Info] Copied to Clipboard."
 
-finish: base
+finish:
 	@echo "[Info] Finish $(CONTEST_BRANCH)"
 	git commit -a -m "$(CONTEST_BRANCH)"
 	git switch main
@@ -64,4 +66,4 @@ finish: base
 clean:
 	./gradlew clean
 
-.PHONY: clean init base run runOnly run-base format finish check-vars
+.PHONY: clean init run format finish check-vars

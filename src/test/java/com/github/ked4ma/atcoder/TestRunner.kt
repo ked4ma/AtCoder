@@ -78,7 +78,7 @@ class TestRunner {
         @JvmStatic
         fun setup() {
             TASK = System.getProperty("task")?.takeIf(String::isNotBlank) ?: "A"
-            BRANCH = runShell("git branch --show-current")
+            BRANCH = System.getProperty("branch")?.takeIf(String::isNotBlank) ?: runShell("git branch --show-current")
             val contestRegex = "feature/(.+)".toRegex()
             CONTEST_DIR = contestRegex.matchEntire(BRANCH)?.groupValues?.get(1)
                 ?.replace("_test", "")

@@ -44,6 +44,7 @@ tasks.withType<Test> {
     }
 
     systemProperty("task", System.getProperty("task"))
+    systemProperty("branch", System.getProperty("branch"))
 }
 
 application {
