@@ -11,7 +11,7 @@ fi
 # 3. remove debug functions
 # 4. remove comment
 ## 1 is operated as {print}
-FILES=$(grep "import com.github.ked4ma.atcoder.utils" src/main/java/com/github/ked4ma/atcoder/abc322/E_x.kt | \
+FILES=$(grep "import com.github.ked4ma.atcoder.utils" src/main/java/com/github/ked4ma/atcoder/$1/$2.kt | \
         grep -v debug | \
         awk -F' ' '{print "src/main/java/"$2}' | \
         sed 's|\.|/|g' | \
@@ -20,4 +20,5 @@ awk 1 src/main/java/com/github/ked4ma/atcoder/$1/$2.kt $(echo $FILES) | \
   grep -v com.github.ked4ma.atcoder | \
   grep -v _debug_ | \
   grep -v -e "^\s*\/\/.*" | \
+  grep -v -e "^$" | \
   pbcopy
