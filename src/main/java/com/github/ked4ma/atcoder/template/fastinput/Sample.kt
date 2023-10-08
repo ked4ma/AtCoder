@@ -12,7 +12,7 @@ fun main() {
 
 // # Utils
 // ## Input
-fun next() = readLine()!!
+fun next() = readln()
 fun nextInt() = next().toInt()
 fun nextLong() = next().toLong()
 fun nextDouble() = next().toDouble()
@@ -76,17 +76,17 @@ internal class FastScanner {
         var n: Long = 0
         var minus = false
         var b = readByte()
-        if (b == '-'.toInt()) {
+        if (b == '-'.code) {
             minus = true
             b = readByte()
         }
-        if (b < '0'.toInt() || '9'.toInt() < b) {
+        if (b < '0'.code || '9'.code < b) {
             throw NumberFormatException()
         }
         while (true) {
-            if ('0'.toInt() <= b && b <= '9'.toInt()) {
+            if ('0'.code <= b && b <= '9'.code) {
                 n *= 10
-                n += b - '0'.toInt().toLong()
+                n += b - '0'.code.toLong()
             } else return if (b == -1 || !isPrintableChar(
                     b
                 )
