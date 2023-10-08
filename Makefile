@@ -8,8 +8,8 @@ RUN_ARGS_LEN := $(words $(RUN_ARGS))
 BRANCH=$(shell git branch --show-current)
 CONTEST_BRANCH=$(word 2, $(subst /, , $(BRANCH)))
 CONTEST=$(subst _na,, $(CONTEST_BRANCH))
-QUESTION_FILENAME=$(word 1, $(RUN_ARGS))
-QUESTION=$(subst _x,, $(QUESTION_FILENAME))
+TASK_FILENAME=$(word 1, $(RUN_ARGS))
+TASK=$(subst _x,, $(TASK_FILENAME))
 
 # task for checking global vars
 check-vars:
@@ -21,8 +21,8 @@ check-vars:
 	@echo BRANCH $(BRANCH)
 	@echo CONTEST_BRANCH $(CONTEST_BRANCH)
 	@echo CONTEST $(CONTEST)
-	@echo QUESTION_FILENAME $(QUESTION_FILENAME)
-	@echo QUESTION $(QUESTION)
+	@echo TASK_FILENAME $(TASK_FILENAME)
+	@echo TASK $(TASK)
 	@echo "=========="
 
 init: clean
@@ -36,6 +36,7 @@ ifeq ($(RUN_ARGS_LEN), 1)
 	elif [ -d src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH) ]; then \
 	  echo "[Info] $(CONTEST_BRANCH) is already finished."; \
 	else \
+	  echo "[Info] preparing for the contest ($(CONTEST))"; \
 	  git switch -c feature/$(CONTEST_BRANCH); \
 	  mkdir -p src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH); \
 	fi
@@ -46,11 +47,11 @@ endif
 run:
 	@source ./secret.conf && \
 	  ./gradlew -Pcontest=$(CONTEST_BRANCH) cleanTest \
-	    test --tests "com.github.ked4ma.atcoder.TestRunner" -Dtask=$(QUESTION_FILENAME) -Dbranch=$(BRANCH)
+	    test --tests "com.github.ked4ma.atcoder.TestRunner" -Dtask=$(TASK_FILENAME) -Dbranch=$(BRANCH)
 
 format:
-	@echo "[Info] Format for submiting $(CONTEST)/$(QUESTION)."
-	./bin/format.sh $(CONTEST_BRANCH) $(QUESTION_FILENAME)
+	@echo "[Info] Format for submiting $(CONTEST)/$(TASK)."
+	./bin/format.sh $(CONTEST_BRANCH) $(TASK_FILENAME)
 	@echo "[Info] Copied to Clipboard."
 
 finish:
