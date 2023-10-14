@@ -1,6 +1,10 @@
 package com.github.ked4ma.atcoder.utils.input.buffered
 
 // ## Input (with BufferedReader)
+// ## [Usage]
+// ##   BufferedReader(InputStreamReader(System.`in`)).use { br ->
+// ##     val n = nextInt(br);
+// ##   }
 fun next(br: java.io.BufferedReader) = br.readLine()!!
 fun nextInt(br: java.io.BufferedReader) = next(br).toInt()
 fun nextLong(br: java.io.BufferedReader) = next(br).toLong()
