@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc104_na
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 
 // dp[s.length][3] = 1

@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc109_na
 
 import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 
 fun main() {
     val (H, W) = nextIntList()
@@ -21,6 +21,7 @@ fun main() {
                     a[h][w]--
                     a[h][w + 1]++
                 }
+
                 h < H - 1 -> {
                     ans.add("${h + 1} ${w + 1} ${h + 2} ${w + 1}")
                     a[h][w]--

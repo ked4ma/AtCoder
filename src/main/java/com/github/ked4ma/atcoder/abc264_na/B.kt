@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc264_na
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.abs
 import kotlin.math.max
 

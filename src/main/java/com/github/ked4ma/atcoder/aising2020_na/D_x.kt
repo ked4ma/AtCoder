@@ -1,7 +1,8 @@
 package com.github.ked4ma.atcoder.aising2020_na
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 
 fun main() {
     val n = nextInt()
@@ -24,10 +25,12 @@ fun main() {
             x[index] == 0 -> {
                 greater.plus(greaterRems[index]).rem(popcountP)
             }
+
             popcount == 1 -> {
                 println(0)
                 return@forEach
             }
+
             else -> {
                 less.minus(lessRems[index]).plus(popcountM).rem(popcountM)
             }

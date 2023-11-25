@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc178
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 
 private val MOD = 1_000_000_007L
 

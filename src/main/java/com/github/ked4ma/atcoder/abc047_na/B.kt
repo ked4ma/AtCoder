@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc047_na
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.max
 import kotlin.math.min
 
@@ -17,12 +17,15 @@ fun main() {
             1 -> {
                 xs = max(xs, x)
             }
+
             2 -> {
                 xe = min(xe, x)
             }
+
             3 -> {
                 ys = max(ys, y)
             }
+
             4 -> {
                 ye = min(ye, y)
             }

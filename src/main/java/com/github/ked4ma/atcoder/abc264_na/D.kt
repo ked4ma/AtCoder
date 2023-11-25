@@ -10,7 +10,7 @@ fun main() {
     val arr = input.map { atcoder.indexOf(it) }.toTypedArray()
 
     var res = 0
-    for (i in atcoder.lastIndex  downTo 1) {
+    for (i in atcoder.lastIndex downTo 1) {
         for (j in 0 until i) {
             if (arr[j] > arr[j + 1]) {
                 val tmp = arr[j]

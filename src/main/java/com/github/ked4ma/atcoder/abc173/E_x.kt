@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc173
 
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.absoluteValue
 
 private const val MOD = 1_000_000_007
@@ -35,19 +36,23 @@ fun main() {
                 res.add(positives[posIndex])
                 posIndex++
             }
+
             negIndex >= negatives.lastIndex -> {
                 res.add(positives[posIndex])
                 posIndex++
             }
+
             posIndex >= positives.lastIndex -> {
                 res.add(negatives[negIndex])
                 res.add(negatives[negIndex + 1])
                 negIndex += 2
             }
+
             positives[posIndex] * positives[posIndex + 1] > negatives[negIndex] * negatives[negIndex + 1] -> {
                 res.add(positives[posIndex])
                 posIndex++
             }
+
             else -> {
                 res.add(negatives[negIndex])
                 res.add(negatives[negIndex + 1])

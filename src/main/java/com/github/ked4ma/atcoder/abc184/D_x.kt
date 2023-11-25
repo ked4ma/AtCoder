@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc184
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 
 fun main() {
     val dp = Array(101) { Array(101) { Array(101) { 0.0 } } }

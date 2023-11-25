@@ -13,6 +13,7 @@ fun main() {
                 x++
                 ans = max(ans, x)
             }
+
             'D' -> x--
         }
     }

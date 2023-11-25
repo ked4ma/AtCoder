@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc201_na
 
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 
 fun main() {
     var first = (0 to "")
@@ -13,6 +14,7 @@ fun main() {
                 second = first
                 first = alt to name
             }
+
             alt > second.first -> second = alt to name
         }
     }

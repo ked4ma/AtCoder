@@ -13,7 +13,7 @@ fun main() {
             y == 1L -> abs(X - y)
             y % 2 == 0L -> min(abs(X - y), solve(y / 2) + 1)
             else -> minOf(abs(X - y), solve((y + 1) / 2) + 2, solve((y - 1) / 2) + 2)
-        }.also{
+        }.also {
             memo[y] = it
         }
     }

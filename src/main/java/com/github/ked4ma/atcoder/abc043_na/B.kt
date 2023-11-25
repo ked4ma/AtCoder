@@ -9,6 +9,7 @@ fun main() {
                 'B' -> if (length > 0) {
                     deleteCharAt(lastIndex)
                 }
+
                 else -> append(it)
             }
         }

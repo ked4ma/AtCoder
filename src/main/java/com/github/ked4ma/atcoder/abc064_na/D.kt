@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc064_na
 
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import java.util.*
 
 fun main() {
@@ -15,6 +16,7 @@ fun main() {
             '(' -> {
                 l++
             }
+
             ')' -> {
                 if (l == 0) {
                     sb.insert(0, '(')

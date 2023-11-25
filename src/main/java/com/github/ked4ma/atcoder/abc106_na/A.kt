@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc106_na
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 
 fun main() {
     val (a, b) = nextIntList()
