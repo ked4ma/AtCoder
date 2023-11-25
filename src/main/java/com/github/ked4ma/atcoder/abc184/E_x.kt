@@ -1,7 +1,8 @@
 package com.github.ked4ma.atcoder.abc184
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import java.util.*
 
 fun main() {
@@ -21,10 +22,12 @@ fun main() {
                     sx = x
                     sy = y
                 }
+
                 'G' -> {
                     gx = x
                     gy = y
                 }
+
                 in 'a'..'z' -> {
                     warpsTmp.add(c to (x to y))
                 }

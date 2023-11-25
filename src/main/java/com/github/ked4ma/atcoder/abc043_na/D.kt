@@ -10,6 +10,7 @@ fun main() {
                 println("${i + 1} ${i + 2}")
                 return
             }
+
             i < s.lastIndex - 1 && s[i] == s[i + 2] -> {
                 println("${i + 1} ${i + 3}")
                 return

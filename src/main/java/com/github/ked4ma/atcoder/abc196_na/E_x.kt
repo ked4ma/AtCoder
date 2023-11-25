@@ -2,6 +2,7 @@ package com.github.ked4ma.atcoder.abc196_na
 
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.max
 import kotlin.math.min
 
@@ -19,10 +20,12 @@ fun main() {
                 low += a
                 add += a
             }
+
             2L -> {
                 low = max(low, a.toDouble())
                 high = max(low, high)
             }
+
             3L -> {
                 high = min(high, a.toDouble())
                 low = min(low, high)

@@ -1,8 +1,9 @@
 package com.github.ked4ma.atcoder.abc057_na
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.gcd.*
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.max
 
 fun main() {

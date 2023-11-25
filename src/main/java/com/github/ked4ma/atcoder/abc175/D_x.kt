@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc175
 
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.max
 
 fun main() {

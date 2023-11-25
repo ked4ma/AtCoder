@@ -2,7 +2,7 @@ package com.github.ked4ma.atcoder.abc328
 
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.*
-import com.github.ked4ma.atcoder.utils.loop.*
+import com.github.ked4ma.atcoder.utils.loop.deprecated.*
 import com.github.ked4ma.atcoder.utils.unionfind.*
 import kotlin.math.max
 import kotlin.math.min

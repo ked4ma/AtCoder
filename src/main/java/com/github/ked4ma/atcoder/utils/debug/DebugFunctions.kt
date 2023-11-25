@@ -9,3 +9,6 @@ fun _debug_print(data: Any) = print("[DEBUG] $data")
 
 @Suppress("FunctionName")
 fun _debug_println(data: Any) = println("[DEBUG] $data")
+
+@Suppress("FunctionName")
+fun _debug_require(value: Boolean, lazyMessage: () -> Any) = require(value, lazyMessage)

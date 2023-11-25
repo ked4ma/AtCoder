@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc049_na
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import com.github.ked4ma.atcoder.utils.unionfind.*
 
 fun main() {

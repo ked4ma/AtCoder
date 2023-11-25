@@ -1,7 +1,8 @@
 package com.github.ked4ma.atcoder.m_solutions2020
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.abs
 import kotlin.math.min
 

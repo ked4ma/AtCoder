@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.m_solutions2020
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 
 fun main() {
     val n = nextInt()
@@ -13,10 +13,12 @@ fun main() {
                 stock += account / a[it]
                 account %= a[it]
             }
+
             a[it] > a[it + 1] -> {
                 account += stock * a[it]
                 stock = 0
             }
+
             else -> Unit
         }
     }

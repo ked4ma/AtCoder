@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc183
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import com.github.ked4ma.atcoder.utils.unionfind.*
 
 fun main() {
@@ -31,6 +31,7 @@ fun main() {
                 }
                 m[uf.root(a)] = to
             }
+
             2 -> {
                 val ra = uf.root(a)
                 println(m.getOrDefault(ra, mutableMapOf(c[ra] to 1)).getOrDefault(b, 0))

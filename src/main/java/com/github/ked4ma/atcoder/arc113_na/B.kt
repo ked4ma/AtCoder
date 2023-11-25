@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.arc113_na
 
 import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 
 fun main() {
     val (A, B, C) = nextIntList()

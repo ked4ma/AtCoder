@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.aising2020_na
 
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
@@ -21,6 +21,7 @@ fun main() {
                                 else -> 6
                             }
                         }
+
                         value > n -> return@TEST
                     }
                 }

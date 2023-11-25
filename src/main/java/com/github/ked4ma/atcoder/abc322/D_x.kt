@@ -1,8 +1,8 @@
 package com.github.ked4ma.atcoder.abc322
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.loop.*
+import com.github.ked4ma.atcoder.utils.loop.deprecated.*
 
 fun main() {
     val P = times(3) {

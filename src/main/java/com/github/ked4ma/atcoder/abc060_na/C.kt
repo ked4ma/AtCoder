@@ -21,6 +21,7 @@ fun main() {
             vL == 0 && next > 0 -> {
                 l = k
             }
+
             next == 0 -> {
                 ans += k - l
             }

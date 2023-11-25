@@ -1,6 +1,7 @@
 package com.github.ked4ma.atcoder.abc169
 
 import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.log10
 
 fun main() {

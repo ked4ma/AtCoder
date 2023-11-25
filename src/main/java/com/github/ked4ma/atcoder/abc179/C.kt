@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc179
 
-import com.github.ked4ma.atcoder.utils.array.*
-import com.github.ked4ma.atcoder.utils.input.default.*
+import com.github.ked4ma.atcoder.utils.array.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import kotlin.math.sqrt
 
 fun main() {
@@ -20,7 +20,7 @@ fun main() {
     (1..n.minus(1)).forEach { c ->
         var cnt = 1
         var m = n - c
-        primes.forEach inner@ { a ->
+        primes.forEach inner@{ a ->
             if (m % a != 0) return@inner
             var ex = 0
 

@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc200_na
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.max
 import kotlin.math.min

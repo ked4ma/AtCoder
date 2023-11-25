@@ -13,6 +13,7 @@ fun main() {
                 c = it
                 count = 1
             }
+
             else -> {
                 println("No")
                 return
