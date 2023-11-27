@@ -66,4 +66,13 @@ finish:
 clean:
 	./gradlew clean
 
-.PHONY: clean init run format finish check-vars
+problems:
+	@source ./secret.conf && \
+	  ./gradlew -Pproblems=1 cleanTest \
+	    test --tests "com.github.ked4ma.atcoder.AtCoderProblemsTestRunner"
+
+problems-format:
+	./bin/format-problems.sh
+	@echo "[Info] Copied to Clipboard."
+
+.PHONY: clean init run format finish check-vars problems problems-format
