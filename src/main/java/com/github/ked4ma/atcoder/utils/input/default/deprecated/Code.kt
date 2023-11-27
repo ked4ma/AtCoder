@@ -1,21 +1,19 @@
 package com.github.ked4ma.atcoder.utils.input.default.deprecated
 
-import com.github.ked4ma.atcoder.utils.input.default.*
-
 @Deprecated(
-    message = "Recommend using `nextLong()` with consideration for overflows",
+    message = "Recommend to use `nextLong()` with consideration for overflows",
     replaceWith = ReplaceWith(
         "nextLong()",
         "com.github.ked4ma.atcoder.utils.input.default.*",
     ),
 )
-fun nextInt() = next().toInt()
+fun nextInt() = readln().toInt()
 
 @Deprecated(
-    message = "Recommend using `nextLongList()` with consideration for overflows",
+    message = "Recommend to use `nextLongList()` with consideration for overflows",
     replaceWith = ReplaceWith(
         "nextLongList()",
         "com.github.ked4ma.atcoder.utils.input.default.*",
     ),
 )
-fun nextIntList() = nextList().map(String::toInt)
+fun nextIntList() = readln().split(" ").map(String::toInt)

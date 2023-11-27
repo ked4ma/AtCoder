@@ -21,7 +21,7 @@ fun main() {
         if (count == 0L) set.add(i.toLong())
     }
     _debug_println(set)
-    repeat(Q) {
+    loop(Q) {
         val (i, x) = nextLongList().let { (i, x) -> i - 1 to x }
         if (A[i] <= N) {
             bk[A[i]]--

@@ -1,18 +1,10 @@
 package com.github.ked4ma.atcoder.utils.math
 
-fun Int.pow(n: Int): Int {
-    if (n < 0) throw IllegalArgumentException("n($n) must be greater than or equal to zero(0).")
-    var res = 1
-    repeat(n) {
-        res *= this
-    }
-    return res
-}
 
-fun Long.pow(n: Int): Long {
+fun Long.pow(n: Long): Long {
     if (n < 0) throw IllegalArgumentException("n($n) must be greater than or equal to zero(0).")
     var res = 1L
-    repeat(n) {
+    for (i in 0 until n) {
         res *= this
     }
     return res
