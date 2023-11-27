@@ -22,6 +22,13 @@ sourceSets {
                 "src/main/java/com/github/ked4ma/atcoder/utils/"
             )
         )
+    } else if (hasProperty("problems")) {
+        getByName("main").java.setSrcDirs(
+            setOf(
+                "src/main/java/com/github/ked4ma/atcoder/problems",
+                "src/main/java/com/github/ked4ma/atcoder/utils/"
+            )
+        )
     }
 }
 
