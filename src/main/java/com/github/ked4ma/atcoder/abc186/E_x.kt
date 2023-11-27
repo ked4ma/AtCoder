@@ -4,6 +4,7 @@ import com.github.ked4ma.atcoder.utils.gcd.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import com.github.ked4ma.atcoder.utils.math.*
+import com.github.ked4ma.atcoder.utils.math.gcd.*
 
 // https://www.youtube.com/watch?v=hY2FicqnAcc
 fun main() {

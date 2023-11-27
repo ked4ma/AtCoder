@@ -11,7 +11,7 @@ fun main() {
     val G = sizedArray(2 * N) {
         mutableSetOf<Pair<Long, Long>>() // dest, cost
     }
-    repeat(M) {
+    loop(M) {
         val (u, v, a) = nextLongList()
         if (a == 1L) {
             G[u - 1].add(v - 1 to 1)

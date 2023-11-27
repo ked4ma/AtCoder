@@ -11,7 +11,7 @@ fun main() {
     val (L, N1, N2) = nextLongList()
     val X1 = buildList<Pair<LongRange, Long>> {
         var i = 0L
-        repeat(N1) {
+        loop(N1) {
             val (v, l) = nextLongList()
             add((i until i + l) to v)
             i += l
@@ -19,7 +19,7 @@ fun main() {
     }
     val X2 = buildList<Pair<LongRange, Long>> {
         var i = 0L
-        repeat(N2) {
+        loop(N2) {
             val (v, l) = nextLongList()
             add((i until i + l) to v)
             i += l

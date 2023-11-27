@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.utils.loop.deprecated
 
 @Deprecated(
-    message = "Recommend using `times(num: Long, block: (Long) -> T)` with consideration for overflows",
+    message = "Recommend to use `times(num: Long, block: (Long) -> T)` with consideration for overflows",
     replaceWith = ReplaceWith(
         "times(num, block)",
         "com.github.ked4ma.atcoder.utils.loop.default.*",
