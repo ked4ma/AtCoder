@@ -21,6 +21,7 @@ import java.io.PipedInputStream
 import java.io.PipedOutputStream
 import java.lang.reflect.Method
 
+// TODO consider to commonize to reusable codes
 class AtCoderProblemsTestRunner {
     @ParameterizedTest
     @MethodSource("sampleProvider")
