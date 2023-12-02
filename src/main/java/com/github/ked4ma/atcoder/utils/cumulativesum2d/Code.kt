@@ -1,9 +1,11 @@
 package com.github.ked4ma.atcoder.utils.cumulativesum2d
 
+import com.github.ked4ma.atcoder.utils.debug.*
+
 class CumulativeSum2D {
     private val h: Int
     private val w: Int
-    private val data: Array<Array<Long>>
+    val data: Array<Array<Long>>
 
     /**
      * NOTE: only use for one time initialization.
