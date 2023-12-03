@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc277_na
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.default.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.loop.*
 import kotlin.math.min
