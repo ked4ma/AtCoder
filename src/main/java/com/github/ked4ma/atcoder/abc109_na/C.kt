@@ -1,6 +1,5 @@
 package com.github.ked4ma.atcoder.abc109_na
 
-import com.github.ked4ma.atcoder.utils.gcd.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.math.gcd.*
 

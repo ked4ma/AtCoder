@@ -1,6 +1,5 @@
 package com.github.ked4ma.atcoder.abc186
 
-import com.github.ked4ma.atcoder.utils.gcd.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
 import com.github.ked4ma.atcoder.utils.math.*

@@ -1,5 +1,6 @@
 package com.github.ked4ma.atcoder.abc330
 
+import com.github.ked4ma.atcoder.utils.array.*
 import com.github.ked4ma.atcoder.utils.array.default.*
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*

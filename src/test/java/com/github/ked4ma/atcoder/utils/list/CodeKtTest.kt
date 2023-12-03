@@ -1,5 +1,6 @@
 package com.github.ked4ma.atcoder.utils.list
 
+import com.github.ked4ma.atcoder.utils.list.default.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
