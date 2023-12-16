@@ -1,7 +1,8 @@
 package com.github.ked4ma.atcoder.abc332
 
-import com.github.ked4ma.atcoder.utils.array.*
+import com.github.ked4ma.atcoder.utils.array.any.*
 import com.github.ked4ma.atcoder.utils.array.double.*
+import com.github.ked4ma.atcoder.utils.array.double.d2.*
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.*

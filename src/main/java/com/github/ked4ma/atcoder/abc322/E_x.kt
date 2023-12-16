@@ -2,15 +2,14 @@ package com.github.ked4ma.atcoder.abc322
 
 import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
-import com.github.ked4ma.atcoder.utils.loop.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.repeat.*
 import kotlin.math.min
 
 fun main() {
     val (N, K, P) = nextIntList()
     val C = mutableListOf<Int>()
-    val A = times(N) {
+    val A = times(N.toLong()) {
         val list = nextIntList()
         C.add(list.first())
         list.subList(1, K + 1)

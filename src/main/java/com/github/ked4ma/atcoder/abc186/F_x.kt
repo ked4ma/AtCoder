@@ -1,8 +1,8 @@
 package com.github.ked4ma.atcoder.abc186
 
 import com.github.ked4ma.atcoder.utils.array.deprecated.*
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
-import com.github.ked4ma.atcoder.utils.tree.fenwick.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.models.tree.fenwick.*
 import kotlin.math.min
 
 fun main() {

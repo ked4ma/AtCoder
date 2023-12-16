@@ -2,8 +2,8 @@ package com.github.ked4ma.atcoder.abc183
 
 import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
-import com.github.ked4ma.atcoder.utils.math.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.math.mod.*
 
 fun main() {
     val (H, W) = nextIntList()

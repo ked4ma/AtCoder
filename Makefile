@@ -50,7 +50,7 @@ run:
 	    test --tests "com.github.ked4ma.atcoder.TestRunner" -Dtask=$(TASK_FILENAME) -Dbranch=$(BRANCH)
 
 format:
-	@echo "[Info] Format for submiting $(CONTEST)/$(TASK)."
+	@echo "[Info] Format for submitting $(CONTEST)/$(TASK)."
 	./bin/format.sh $(CONTEST_BRANCH) $(TASK_FILENAME)
 	@echo "[Info] Copied to Clipboard."
 

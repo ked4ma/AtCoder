@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc185
 
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
-import com.github.ked4ma.atcoder.utils.tree.segment.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.models.tree.segment.*
 
 fun main() {
     val (n, q) = nextIntList()

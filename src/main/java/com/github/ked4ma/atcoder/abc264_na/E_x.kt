@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc264_na
 
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
-import com.github.ked4ma.atcoder.utils.unionfind.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.models.deprecated.unionfind.*
 
 fun main() {
 //    val (N, M, E) = listOf(5, 5, 10)

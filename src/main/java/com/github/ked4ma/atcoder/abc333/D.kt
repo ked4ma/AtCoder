@@ -1,17 +1,17 @@
 package com.github.ked4ma.atcoder.abc333
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.loop.*
-import com.github.ked4ma.atcoder.utils.unionfind.*
+import com.github.ked4ma.atcoder.utils.models.unionfind.*
+import com.github.ked4ma.atcoder.utils.repeat.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
     val N = nextLong()
-    val uf = UnionFind(N.toInt())
+    val uf = UnionFind(N)
     loop(N - 1) {
         val (u, v) = nextLongList()
         if (u != 1L) {
-            uf.unite(u.toInt() - 1, v.toInt() - 1)
+            uf.unite(u - 1, v - 1)
         }
     }
     println(N - uf.categories.groupingBy { it }.eachCount().values.max())

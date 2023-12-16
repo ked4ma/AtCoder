@@ -2,8 +2,9 @@ package com.github.ked4ma.atcoder.abc323
 
 import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
-import com.github.ked4ma.atcoder.utils.math.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.math.mod.*
+import com.github.ked4ma.atcoder.utils.math.modinv.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
