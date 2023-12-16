@@ -1,9 +1,9 @@
-package com.github.ked4ma.atcoder.utils.cumulativesum2d
+package com.github.ked4ma.atcoder.utils2.models.cumlative.d2sum
 
 class CumulativeSum2D {
     private val h: Int
     private val w: Int
-    val data: Array<Array<Long>>
+    val data: Array<LongArray>
 
     /**
      * NOTE: only use for one time initialization.
@@ -12,7 +12,7 @@ class CumulativeSum2D {
     constructor(arr: Array<Array<out Number>>) {
         h = arr.size
         w = arr.first().size
-        data = Array(h + 1) { Array(w + 1) { 0L } }
+        data = Array(h + 1) { LongArray(w + 1) { 0L } }
         for (i in 0 until h) {
             for (j in 0 until w) {
                 data[i + 1][j + 1] = data[i][j + 1] + data[i + 1][j] - data[i][j] + arr[i][j].toLong()
@@ -20,10 +20,21 @@ class CumulativeSum2D {
         }
     }
 
+    constructor(arr: Array<LongArray>) {
+        h = arr.size
+        w = arr.first().size
+        data = Array(h + 1) { LongArray(w + 1) { 0L } }
+        for (i in 0 until h) {
+            for (j in 0 until w) {
+                data[i + 1][j + 1] = data[i][j + 1] + data[i + 1][j] - data[i][j] + arr[i][j]
+            }
+        }
+    }
+
     constructor(h: Int, w: Int) {
         this.h = h
         this.w = w
-        data = Array(h + 1) { Array(w + 1) { 0L } }
+        data = Array(h + 1) { LongArray(w + 1) { 0L } }
     }
 
     fun set(h: Int, w: Int, n: Number) {
