@@ -1,5 +1,6 @@
 package com.github.ked4ma.atcoder.utils.unionfind
 
+// TODO use Long instead of Int
 class UnionFind(val size: Int) {
     private val r = Array(size) { -1 }
     fun root(x: Int): Int {
