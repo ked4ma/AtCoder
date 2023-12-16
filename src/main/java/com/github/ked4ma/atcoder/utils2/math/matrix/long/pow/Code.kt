@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.utils2.math.matrix.long.pow
 
-import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.matrix.*
+import com.github.ked4ma.atcoder.utils2.debug.*
+import com.github.ked4ma.atcoder.utils2.math.matrix.long.times.*
 
 fun Array<LongArray>.pow(k: Long): Array<LongArray> {
     _debug_require(k >= 0L) { "k($k) must be larger than or equals to zero(0)." }

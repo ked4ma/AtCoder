@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.list
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 // ## List
 operator fun <T> List<T>.get(index: Long): T {

@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.math.matrix.long.times
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 operator fun Array<LongArray>.times(other: Array<LongArray>): Array<LongArray> {
     val r1 = this.size

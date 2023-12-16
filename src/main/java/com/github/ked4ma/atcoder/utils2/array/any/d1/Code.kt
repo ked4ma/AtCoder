@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.array.any.d1
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 inline fun <reified T> sizedArray(size: Long, default: T): Array<T> {
     _debug_require(size in 0..Int.MAX_VALUE.toLong()) { "size must be within Int range (0 to ${Int.MAX_VALUE})" }

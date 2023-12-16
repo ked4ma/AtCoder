@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.math.long.pow
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 fun Long.pow(n: Long): Long {
     _debug_require(n < 0) { "n($n) must be greater than or equal to zero(0)." }

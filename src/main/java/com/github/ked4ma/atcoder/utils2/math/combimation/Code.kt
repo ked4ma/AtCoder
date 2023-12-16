@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.math.combimation
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 // calc nCr
 // e.g. 5C2 = 5!/(3!2!) = 10

@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.array.boolean
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 // accessor to get with long index
 operator fun BooleanArray.get(index: Long): Boolean {

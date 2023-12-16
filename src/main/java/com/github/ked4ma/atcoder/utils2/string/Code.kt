@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.string
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 fun String.length(): Long = this.length.toLong()
 operator fun String.get(index: Long): Char {

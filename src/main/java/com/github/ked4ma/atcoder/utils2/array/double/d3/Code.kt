@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.array.double.d3
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 fun sized3DDoubleArray(row: Long, col: Long, dep: Long, default: Double): Array<Array<DoubleArray>> {
     _debug_require(row in 0..Int.MAX_VALUE.toLong()) { "row must be within Int range (0 to ${Int.MAX_VALUE})" }

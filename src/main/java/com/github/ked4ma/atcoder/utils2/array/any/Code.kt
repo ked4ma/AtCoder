@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.array.any
 
-import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils2.debug.*
 
 // accessor to get with long index
 operator fun <T> Array<T>.get(index: Long): T {

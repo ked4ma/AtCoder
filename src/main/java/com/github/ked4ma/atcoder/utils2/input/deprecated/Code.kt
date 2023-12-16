@@ -4,7 +4,7 @@ package com.github.ked4ma.atcoder.utils2.input.deprecated
     message = "Recommend to use `nextLong()` with consideration for overflows",
     replaceWith = ReplaceWith(
         "nextLong()",
-        "com.github.ked4ma.atcoder.utils.input.default.*",
+        "com.github.ked4ma.atcoder.utils2.input.default.*",
     ),
 )
 fun nextInt() = readln().toInt()
@@ -13,7 +13,7 @@ fun nextInt() = readln().toInt()
     message = "Recommend to use `nextLongList()` with consideration for overflows",
     replaceWith = ReplaceWith(
         "nextLongList()",
-        "com.github.ked4ma.atcoder.utils.input.default.*",
+        "com.github.ked4ma.atcoder.utils2.input.default.*",
     ),
 )
 fun nextIntList() = readln().split(" ").map(String::toInt)

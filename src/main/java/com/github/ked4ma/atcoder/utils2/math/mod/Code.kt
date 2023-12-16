@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.utils2.math.mod
 
-import com.github.ked4ma.atcoder.utils.math.*
+import com.github.ked4ma.atcoder.utils2.math.modinv.*
 
 // mod
 const val MOD = 1_000_000_007L

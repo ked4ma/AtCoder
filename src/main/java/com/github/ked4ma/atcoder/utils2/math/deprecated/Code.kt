@@ -4,7 +4,7 @@ package com.github.ked4ma.atcoder.utils2.math.deprecated
     message = "Recommend to use `gcd(x: Long, y: Long)`",
     replaceWith = ReplaceWith(
         "gcd(x, y)",
-        "com.github.ked4ma.atcoder.utils.math.gcd.*",
+        "com.github.ked4ma.atcoder.utils2.math.gcd.*",
     ),
 )
 fun gcd(x: Int, y: Int): Int {
@@ -18,7 +18,7 @@ fun gcd(x: Int, y: Int): Int {
     message = "Recommend to use `Long.pow(n: Long)` with consideration for overflows",
     replaceWith = ReplaceWith(
         "this.pow(n)",
-        "com.github.ked4ma.atcoder.utils.math.*",
+        "com.github.ked4ma.atcoder.utils2.math.*",
     ),
 )
 fun Int.pow(n: Int): Int {
@@ -34,7 +34,7 @@ fun Int.pow(n: Int): Int {
     message = "Recommend to use `Long.pow(n: Long)` with consideration for overflows",
     replaceWith = ReplaceWith(
         "this.pow(n)",
-        "com.github.ked4ma.atcoder.utils.math.*",
+        "com.github.ked4ma.atcoder.utils2.math.*",
     ),
 )
 fun Long.pow(n: Int): Long {
