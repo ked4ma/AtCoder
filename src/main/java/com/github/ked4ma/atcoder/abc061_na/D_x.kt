@@ -2,7 +2,7 @@ package com.github.ked4ma.atcoder.abc061_na
 
 import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
 
 fun main() {
     data class Edge(val from: Int, val to: Int, val cost: Long)

@@ -1,11 +1,11 @@
 package com.github.ked4ma.atcoder.abc331
 
-import com.github.ked4ma.atcoder.utils.array.*
-import com.github.ked4ma.atcoder.utils.array.default.*
+import com.github.ked4ma.atcoder.utils.array.any.*
+import com.github.ked4ma.atcoder.utils.array.any.d1.*
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.*
-import com.github.ked4ma.atcoder.utils.loop.*
+import com.github.ked4ma.atcoder.utils.repeat.*
 import java.util.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]

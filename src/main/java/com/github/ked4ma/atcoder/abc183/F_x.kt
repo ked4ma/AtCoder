@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc183
 
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
-import com.github.ked4ma.atcoder.utils.unionfind.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.models.deprecated.unionfind.*
 
 fun main() {
     val (n, q) = nextIntList()

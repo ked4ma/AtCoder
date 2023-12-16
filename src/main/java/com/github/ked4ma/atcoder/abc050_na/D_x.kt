@@ -2,7 +2,7 @@ package com.github.ked4ma.atcoder.abc050_na
 
 import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.math.*
+import com.github.ked4ma.atcoder.utils.math.mod.*
 import kotlin.math.floor
 import kotlin.math.log2
 

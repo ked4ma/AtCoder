@@ -1,9 +1,9 @@
 package com.github.ked4ma.atcoder.abc186
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
-import com.github.ked4ma.atcoder.utils.math.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
 import com.github.ked4ma.atcoder.utils.math.gcd.*
+import com.github.ked4ma.atcoder.utils.math.modinv.*
 
 // https://www.youtube.com/watch?v=hY2FicqnAcc
 fun main() {

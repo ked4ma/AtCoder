@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc150_na
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.list.default.*
+import com.github.ked4ma.atcoder.utils.list.permutation.*
 import kotlin.math.abs
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]

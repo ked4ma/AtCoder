@@ -2,8 +2,8 @@ package com.github.ked4ma.atcoder.abc332
 
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.*
-import com.github.ked4ma.atcoder.utils.list.default.*
-import com.github.ked4ma.atcoder.utils.loop.*
+import com.github.ked4ma.atcoder.utils.list.permutation.*
+import com.github.ked4ma.atcoder.utils.repeat.*
 import kotlin.math.min
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]

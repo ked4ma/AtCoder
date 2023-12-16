@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.arc110
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
 
 fun main() {
     val len = 3 * 10_000_000_000L

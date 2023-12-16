@@ -2,7 +2,7 @@ package com.github.ked4ma.atcoder.abc294_na
 
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.loop.*
+import com.github.ked4ma.atcoder.utils.repeat.*
 import kotlin.math.max
 import kotlin.math.min
 

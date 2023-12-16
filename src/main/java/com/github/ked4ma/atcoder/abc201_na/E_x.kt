@@ -2,7 +2,7 @@ package com.github.ked4ma.atcoder.abc201_na
 
 import com.github.ked4ma.atcoder.utils.array.deprecated.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
 
 @OptIn(ExperimentalStdlibApi::class)
 fun main() {

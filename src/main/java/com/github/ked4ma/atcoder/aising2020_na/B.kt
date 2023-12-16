@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.aising2020_na
 
-import com.github.ked4ma.atcoder.utils.input.default.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.deprecated.*
 
 fun main() {
     nextInt()

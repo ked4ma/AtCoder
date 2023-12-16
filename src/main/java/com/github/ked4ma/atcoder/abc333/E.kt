@@ -1,11 +1,12 @@
 package com.github.ked4ma.atcoder.abc333
 
-import com.github.ked4ma.atcoder.utils.array.*
-import com.github.ked4ma.atcoder.utils.array.default.*
+import com.github.ked4ma.atcoder.utils.array.any.*
+import com.github.ked4ma.atcoder.utils.array.any.d1.*
 import com.github.ked4ma.atcoder.utils.array.long.*
+import com.github.ked4ma.atcoder.utils.array.long.d1.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.list.default.*
-import com.github.ked4ma.atcoder.utils.loop.*
+import com.github.ked4ma.atcoder.utils.list.cumlative.*
+import com.github.ked4ma.atcoder.utils.repeat.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {

@@ -29,7 +29,7 @@ fun crt(b: List<Long>, m: List<Long>): Pair<Long, Long> {
     var r = 0L
     var M = 1L
     b.zip(m).forEach { (bi, mi) ->
-        val (p, _, d) = extGcd(M, mi)
+        val (p, _, d) = com.github.ked4ma.atcoder.utils.math.gcd.extGcd(M, mi)
         if ((bi - r) % d != 0L) return 0L to -1L
         val tmp = (bi - r) / d * p % (mi / d)
         r += M * tmp
