@@ -12,10 +12,15 @@ data class ModLong(private val value: Long, private val mod: Long = MOD) : Numbe
     override fun toShort(): Short = value.toShort()
     override fun compareTo(other: ModLong): Int = value.compareTo(other.value)
 
-    operator fun plus(n: ModLong): ModLong = ((value + n.value) % mod).toModLong()
-    operator fun minus(n: ModLong): ModLong = ((value - n.value + mod) % mod).toModLong()
-    operator fun times(n: ModLong): ModLong = ((value * n.value) % mod).toModLong()
-    operator fun div(n: ModLong): ModLong = (value * modinv(n.value, mod)).toModLong()
+    operator fun plus(n: ModLong): ModLong = ((value + n.value) % mod).toModLong(mod)
+    operator fun minus(n: ModLong): ModLong = ((value - n.value + mod) % mod).toModLong(mod)
+    operator fun times(n: ModLong): ModLong = ((value * n.value) % mod).toModLong(mod)
+    operator fun div(n: ModLong): ModLong = (value * modinv(n.value, mod)).toModLong(mod)
+
+    operator fun plus(n: Long): ModLong = ((value + n) % mod).toModLong(mod)
+    operator fun minus(n: Long): ModLong = ((value - n + mod) % mod).toModLong(mod)
+    operator fun times(n: Long): ModLong = ((value * n) % mod).toModLong(mod)
+    operator fun div(n: Long): ModLong = (value * modinv(n, mod)).toModLong(mod)
 
     private fun modinv(num: Long, mod: Long): Long {
         var a = num
@@ -36,3 +41,4 @@ data class ModLong(private val value: Long, private val mod: Long = MOD) : Numbe
 }
 
 fun Long.toModLong() = ModLong(this)
+fun Long.toModLong(mod: Long) = ModLong(this, mod)
