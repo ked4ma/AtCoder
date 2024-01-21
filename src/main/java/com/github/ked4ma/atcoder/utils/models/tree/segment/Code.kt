@@ -67,6 +67,14 @@ class SegmentTree<T> private constructor(
             }
         }
 
+        inline fun <reified T> of(size: Long, initValue: T, noinline operator: (a: T, b: T) -> T): SegmentTree<T> {
+            var n = 1
+            while (n < size) {
+                n *= 2
+            }
+            return newInstance(Array(2 * n - 1) { initValue }, n, operator)
+        }
+
         fun <T> newInstance(innerArr: Array<T>, n: Int, operator: (T, T) -> T) = SegmentTree(innerArr, n, operator)
     }
 }

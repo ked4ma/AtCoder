@@ -6,7 +6,6 @@ if [ $? -eq 0 ]; then
   alias pbcopy='xsel --clipboard --input'
 fi
 
-
 function parsePackages() {
   local -n ARR=$1
   local -n RES=$2
@@ -18,6 +17,18 @@ function parsePackages() {
             sed 's|\.|/|g' | \
             sed 's/\*/Code.kt/'))
     PACKS+=("${FILES[@]}")
+  done
+  RES=($(printf "%s\n" "${PACKS[@]}" | sort -u))
+}
+
+function parseKotlinPackages() {
+  local -n ARR=$1
+  local -n RES=$2
+  local PACKS=()
+  for F in ${ARR[@]}; do
+    P=($(grep -e "^ *import kotlin" $F | \
+        awk -F' ' '{print $2}'))
+    PACKS+=("${P[@]}")
   done
   RES=($(printf "%s\n" "${PACKS[@]}" | sort -u))
 }
@@ -40,9 +51,21 @@ done
 for P in ${PACKAGES[@]}; do
   echo "package: $P"
 done
-awk 1 src/main/java/com/github/ked4ma/atcoder/$1/$2.kt ${PACKAGES[@]} | \
-  grep -v com.github.ked4ma.atcoder | \
-  grep -v _debug_ | \
-  grep -v -e "^\s*\/\/.*" | \
-  grep -v -e "^$" | \
-  pbcopy
+declare -a KOTLIN_PACKAGES=()
+parseKotlinPackages TARGETS KOTLIN_PACKAGES
+for P in ${KOTLIN_PACKAGES[@]}; do
+  echo "kotlin package: $P"
+done
+
+LINES=()
+for P in ${KOTLIN_PACKAGES[@]}; do
+  LINES+=("$(echo $P | awk '{print "import", $1}')")
+done
+LINES+=(
+  "$(awk 1 src/main/java/com/github/ked4ma/atcoder/$1/$2.kt ${PACKAGES[@]} | \
+    grep -v com.github.ked4ma.atcoder | \
+    grep -v _debug_ | \
+    grep -v -e "^ *import kotlin" | \
+    grep -v -e "^\s*\/\/.*" | \
+    grep -v -e "^$")")
+printf "%s\n" "${LINES[@]}" | pbcopy
