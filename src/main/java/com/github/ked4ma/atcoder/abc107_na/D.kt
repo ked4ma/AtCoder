@@ -22,14 +22,14 @@ fun main() {
             s[it + 1] = s[it] + if (data[it] >= x) 1 else -1
         }
         _debug_println(s.joinToString(", "))
-        val bit = FenwickTree(2 * N + 1)
+        val bit = FenwickTree(2 * N.toLong() + 1)
         var sum = 0L
         repeat(N + 1) {
             // calc inversion number.
             // target: S_i <= S_j
             // +1 means "=" of above fomula
-            sum += bit.sum(0, s[it] + N + 1)
-            bit.add(s[it] + N, 1) // count appeared number (S)
+            sum += bit.sum(0, s[it] + N.toLong() + 1)
+            bit.add(s[it] + N.toLong(), 1) // count appeared number (S)
         }
         _debug_println("$sum $m $x ${n / 2}")
         if (sum >= n / 2) {

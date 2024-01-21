@@ -157,6 +157,23 @@ class LazySegmentTree(
                 evaluator,
             )
         }
+
+        fun of(
+            n: Long,
+            updater: Updater,
+            evaluator: Evaluator,
+        ): LazySegmentTree {
+            val size = arrSize(n)
+            val arr = sizedLongArray(2 * size, 0L)
+            val d = sizedArray<Long?>(2 * size, null)
+            return LazySegmentTree(
+                size,
+                arr,
+                d,
+                updater,
+                evaluator,
+            )
+        }
     }
 }
 

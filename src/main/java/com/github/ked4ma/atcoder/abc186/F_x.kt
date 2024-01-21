@@ -26,9 +26,9 @@ fun main() {
     repeat(a[0]) {
         ans += b[it]
     }
-    val fenwick = FenwickTree(w)
+    val fenwick = FenwickTree(w.toLong())
     repeat(b[0]) { x ->
-        fenwick.add(x, 1)
+        fenwick.add(x.toLong(), 1)
     }
 //    val segmentTree = SegmentTree.of(sizedArray(w, 0).apply {
 //        repeat(b[0]) {
@@ -43,10 +43,10 @@ fun main() {
     }
     repeat(a[0]) { y ->
         ends[y].forEach { x ->
-            fenwick.add(x, -1)
+            fenwick.add(x.toLong(), -1)
 //            segmentTree.update(x) { 0 }
         }
-        ans -= fenwick.sum(0, b[y])
+        ans -= fenwick.sum(0, b[y].toLong())
 //        ans -= segmentTree.get(0, b[y])
     }
     println(ans)
