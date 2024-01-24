@@ -1,15 +1,14 @@
 package com.github.ked4ma.atcoder.abc325
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d2.*
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
     val (H, W) = nextIntList()
-    val S = times(H.toLong()) {
+    val S = timesWithLong(H.toLong()) {
         next().toCharArray().toTypedArray()
     }.toTypedArray()
     val visited = sized2DArray(H, W, false)

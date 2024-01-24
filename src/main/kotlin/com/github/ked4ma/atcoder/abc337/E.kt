@@ -7,11 +7,11 @@ import com.github.ked4ma.atcoder.utils.repeat.*
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
     val N = nextLong()
-    var b = 0L
+    var b = 0
     while (1L shl b < N) b++
     println(b)
 
-    loop(b) { i ->
+    repeat(b) { i ->
         buildList {
             loop(N) { j ->
                 if (j.bit(i)) add(j + 1)

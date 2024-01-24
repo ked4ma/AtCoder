@@ -6,7 +6,7 @@ import com.github.ked4ma.atcoder.utils.repeat.*
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
     val N = nextLong()
-    val (X, Y) = times(N) {
+    val (X, Y) = timesWithLong(N) {
         val (x, y) = nextLongList()
         x to y
     }.unzip()

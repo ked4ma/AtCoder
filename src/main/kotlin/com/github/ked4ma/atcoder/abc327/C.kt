@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc327
 
 import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]

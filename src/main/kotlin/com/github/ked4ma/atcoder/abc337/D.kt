@@ -1,7 +1,5 @@
 package com.github.ked4ma.atcoder.abc337
 
-import com.github.ked4ma.atcoder.utils.array.any.*
-import com.github.ked4ma.atcoder.utils.array.char.*
 import com.github.ked4ma.atcoder.utils.array.long.d3.*
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
@@ -10,12 +8,12 @@ import kotlin.math.min
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
-    val (H, W, K) = nextLongList()
+    val (H, W, K) = nextIntList()
     val S = times(H) {
         next().toCharArray()
     }.toTypedArray()
-    val count1 = sized3DLongArray(H + 1, W + 1, 3L, 0L)
-    val count2 = sized3DLongArray(H + 1, W + 1, 3L, 0L)
+    val count1 = sized3DLongArray(H + 1, W + 1, 3, 0L)
+    val count2 = sized3DLongArray(H + 1, W + 1, 3, 0L)
     for (i in 1..H) {
         for (j in 1..W) {
             when (S[i - 1][j - 1]) {

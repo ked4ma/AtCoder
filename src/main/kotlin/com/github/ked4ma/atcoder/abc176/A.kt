@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc176
 
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.ceil
 
 fun main() {

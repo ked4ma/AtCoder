@@ -6,11 +6,11 @@ import com.github.ked4ma.atcoder.utils.repeat.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
-    val N = nextLong()
+    val N = nextInt()
     val uf = UnionFind(N)
-    loop(N - 1) {
-        val (u, v) = nextLongList()
-        if (u != 1L) {
+    repeat(N - 1) {
+        val (u, v) = nextIntList()
+        if (u != 1) {
             uf.unite(u - 1, v - 1)
         }
     }

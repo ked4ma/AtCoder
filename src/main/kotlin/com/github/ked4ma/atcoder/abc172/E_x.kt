@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc172
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d1.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.math.modinv.*
 
 fun main() {

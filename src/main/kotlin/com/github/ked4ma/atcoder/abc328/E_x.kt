@@ -2,7 +2,7 @@ package com.github.ked4ma.atcoder.abc328
 
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.combination.*
-import com.github.ked4ma.atcoder.utils.models.deprecated.unionfind.*
+import com.github.ked4ma.atcoder.utils.models.unionfind.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 import kotlin.math.max
 import kotlin.math.min
@@ -12,7 +12,7 @@ fun main() {
     val (N, M, K) = nextLongList().let { (N, M, K) ->
         Triple(N.toInt(), M.toInt(), K)
     }
-    val edges = times(M.toLong()) {
+    val edges = timesWithLong(M.toLong()) {
         nextLongList().let { (u, v, w) ->
             Triple(u.toInt() - 1, v.toInt() - 1, w)
         }

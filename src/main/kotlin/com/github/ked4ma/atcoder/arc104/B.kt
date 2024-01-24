@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.arc104
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d1.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {

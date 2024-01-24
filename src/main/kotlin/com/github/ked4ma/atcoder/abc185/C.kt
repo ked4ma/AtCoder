@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc185
 
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import java.math.BigDecimal
 
 fun main() {

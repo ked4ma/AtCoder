@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc179
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d1.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.sqrt
 
 fun main() {

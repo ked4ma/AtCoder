@@ -1,12 +1,12 @@
 package com.github.ked4ma.atcoder.abc322
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d2.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 
 fun main() {
-    val P = times(3) {
-        times(4) {
+    val P = timesWithLong(3) {
+        timesWithLong(4) {
             next().toCharArray().toTypedArray()
         }.toTypedArray()
     }.toTypedArray()

@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc186
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d1.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.models.tree.fenwick.*
 import kotlin.math.min
 
@@ -26,9 +26,9 @@ fun main() {
     repeat(a[0]) {
         ans += b[it]
     }
-    val fenwick = FenwickTree(w.toLong())
+    val fenwick = FenwickTree(w)
     repeat(b[0]) { x ->
-        fenwick.add(x.toLong(), 1)
+        fenwick.add(x, 1)
     }
 //    val segmentTree = SegmentTree.of(sizedArray(w, 0).apply {
 //        repeat(b[0]) {
@@ -43,10 +43,10 @@ fun main() {
     }
     repeat(a[0]) { y ->
         ends[y].forEach { x ->
-            fenwick.add(x.toLong(), -1)
+            fenwick.add(x, -1)
 //            segmentTree.update(x) { 0 }
         }
-        ans -= fenwick.sum(0, b[y].toLong())
+        ans -= fenwick.sum(0, b[y])
 //        ans -= segmentTree.get(0, b[y])
     }
     println(ans)

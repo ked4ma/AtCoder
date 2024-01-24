@@ -67,7 +67,7 @@ class SegmentTree<T> private constructor(
             }
         }
 
-        inline fun <reified T> of(size: Long, initValue: T, noinline operator: (a: T, b: T) -> T): SegmentTree<T> {
+        inline fun <reified T> of(size: Int, initValue: T, noinline operator: (a: T, b: T) -> T): SegmentTree<T> {
             var n = 1
             while (n < size) {
                 n *= 2

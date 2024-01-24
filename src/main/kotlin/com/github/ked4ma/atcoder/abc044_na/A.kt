@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc044_na
 
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     val n = nextInt()

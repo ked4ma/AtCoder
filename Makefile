@@ -75,4 +75,7 @@ problems-format:
 	./bin/format-problems.sh
 	@echo "[Info] Copied to Clipboard."
 
-.PHONY: clean init run format finish check-vars problems problems-format
+test:
+	./gradlew test --tests "com.github.ked4ma.atcoder.utils.*"
+
+.PHONY: clean init run format finish check-vars problems problems-format test

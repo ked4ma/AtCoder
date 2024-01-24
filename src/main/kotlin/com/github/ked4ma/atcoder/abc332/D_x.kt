@@ -1,14 +1,13 @@
 package com.github.ked4ma.atcoder.abc332
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.list.*
 import com.github.ked4ma.atcoder.utils.list.permutation.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 import kotlin.math.min
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
-    val (H, W) = nextLongList()
+    val (H, W) = nextIntList()
     val A = times(H) {
         nextLongList()
     }
@@ -17,12 +16,12 @@ fun main() {
     }
 
     val P = (0 until H).toList()
-    val permP = P.permutations(H.toInt())
+    val permP = P.permutations(H)
     val Q = (0 until W).toList()
-    val permQ = Q.permutations(W.toInt())
+    val permQ = Q.permutations(W)
 
-    fun bbl(list: List<Long>): Long {
-        val arr = list.toLongArray()
+    fun bbl(list: List<Int>): Long {
+        val arr = list.toIntArray()
         var count = 0L
         for (i in 0 until arr.lastIndex) {
             for (j in i + 1 until arr.size) {

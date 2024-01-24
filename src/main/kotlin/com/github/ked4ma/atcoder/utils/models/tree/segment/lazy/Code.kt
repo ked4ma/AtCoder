@@ -1,10 +1,8 @@
 package com.github.ked4ma.atcoder.utils.models.tree.segment.lazy
 
-import com.github.ked4ma.atcoder.utils.array.any.*
 import com.github.ked4ma.atcoder.utils.array.any.d1.*
-import com.github.ked4ma.atcoder.utils.array.long.*
 import com.github.ked4ma.atcoder.utils.array.long.d1.*
-import com.github.ked4ma.atcoder.utils.number.long.bit.*
+import com.github.ked4ma.atcoder.utils.number.int.bit.*
 import kotlin.math.max
 import kotlin.math.min
 
@@ -12,13 +10,13 @@ import kotlin.math.min
 //      https://tsutaj.hatenablog.com/entry/2017/03/30/224339
 //      https://codeforces.com/blog/entry/18051 (Concept)
 class LazySegmentTree(
-    private val n: Long,
+    private val n: Int,
     private val data: LongArray,
     private val lazy: Array<Long?>,
     private val updater: Updater,
     private val evaluator: Evaluator,
 ) {
-    private fun genPropagatedIndices(l: Long, r: Long): List<Long> {
+    private fun genPropagatedIndices(l: Int, r: Int): List<Int> {
         var ll = l + n
         var rr = r + n
         // first number that right shifted all "tailing ZEROs"
@@ -39,7 +37,7 @@ class LazySegmentTree(
         }
     }
 
-    private fun propagate(ids: List<Long>) {
+    private fun propagate(ids: List<Int>) {
         for (i in ids.asReversed()) {
             val v = lazy[i]?.let { it shr evaluator.propShift } ?: continue
             lazy[2 * i] = updater.action(lazy[2 * i] ?: 0L, v)
@@ -50,7 +48,7 @@ class LazySegmentTree(
         }
     }
 
-    fun update(l: Long, r: Long, x: Long) {
+    fun update(l: Int, r: Int, x: Long) {
         val ids = genPropagatedIndices(l, r)
         propagate(ids)
 
@@ -78,7 +76,7 @@ class LazySegmentTree(
         }
     }
 
-    fun query(l: Long, r: Long): Long {
+    fun query(l: Int, r: Int): Long {
         propagate(genPropagatedIndices(l, r))
 
         var ll = l + n
@@ -114,23 +112,23 @@ class LazySegmentTree(
         var ofst = n
         while (l < 2 * n) {
             for (i in l..r) {
-                sb.append(" ".repeat(((ofst - 1) * (len + 2) / 2).toInt()))
+                sb.append(" ".repeat(((ofst - 1) * (len + 2) / 2)))
                 sb.append("%${len}s".format(data[i].toString()))
                 // if (i < n) sb.append("/${lazy[i]}")
                 if (i < r) sb.append(", ")
-                sb.append(" ".repeat(((ofst - 1) * (len + 2) / 2).toInt()))
+                sb.append(" ".repeat(((ofst - 1) * (len + 2) / 2)))
                 if (i == r) sb.append("\n")
             }
             l = l shl 1
             r = (r shl 1) or 1
             ofst = ofst shr 1
         }
-        sb.append("=".repeat(((len + 2) * n).toInt()))
+        sb.append("=".repeat(((len + 2) * n)))
         return sb.toString()
     }
 
     companion object {
-        private fun arrSize(n: Long): Long {
+        private fun arrSize(n: Int): Int {
             var res = n.takeHighestOneBit()
             while (res < n) {
                 res = res shl 1
@@ -143,7 +141,7 @@ class LazySegmentTree(
             updater: Updater,
             evaluator: Evaluator,
         ): LazySegmentTree {
-            val size = arrSize(origin.size.toLong())
+            val size = arrSize(origin.size)
             val arr = sizedLongArray(2 * size, 0L)
             origin.forEachIndexed { index, t ->
                 arr[size + index] = t
@@ -159,13 +157,13 @@ class LazySegmentTree(
         }
 
         fun of(
-            n: Long,
+            n: Int,
             updater: Updater,
             evaluator: Evaluator,
         ): LazySegmentTree {
             val size = arrSize(n)
             val arr = sizedLongArray(2 * size, 0L)
-            val d = sizedArray<Long?>(2 * size, null)
+            val d = sizedArray<Long?>(2 * size.toInt(), null)
             return LazySegmentTree(
                 size,
                 arr,
@@ -186,11 +184,11 @@ enum class Updater(
 
 enum class Evaluator(
     val action: (Long, Long) -> Long,
-    val propShift: Long,
+    val propShift: Int,
     val init: Long,
 ) {
-    RmQ(::min, 0L, Long.MAX_VALUE),
-    RMQ(::max, 0L, Long.MIN_VALUE),
-    RSQ({ a, b -> a + b }, 1L, 0L)
+    RmQ(::min, 0, Long.MAX_VALUE),
+    RMQ(::max, 0, Long.MIN_VALUE),
+    RSQ({ a, b -> a + b }, 1, 0L)
 }
 

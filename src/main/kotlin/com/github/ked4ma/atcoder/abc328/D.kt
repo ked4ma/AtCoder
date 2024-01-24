@@ -14,7 +14,7 @@ fun main() {
             i++
         } else { // 'C'
             if (i >= 2 && S[i - 2] == 'A' && S[i - 1] == 'B' && S[i] == 'C') {
-                times(3) {
+                times(3) { _: Int ->
                     S.removeAt(i - 2)
                 }
                 i = (i - 4).coerceAtLeast(0)

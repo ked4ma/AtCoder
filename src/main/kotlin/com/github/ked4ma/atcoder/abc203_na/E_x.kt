@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc203_na
 
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 /**
  * it's important to reduce redundant calc cost

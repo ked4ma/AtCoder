@@ -1,8 +1,8 @@
 package com.github.ked4ma.atcoder.abc194_na
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d1.*
 import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.max
 
 // https://ikatakos.com/pot/programming_algorithm/contest_history/atcoder/2021/0306_abc194#e_-_mex_min

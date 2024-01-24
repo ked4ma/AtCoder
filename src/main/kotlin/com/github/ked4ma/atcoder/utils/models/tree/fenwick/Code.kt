@@ -7,8 +7,8 @@ import com.github.ked4ma.atcoder.utils.debug.*
 // https://qiita.com/R_olldIce/items/f2f7930e7f67963f0493
 // http://hos.ac/slides/20140319_bit.pdf
 // Also Called BIT (binary indexed tree)
-class FenwickTree(private val size: Long) {
-    private val arr = LongArray(size.toInt()) { 0L }
+class FenwickTree(private val size: Int) {
+    private val arr = LongArray(size) { 0L }
 
     fun add(index: Int, value: Long) {
         _debug_require(index in 0 until size) { "index must be in range [0,$this)" }

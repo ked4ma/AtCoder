@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc327
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d2.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.max
 import kotlin.math.sqrt
 

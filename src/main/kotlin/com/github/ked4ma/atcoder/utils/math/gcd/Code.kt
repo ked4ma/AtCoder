@@ -1,6 +1,13 @@
 package com.github.ked4ma.atcoder.utils.math.gcd
 
 // gcd
+fun gcd(x: Int, y: Int): Int {
+    fun innerGcd(x: Int, y: Int): Int {
+        return if (x % y == 0) y else innerGcd(y, x % y)
+    }
+    return if (x >= y) innerGcd(x, y) else innerGcd(y, x)
+}
+
 fun gcd(x: Long, y: Long): Long {
     fun innerGcd(x: Long, y: Long): Long {
         return if (x % y == 0L) y else innerGcd(y, x % y)

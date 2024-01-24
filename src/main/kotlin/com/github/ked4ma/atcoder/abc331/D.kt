@@ -8,7 +8,7 @@ import com.github.ked4ma.atcoder.utils.repeat.*
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
     val (N, Q) = nextLongList()
-    val P = times(N) {
+    val P = timesWithLong(N) {
         next().map { if (it == 'B') 1L else 0L }.toTypedArray()
     }.toTypedArray()
     val cum = CumulativeSum2D(P as Array<Array<out Number>>)

@@ -1,6 +1,5 @@
 package com.github.ked4ma.atcoder.abc277_na
 
-import com.github.ked4ma.atcoder.utils.array.any.*
 import com.github.ked4ma.atcoder.utils.array.any.d1.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.repeat.*
@@ -9,35 +8,35 @@ import kotlin.math.min
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
     val (N, M, K) = nextLongList()
-    val G = sizedArray(2 * N) {
+    val G = sizedArray(2 * N.toInt()) {
         mutableSetOf<Pair<Long, Long>>() // dest, cost
     }
     loop(M) {
         val (u, v, a) = nextLongList()
         if (a == 1L) {
-            G[u - 1].add(v - 1 to 1)
-            G[v - 1].add(u - 1 to 1)
+            G[u.toInt() - 1].add(v - 1 to 1)
+            G[v.toInt() - 1].add(u - 1 to 1)
         } else {
-            G[u - 1 + N].add(v - 1 + N to 1)
-            G[v - 1 + N].add(u - 1 + N to 1)
+            G[u.toInt() - 1 + N.toInt()].add(v - 1 + N to 1)
+            G[v.toInt() - 1 + N.toInt()].add(u - 1 + N to 1)
         }
     }
     if (K > 0) {
         nextLongList().forEach {
-            G[it - 1].add(it - 1 + N to 0)
-            G[it - 1 + N].add(it - 1 to 0)
+            G[it.toInt() - 1].add(it - 1 + N to 0)
+            G[it.toInt() - 1 + N.toInt()].add(it - 1 to 0)
         }
     }
 
     val queue = ArrayDeque<Long>()
     queue.addLast(0)
-    val costs = sizedArray(2 * N, Long.MAX_VALUE)
+    val costs = sizedArray(2 * N.toInt(), Long.MAX_VALUE)
     costs[0] = 0
     while (queue.isNotEmpty()) {
-        val n = queue.removeFirst()
+        val n = queue.removeFirst().toInt()
         G[n].forEach { (next, c) ->
-            if (costs[n] + c < costs[next]) {
-                costs[next] = costs[n] + c
+            if (costs[n] + c < costs[next.toInt()]) {
+                costs[next.toInt()] = costs[n] + c
                 if (c == 0L) {
                     queue.addFirst(next)
                 } else {
@@ -46,7 +45,7 @@ fun main() {
             }
         }
     }
-    val ans = min(costs[N - 1], costs[2 * N - 1])
+    val ans = min(costs[N.toInt() - 1], costs[2 * N.toInt() - 1])
     println(if (ans == Long.MAX_VALUE) -1 else ans)
 
 //    val (N, M, K) = nextLongList()

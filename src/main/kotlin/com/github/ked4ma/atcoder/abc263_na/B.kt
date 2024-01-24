@@ -1,6 +1,6 @@
 package com.github.ked4ma.atcoder.abc263_na
 
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     var n = nextInt()

@@ -1,13 +1,7 @@
 package com.github.ked4ma.atcoder.abc337
 
-import com.github.ked4ma.atcoder.utils.array.any.d1.*
-import com.github.ked4ma.atcoder.utils.array.long.d1.*
-import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
-import com.github.ked4ma.atcoder.utils.list.*
 import com.github.ked4ma.atcoder.utils.models.tree.fenwick.*
-import com.github.ked4ma.atcoder.utils.repeat.*
 import java.io.PrintWriter
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
@@ -19,10 +13,10 @@ fun main() {
         G[u].add(v)
         G[v].add(u)
     }
-    val bit = FenwickTree(N.toLong())
-    val d = LongArray(N) { 0L}
+    val bit = FenwickTree(N)
+    val d = LongArray(N) { 0L }
     val dc = Array(N) { mutableListOf<Long>() }
-    fun dfs(v: Int, p: Int= -1) {
+    fun dfs(v: Int, p: Int = -1) {
         bit.add(v, 1)
         d[v] -= bit.sum(0, v)
         for (u in G[v]) {
@@ -41,12 +35,12 @@ fun main() {
         base += d[it]
     }
 
-    val ans = LongArray(N){0L}
+    val ans = LongArray(N) { 0L }
     fun dfs2(v: Int, x: Long, p: Int = -1) {
         ans[v] = x
-        loop(G[v].size.toLong()) { i ->
+        repeat(G[v].size) { i ->
             val u = G[v][i]
-            if (u == p) return@loop
+            if (u == p) return@repeat
             var nx = x
             nx -= dc[v][i]
             nx += u - d[u]

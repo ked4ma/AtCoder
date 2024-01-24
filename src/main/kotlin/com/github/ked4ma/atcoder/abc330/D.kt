@@ -1,14 +1,13 @@
 package com.github.ked4ma.atcoder.abc330
 
-import com.github.ked4ma.atcoder.utils.array.deprecated.*
+import com.github.ked4ma.atcoder.utils.array.any.d2.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
     val N = nextInt()
-    val S = times(N.toLong()) {
+    val S = timesWithLong(N.toLong()) {
         next().toCharArray()
     }.toTypedArray()
 

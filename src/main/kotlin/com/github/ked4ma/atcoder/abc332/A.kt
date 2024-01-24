@@ -6,7 +6,7 @@ import com.github.ked4ma.atcoder.utils.repeat.*
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
     val (N, S, K) = nextLongList()
-    val total = times(N) {
+    val total = timesWithLong(N) {
         val (P, Q) = nextLongList()
         P * Q
     }.sum()

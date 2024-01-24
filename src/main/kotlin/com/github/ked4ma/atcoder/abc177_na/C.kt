@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc177_na
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.deprecated.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 
 fun main() {
     val MOD = 1_000_000_007L

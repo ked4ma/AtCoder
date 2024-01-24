@@ -1,20 +1,18 @@
 package com.github.ked4ma.atcoder.abc337
 
-import com.github.ked4ma.atcoder.utils.array.long.d1.*
-import com.github.ked4ma.atcoder.utils.array.long.*
+import com.github.ked4ma.atcoder.utils.array.int.d1.*
 import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.list.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import java.util.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
-    val N = nextLong()
-    val A = nextLongList()
-    val inv = sizedLongArray(N + 1, 0L)
-    var F = -1L
+    val N = nextInt()
+    val A = nextIntList()
+    val inv = sizedIntArray(N + 1, 0)
+    var F = -1
     for (i in 1..N) {
-        if(A[i - 1] == -1L) {
+        if (A[i - 1] == -1) {
             F = i
         } else {
             inv[A[i - 1]] = i
