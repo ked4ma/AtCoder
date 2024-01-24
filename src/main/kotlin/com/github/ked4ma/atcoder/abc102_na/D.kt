@@ -1,7 +1,6 @@
 package com.github.ked4ma.atcoder.abc102_na
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min

@@ -13,7 +13,7 @@ function parsePackages() {
   for F in ${ARR[@]}; do
     FILES=($(grep "import com.github.ked4ma.atcoder.utils" $F | \
             grep -v debug | \
-            awk -F' ' '{print "src/main/java/"$2}' | \
+            awk -F' ' '{print "src/main/kotlin/"$2}' | \
             sed 's|\.|/|g' | \
             sed 's/\*/Code.kt/'))
     PACKS+=("${FILES[@]}")
@@ -38,7 +38,7 @@ function parseKotlinPackages() {
 # 3. remove debug functions
 # 4. remove comment
 ## 1 is operated as {print}
-declare -a TARGETS=(src/main/java/com/github/ked4ma/atcoder/$1/$2.kt)
+declare -a TARGETS=(src/main/kotlin/com/github/ked4ma/atcoder/$1/$2.kt)
 declare -a PACKAGES=()
 while true; do
   parsePackages TARGETS PACKAGES
@@ -62,7 +62,7 @@ for P in ${KOTLIN_PACKAGES[@]}; do
   LINES+=("$(echo $P | awk '{print "import", $1}')")
 done
 LINES+=(
-  "$(awk 1 src/main/java/com/github/ked4ma/atcoder/$1/$2.kt ${PACKAGES[@]} | \
+  "$(awk 1 src/main/kotlin/com/github/ked4ma/atcoder/$1/$2.kt ${PACKAGES[@]} | \
     grep -v com.github.ked4ma.atcoder | \
     grep -v _debug_ | \
     grep -v -e "^ *import kotlin" | \

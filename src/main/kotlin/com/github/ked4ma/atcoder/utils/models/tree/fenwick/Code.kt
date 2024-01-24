@@ -1,7 +1,5 @@
 package com.github.ked4ma.atcoder.utils.models.tree.fenwick
 
-import com.github.ked4ma.atcoder.utils.array.long.*
-import com.github.ked4ma.atcoder.utils.array.long.d1.*
 import com.github.ked4ma.atcoder.utils.debug.*
 
 // https://qiita.com/R_olldIce/items/f2f7930e7f67963f0493

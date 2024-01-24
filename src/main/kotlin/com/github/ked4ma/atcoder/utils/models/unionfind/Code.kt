@@ -1,8 +1,6 @@
 package com.github.ked4ma.atcoder.utils.models.unionfind
 
 import com.github.ked4ma.atcoder.utils.array.int.d1.*
-import com.github.ked4ma.atcoder.utils.array.long.*
-import com.github.ked4ma.atcoder.utils.array.long.d1.*
 
 class UnionFind(val size: Int) {
     private val r = sizedIntArray(size) { -1 }
