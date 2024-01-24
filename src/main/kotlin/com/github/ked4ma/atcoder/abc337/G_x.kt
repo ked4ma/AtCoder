@@ -12,8 +12,6 @@ import java.io.PrintWriter
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]
 fun main() {
-    val a = 0L
-    _debug_println((a as Int))
     val N = nextInt()
     val G = Array(N) { mutableListOf<Int>() }
     for (i in 0 until N - 1) {

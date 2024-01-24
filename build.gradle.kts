@@ -15,18 +15,18 @@ repositories {
 
 sourceSets {
     if (hasProperty("contest")) {
-        println( "src/main/java/com/github/ked4ma/atcoder/${findProperty("contest")}")
-        getByName("main").java.setSrcDirs(
+        println( "src/main/kotlin/com/github/ked4ma/atcoder/${findProperty("contest")}")
+        getByName("main").kotlin.setSrcDirs(
             setOf(
-                "src/main/java/com/github/ked4ma/atcoder/${findProperty("contest")}",
-                "src/main/java/com/github/ked4ma/atcoder/utils/"
+                "src/main/kotlin/com/github/ked4ma/atcoder/${findProperty("contest")}",
+                "src/main/kotlin/com/github/ked4ma/atcoder/utils/"
             )
         )
     } else if (hasProperty("problems")) {
-        getByName("main").java.setSrcDirs(
+        getByName("main").kotlin.setSrcDirs(
             setOf(
-                "src/main/java/com/github/ked4ma/atcoder/problems",
-                "src/main/java/com/github/ked4ma/atcoder/utils/"
+                "src/main/kotlin/com/github/ked4ma/atcoder/problems",
+                "src/main/kotlin/com/github/ked4ma/atcoder/utils/"
             )
         )
     }

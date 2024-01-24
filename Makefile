@@ -28,17 +28,17 @@ check-vars:
 init: clean
 ifeq ($(RUN_ARGS_LEN), 1)
 	$(eval CONTEST_BRANCH=$(word 1, $(RUN_ARGS)))
-	@if [ $(BRANCH) = "feature/$(CONTEST_BRANCH)" ]; then \
-	  echo "[Info] Already in feature/$(CONTEST_BRANCH) branch"; \
-	  if [ ! -d src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH) ]; then \
-	    mkdir -p src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH); \
+	@if [ $(BRANCH) = "contest/$(CONTEST_BRANCH)" ]; then \
+	  echo "[Info] Already in contest/$(CONTEST_BRANCH) branch"; \
+	  if [ ! -d src/main/kotlin/com/github/ked4ma/atcoder/$(CONTEST_BRANCH) ]; then \
+	    mkdir -p src/main/kotlin/com/github/ked4ma/atcoder/$(CONTEST_BRANCH); \
 	  fi \
-	elif [ -d src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH) ]; then \
+	elif [ -d src/main/kotlin/com/github/ked4ma/atcoder/$(CONTEST_BRANCH) ]; then \
 	  echo "[Info] $(CONTEST_BRANCH) is already finished."; \
 	else \
 	  echo "[Info] preparing for the contest ($(CONTEST))"; \
-	  git switch -c feature/$(CONTEST_BRANCH); \
-	  mkdir -p src/main/java/com/github/ked4ma/atcoder/$(CONTEST_BRANCH); \
+	  git switch -c contest/$(CONTEST_BRANCH); \
+	  mkdir -p src/main/kotlin/com/github/ked4ma/atcoder/$(CONTEST_BRANCH); \
 	fi
 else
 	@echo "[Usage] make init <CONTEST NAME>"
@@ -58,8 +58,8 @@ finish:
 	@echo "[Info] Finish $(CONTEST_BRANCH)"
 	git commit -a -m "$(CONTEST_BRANCH)"
 	git switch main
-	git merge --no-ff feature/$(CONTEST_BRANCH)
-	git branch -d feature/$(CONTEST_BRANCH)
+	git merge --no-ff contest/$(CONTEST_BRANCH)
+	git branch -d contest/$(CONTEST_BRANCH)
 	git tag $(CONTEST_BRANCH)
 	git push origin main --tags
 

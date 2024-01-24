@@ -1,13 +1,16 @@
 package com.github.ked4ma.atcoder
 
 import com.github.ked4ma.atcoder.util.http.AtcoderCookies
-import com.github.ked4ma.atcoder.util.login
 import com.github.ked4ma.atcoder.util.parseTask
-import com.github.ked4ma.atcoder.util.runShell
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.cookies.HttpCookies
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
@@ -18,7 +21,8 @@ import java.io.PipedInputStream
 import java.io.PipedOutputStream
 import java.lang.reflect.Method
 
-class TestRunner {
+// TODO consider to commonize to reusable codes
+class AtCoderProblemsTestRunner {
     @ParameterizedTest
     @MethodSource("sampleProvider")
     fun testEachSample(input: String, expected: String) = runBlocking {
@@ -62,9 +66,8 @@ class TestRunner {
     }
 
     companion object {
+        private lateinit var CONTEST: String
         private lateinit var TASK: String
-        private lateinit var BRANCH: String
-        private var CONTEST_DIR: String? = null
         private var METHOD: Method? = null
         private lateinit var CLIENT: HttpClient
 
@@ -77,29 +80,16 @@ class TestRunner {
         @BeforeAll
         @JvmStatic
         fun setup() {
-            TASK = System.getProperty("task")?.takeIf(String::isNotBlank) ?: "A"
-            BRANCH = System.getProperty("branch")?.takeIf(String::isNotBlank) ?: runShell("git branch --show-current")
-            val contestRegex = "feature/(.+)".toRegex()
-            CONTEST_DIR = contestRegex.matchEntire(BRANCH)?.groupValues?.get(1)
-                ?.replace("_test", "")
-            println("$BRANCH, $TASK")
-            println("$CONTEST_DIR")
-
-            METHOD = Class.forName("com.github.ked4ma.atcoder.$CONTEST_DIR.${TASK}Kt")
-                .getMethod("main")
+            val clazz = Class.forName("com.github.ked4ma.atcoder.problems.CodeKt")
+            CONTEST = clazz.getDeclaredField("CONTEST").get(clazz) as String
+            TASK = clazz.getDeclaredField("TASK").get(clazz) as String
+            METHOD = clazz.getMethod("main")
 
             System.setIn(INPUT_STREAM)
 
             CLIENT = HttpClient(CIO) {
                 install(AtcoderCookies)
                 install(HttpCookies)
-            }
-            if (!BRANCH.endsWith("_na")) {
-                runBlocking(Dispatchers.IO) {
-                    val user = System.getenv("ATCODER_USER")
-                    val password = System.getenv("ATCODER_PASSWORD")
-                    CLIENT.login(user, password)
-                }
             }
         }
 
@@ -114,18 +104,14 @@ class TestRunner {
         @JvmStatic
         fun sampleProvider(): List<Arguments> {
             METHOD ?: run {
-                println("target method is not found ($CONTEST_DIR/$TASK)")
-                return emptyList()
-            }
-            val contestDir = CONTEST_DIR ?: run {
-                println("[CAUTION]: Nothing to execute because current branch is \"$BRANCH\".")
+                println("target method is not found (contest=$CONTEST, task=$TASK)")
                 return emptyList()
             }
 
             return runBlocking {
                 val samples = CLIENT.parseTask(
-                    contestDir.split("_")[0],
-                    TASK.split("_")[0]
+                    CONTEST,
+                    TASK,
                 )
                 CLIENT.close()
                 return@runBlocking samples
