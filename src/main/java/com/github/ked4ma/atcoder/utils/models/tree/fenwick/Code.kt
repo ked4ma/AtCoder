@@ -8,9 +8,9 @@ import com.github.ked4ma.atcoder.utils.debug.*
 // http://hos.ac/slides/20140319_bit.pdf
 // Also Called BIT (binary indexed tree)
 class FenwickTree(private val size: Long) {
-    private val arr = sizedLongArray(size, 0L)
+    private val arr = LongArray(size.toInt()) { 0L }
 
-    fun add(index: Long, value: Long) {
+    fun add(index: Int, value: Long) {
         _debug_require(index in 0 until size) { "index must be in range [0,$this)" }
         var i = index + 1
         while (i <= size) {
@@ -23,7 +23,7 @@ class FenwickTree(private val size: Long) {
      * sum of [0, r)
      * @param right (exclusive)
      */
-    private fun sum(right: Long): Long {
+    private fun sum(right: Int): Long {
         var ans = 0L
         var r = right
         while (r > 0) {
@@ -33,7 +33,7 @@ class FenwickTree(private val size: Long) {
         return ans
     }
 
-    fun sum(left: Long, right: Long): Long {
+    fun sum(left: Int, right: Int): Long {
         _debug_require(left in 0..right && right <= size) { "need: 0 <= left <= right <= $size" }
         return sum(right) - sum(left)
     }
