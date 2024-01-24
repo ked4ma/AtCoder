@@ -1,7 +1,6 @@
 package com.github.ked4ma.atcoder.abc173
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.absoluteValue
 
 private const val MOD = 1_000_000_007

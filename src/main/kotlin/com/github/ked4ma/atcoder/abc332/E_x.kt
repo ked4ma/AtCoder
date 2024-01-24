@@ -3,7 +3,6 @@ package com.github.ked4ma.atcoder.abc332
 import com.github.ked4ma.atcoder.utils.array.double.d2.*
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.list.*
 import kotlin.math.min
 import kotlin.math.pow
 

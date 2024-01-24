@@ -1,6 +1,5 @@
 package com.github.ked4ma.atcoder.abc337
 
-import com.github.ked4ma.atcoder.utils.array.long.*
 import com.github.ked4ma.atcoder.utils.array.long.d1.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import kotlin.math.min

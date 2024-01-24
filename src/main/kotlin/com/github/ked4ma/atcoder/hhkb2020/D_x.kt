@@ -1,7 +1,6 @@
 package com.github.ked4ma.atcoder.hhkb2020
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.math.mod.*
 import kotlin.math.max
 import kotlin.math.min
