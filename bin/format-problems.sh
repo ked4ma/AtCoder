@@ -62,7 +62,7 @@ for P in ${KOTLIN_PACKAGES[@]}; do
   LINES+=("$(echo $P | awk '{print "import", $1}')")
 done
 LINES+=(
-  "$(awk 1 src/main/kotlin/com/github/ked4ma/atcoder/$1/$2.kt ${PACKAGES[@]} | \
+  "$(awk 1 src/main/kotlin/com/github/ked4ma/atcoder/problems/Code.kt ${PACKAGES[@]} | \
     grep -v com.github.ked4ma.atcoder | \
     grep -v _debug_ | \
     grep -v -e "^ *import kotlin" | \
