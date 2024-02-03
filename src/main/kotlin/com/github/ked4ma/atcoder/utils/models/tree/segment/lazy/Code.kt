@@ -1,7 +1,6 @@
 package com.github.ked4ma.atcoder.utils.models.tree.segment.lazy
 
 import com.github.ked4ma.atcoder.utils.array.any.d1.*
-import com.github.ked4ma.atcoder.utils.array.long.d1.*
 import com.github.ked4ma.atcoder.utils.number.int.bit.*
 import kotlin.math.max
 import kotlin.math.min
@@ -17,6 +16,7 @@ class LazySegmentTree(
     private val evaluator: Evaluator,
 ) {
     private fun genPropagatedIndices(l: Int, r: Int): List<Int> {
+        if (l >= r) return emptyList()
         var ll = l + n
         var rr = r + n
         // first number that right shifted all "tailing ZEROs"
@@ -142,7 +142,7 @@ class LazySegmentTree(
             evaluator: Evaluator,
         ): LazySegmentTree {
             val size = arrSize(origin.size)
-            val arr = sizedLongArray(2 * size, 0L)
+            val arr = LongArray(2 * size)
             origin.forEachIndexed { index, t ->
                 arr[size + index] = t
             }
@@ -162,8 +162,8 @@ class LazySegmentTree(
             evaluator: Evaluator,
         ): LazySegmentTree {
             val size = arrSize(n)
-            val arr = sizedLongArray(2 * size, 0L)
-            val d = sizedArray<Long?>(2 * size.toInt(), null)
+            val arr = LongArray(2 * size)
+            val d = sizedArray<Long?>(2 * size, null)
             return LazySegmentTree(
                 size,
                 arr,
