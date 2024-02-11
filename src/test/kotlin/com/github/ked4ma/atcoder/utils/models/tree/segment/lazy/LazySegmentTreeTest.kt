@@ -1,18 +1,19 @@
 package com.github.ked4ma.atcoder.utils.models.tree.segment.lazy
 
+import com.github.ked4ma.atcoder.utils.debug.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import kotlin.math.max
+import kotlin.math.min
 
 class LazySegmentTreeTest {
     private val n = 16L
-    private val data = (1..n).toList().toLongArray()
+    private val data = (1..n).toList()
 
     @Test
-    fun test_RUQ_RMQ() {
-        val segTree = LazySegmentTree.of(data, Updater.RUQ, Evaluator.RMQ)
-        println(segTree)
-        segTree.build()
-        println(segTree)
+    fun test_RUQ_RMQ() { // update + max(query)
+        val segTree = LazySegmentTree.RUQ_RMQ(data.size)
+        segTree.init(data)
         assertEquals(5L, segTree.query(1, 5))
         assertEquals(8L, segTree.query(6, 8))
         assertEquals(7L, segTree.query(0, 7))
@@ -35,11 +36,9 @@ class LazySegmentTreeTest {
     }
 
     @Test
-    fun test_RUQ_RmQ() {
-        val segTree = LazySegmentTree.of(data, Updater.RUQ, Evaluator.RmQ)
-        println(segTree)
-        segTree.build()
-        println(segTree)
+    fun test_RUQ_RmQ() { // update + min(query)
+        val segTree = LazySegmentTree.RUQ_RmQ(data.size)
+        segTree.init(data)
         assertEquals(2L, segTree.query(1, 5))
         assertEquals(7L, segTree.query(6, 8))
         assertEquals(1L, segTree.query(0, 7))
@@ -61,11 +60,9 @@ class LazySegmentTreeTest {
     }
 
     @Test
-    fun test_RUQ_RSQ() {
-        val segTree = LazySegmentTree.of(data, Updater.RUQ, Evaluator.RSQ)
-        println(segTree)
-        segTree.build()
-        println(segTree)
+    fun test_RUQ_RSQ() { // update + sum(query)
+        val segTree = LazySegmentTree.RUQ_RSQ(data.size)
+        segTree.init(data)
         assertEquals(14L, segTree.query(1, 5))
         assertEquals(15L, segTree.query(6, 8))
         assertEquals(28L, segTree.query(0, 7))
@@ -79,7 +76,6 @@ class LazySegmentTreeTest {
         assertEquals(10L, segTree.query(6, 7))
         assertEquals(8L, segTree.query(7, 8))
         assertEquals(9L, segTree.query(8, 9))
-        println(segTree)
         assertEquals(78L, segTree.query(0, 9))
         assertEquals(99L, segTree.query(0, 11))
         assertEquals(8L, segTree.query(7, 8))
@@ -97,17 +93,14 @@ class LazySegmentTreeTest {
 
 
     @Test
-    fun test_RAQ_RMQ() {
-        val segTree = LazySegmentTree.of(data, Updater.RAQ, Evaluator.RMQ)
-        println(segTree)
-        segTree.build()
-        println(segTree)
+    fun test_RAQ_RMQ() { // add + max(query)
+        val segTree = LazySegmentTree.RAQ_RMQ(data.size)
+        segTree.init(data)
         assertEquals(5L, segTree.query(1, 5))
         assertEquals(8L, segTree.query(6, 8))
         assertEquals(7L, segTree.query(0, 7))
         segTree.update(1, 7, 10)
         assertEquals(1L, segTree.query(0, 1))
-        println(segTree)
         assertEquals(12L, segTree.query(1, 2))
 
         assertEquals(17L, segTree.query(0, 9))
@@ -126,10 +119,8 @@ class LazySegmentTreeTest {
 
     @Test
     fun test_RAQ_RmQ() {
-        val segTree = LazySegmentTree.of(data, Updater.RAQ, Evaluator.RmQ)
-        println(segTree)
-        segTree.build()
-        println(segTree)
+        val segTree = LazySegmentTree.RAQ_RmQ(data.size)
+        segTree.init(data)
         assertEquals(2L, segTree.query(1, 5))
         assertEquals(7L, segTree.query(6, 8))
         assertEquals(1L, segTree.query(0, 7))
@@ -152,11 +143,9 @@ class LazySegmentTreeTest {
     }
 
     @Test
-    fun test_RAQ_RSQ() {
-        val segTree = LazySegmentTree.of(data, Updater.RAQ, Evaluator.RSQ)
-        println(segTree)
-        segTree.build()
-        println(segTree)
+    fun test_RAQ_RSQ() { // add + sum(query)
+        val segTree = LazySegmentTree.RAQ_RSQ(data.size)
+        segTree.init(data)
         assertEquals(14L, segTree.query(1, 5))
         assertEquals(15L, segTree.query(6, 8))
         assertEquals(28L, segTree.query(0, 7))
@@ -170,7 +159,6 @@ class LazySegmentTreeTest {
         assertEquals(17L, segTree.query(6, 7))
         assertEquals(8L, segTree.query(7, 8))
         assertEquals(9L, segTree.query(8, 9))
-        println(segTree)
         assertEquals(105L, segTree.query(0, 9))
         assertEquals(126L, segTree.query(0, 11))
         assertEquals(8L, segTree.query(7, 8))

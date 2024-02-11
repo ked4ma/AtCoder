@@ -1,24 +1,26 @@
 package com.github.ked4ma.atcoder.abc338
 
 import com.github.ked4ma.atcoder.utils.debug.*
-import com.github.ked4ma.atcoder.utils.input.buffered.*
+import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.models.tree.segment.lazy.*
-import java.io.BufferedReader
-import java.io.InputStreamReader
 
 // make run <TASK: A/B/...> [BRANCH=contest/<CONTEST: abc000>]
 fun main() {
-    BufferedReader(InputStreamReader(System.`in`)).use { br ->
-        solve(br)
+//    BufferedReader(InputStreamReader(System.`in`)).use { br ->
+//        solve(br)
+//    }
+//}
+//
+//private fun solve(br: BufferedReader) {
+    val (N, M) = nextIntList()
+    val X = nextIntList().map { it - 1 }
+
+    val segTree = LazySegmentTree.RAQ_RSQ(N)
+    val segTree2 = LazySegmentTree.RAQ_RmQ(N)
+    repeat(N) {
+        segTree2.set(it, 0)
     }
-}
-
-private fun solve(br: BufferedReader) {
-    val (N, M) = nextIntList(br)
-    val X = nextIntList(br).map { it - 1 }
-
-    val segTree = LazySegmentTree.of(N, Updater.RAQ, Evaluator.RSQ)
-    val segTree2 = LazySegmentTree.of(N, Updater.RAQ, Evaluator.RmQ)
+    segTree2.build()
     for (i in 0 until X.lastIndex) {
         val a: Int
         val b: Int
@@ -41,6 +43,8 @@ private fun solve(br: BufferedReader) {
             segTree2.update(b, N, (d1 - d2).toLong())
         }
     }
+    _debug_println(segTree.query(0, N))
     _debug_println(segTree2.query(0, N))
+    if (N < 10) _debug_println(segTree2.dat.joinToString(", "))
     println(segTree.query(0, N) + segTree2.query(0, N))
 }
