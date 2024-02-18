@@ -45,6 +45,5 @@ fun main() {
     }
     _debug_println(segTree.query(0, N))
     _debug_println(segTree2.query(0, N))
-    if (N < 10) _debug_println(segTree2.dat.joinToString(", "))
     println(segTree.query(0, N) + segTree2.query(0, N))
 }
