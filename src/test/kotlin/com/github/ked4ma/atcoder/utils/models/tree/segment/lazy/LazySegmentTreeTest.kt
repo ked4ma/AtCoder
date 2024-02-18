@@ -1,10 +1,7 @@
 package com.github.ked4ma.atcoder.utils.models.tree.segment.lazy
 
-import com.github.ked4ma.atcoder.utils.debug.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import kotlin.math.max
-import kotlin.math.min
 
 class LazySegmentTreeTest {
     private val n = 16L

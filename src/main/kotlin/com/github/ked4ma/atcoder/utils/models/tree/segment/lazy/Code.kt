@@ -1,16 +1,10 @@
 package com.github.ked4ma.atcoder.utils.models.tree.segment.lazy
 
+import com.github.ked4ma.atcoder.utils.models.tree.segment.type.*
 import kotlin.math.max
 import kotlin.math.min
 
 // ref : https://algo-logic.info/segment-tree/
-typealias X = Long
-typealias M = Long
-typealias FX = (X, X) -> X
-typealias FA = (X, M) -> X
-typealias FM = (M, M) -> M
-typealias FP = (M, Int) -> M
-
 class LazySegmentTree(
     n: Int,
     private val fx: FX,
@@ -21,7 +15,7 @@ class LazySegmentTree(
     private val em: M
 ) {
     private val n: Int
-    val dat: LongArray
+    private val dat: LongArray
     private val lazy: LongArray
 
     init {
@@ -44,7 +38,14 @@ class LazySegmentTree(
         }
     }
 
-    fun init(data: List<Long>) {
+    fun init(data: Iterable<Long>) {
+        data.forEachIndexed { i, x ->
+            set(i, x)
+        }
+        build()
+    }
+
+    fun init(data: LongArray) {
         data.forEachIndexed { i, x ->
             set(i, x)
         }

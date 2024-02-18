@@ -1,80 +1,114 @@
 package com.github.ked4ma.atcoder.utils.models.tree.segment
 
-// https://tsutaj.hatenablog.com/entry/2017/03/29/204841
-class SegmentTree<T> private constructor(
-    private val arr: Array<T>,
-    private val n: Int,
-    private val operator: (T, T) -> T
+import com.github.ked4ma.atcoder.utils.models.tree.segment.type.*
+import kotlin.math.max
+import kotlin.math.min
+
+// https://algo-logic.info/segment-tree/
+class SegmentTree(
+    n: Int,
+    private val fx: FX,
+    private val fm: FX,
+    private val ex: X,
 ) {
+    private val n: Int
+    private val dat: LongArray
+
     init {
-        for (i in n - 2 downTo 0) {
-            arr[i] = operator(arr[2 * i + 1], arr[2 * i + 2])
+        var x = 1
+        while (x < n) {
+            x *= 2
+        }
+        this.n = x
+        this.dat = LongArray(2 * this.n) { ex }
+    }
+
+    fun set(i: Int, x: X) {
+        dat[i + n - 1] = x;
+    }
+
+    fun build() {
+        for (k in n - 2 downTo 0) {
+            dat[k] = fx(dat[2 * k + 1], dat[2 * k + 2])
         }
     }
 
-    fun update(index: Int, updater: (T) -> T) {
-        var i = index + n - 1
-        arr[i] = updater(arr[i])
-        while (i > 0) {
-            i = (i - 1) / 2
-            arr[i] = operator(arr[2 * i + 1], arr[2 * i + 2])
+    fun init(data: Iterable<Long>) {
+        data.forEachIndexed { i, x ->
+            set(i, x)
+        }
+        build()
+    }
+
+    fun init(data: LongArray) {
+        data.forEachIndexed { i, x ->
+            set(i, x)
+        }
+        build()
+    }
+
+    fun update(i: Int, x: X) {
+        var index = i + n - 1
+        dat[index] = fm(dat[index], x)
+        while (index > 0) {
+            index = (index - 1) / 2 // parent
+            dat[index] = fx(dat[index * 2 + 1], dat[index * 2 + 2])
         }
     }
 
-    /**
-     * @param a target left (inclusive)
-     * @param b target right (exclusive)
-     * @param k current node index
-     * @param l current target left
-     * @param r current target right
-     */
-    fun get(a: Int, b: Int, k: Int = 0, l: Int = 0, r: Int = n): T {
-        if (r <= a || b <= l) throw IllegalArgumentException("[a($a),b($b)) must be in [l($l),r($r)). k:$k")
-        if (a <= l && r <= b) return arr[k]
-        val mid = (l + r) / 2
-        return when {
-            b <= mid -> get(a, b, 2 * k + 1, l, mid)
-            mid <= a -> get(a, b, 2 * k + 2, mid, r)
-            else -> {
-                operator(
-                    get(a, b, 2 * k + 1, l, mid),
-                    get(a, b, 2 * k + 2, mid, r)
-                )
-            }
+    fun query(a: Int, b: Int, k: Int = 0, l: Int = 0, r: Int = n): X {
+        if (r <= a || b <= l) {
+            return ex
+        } else if (a <= l && r <= b) {
+            return dat[k]
+        } else {
+            val vl = query(a, b, k * 2 + 1, l, (l + r) / 2)
+            val vr = query(a, b, k * 2 + 2, (l + r) / 2, r)
+            return fx(vl, vr)
         }
-    }
-
-    override fun toString(): String {
-        return "SegmentTree[${arr.joinToString(", ")}]"
     }
 
     companion object {
-        inline fun <reified T> of(list: List<T>, initValue: T, noinline operator: (a: T, b: T) -> T): SegmentTree<T> {
-            if (list.isEmpty()) {
-                throw IllegalArgumentException("list parameter size must not be 0")
-            }
-            var n = 1
-            while (n < list.size) {
-                n *= 2
-            }
-            return Array(2 * n - 1) { initValue }.also {
-                // set list value to array
-                list.forEachIndexed { i, v ->
-                    it[i + n - 1] = v
-                }
-            }.let {
-                newInstance(it, n, operator)
-            }
-        }
+        fun RUQ_RMQ(size: Int) = SegmentTree(
+            n = size,
+            fx = { x1, x2 -> max(x1, x2) },
+            fm = { _, m2 -> m2 },
+            ex = Long.MIN_VALUE,
+        )
 
-        inline fun <reified T> of(size: Int, initValue: T, noinline operator: (a: T, b: T) -> T): SegmentTree<T> {
-            var n = 1
-            while (n < size) {
-                n *= 2
-            }
-            return newInstance(Array(2 * n - 1) { initValue }, n, operator)
-        }
+        fun RUQ_RmQ(size: Int) = SegmentTree(
+            n = size,
+            fx = { x1, x2 -> min(x1, x2) },
+            fm = { _, m2 -> m2 },
+            ex = Long.MAX_VALUE,
+        )
 
-        fun <T> newInstance(innerArr: Array<T>, n: Int, operator: (T, T) -> T) = SegmentTree(innerArr, n, operator)
+        fun RUQ_RSQ(size: Int) = SegmentTree(
+            n = size,
+            fx = { x1, x2 -> x1 + x2 },
+            fm = { _, m2 -> m2 },
+            ex = 0L,
+        )
+
+        fun RAQ_RMQ(size: Int) = SegmentTree(
+            n = size,
+            fx = { x1, x2 -> max(x1, x2) },
+            fm = { m1, m2 -> m1 + m2 },
+            ex = Long.MIN_VALUE,
+        )
+
+        fun RAQ_RmQ(size: Int) = SegmentTree(
+            n = size,
+            fx = { x1, x2 -> min(x1, x2) },
+            fm = { m1, m2 -> m1 + m2 },
+            ex = Long.MAX_VALUE,
+        )
+
+        fun RAQ_RSQ(size: Int) = SegmentTree(
+            n = size,
+            fx = { x1, x2 -> x1 + x2 },
+            fm = { m1, m2 -> m1 + m2 },
+            ex = 0L,
+        )
     }
 }
