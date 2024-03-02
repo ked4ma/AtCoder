@@ -20,7 +20,7 @@ class SegmentTree(
             x *= 2
         }
         this.n = x
-        this.dat = LongArray(2 * this.n + 1) { ex }
+        this.dat = LongArray(2 * this.n) { ex }
     }
 
     fun set(i: Int, x: X) {
