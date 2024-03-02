@@ -56,7 +56,7 @@ class GeneralSegmentTree<T>(
             while (x < n) {
                 x *= 2
             }
-            val dat = Array(2 * x + 1) { ex }
+            val dat = Array(2 * x) { ex }
             return GeneralSegmentTree(
                 n = x,
                 dat = dat,
