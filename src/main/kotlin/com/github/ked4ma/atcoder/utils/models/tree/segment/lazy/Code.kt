@@ -24,8 +24,8 @@ class LazySegmentTree(
             x *= 2
         }
         this.n = x
-        this.dat = LongArray(2 * this.n) { ex }
-        this.lazy = LongArray(2 * this.n) { em }
+        this.dat = LongArray(2 * this.n + 1) { ex }
+        this.lazy = LongArray(2 * this.n + 1) { em }
     }
 
     fun set(i: Int, x: X) {
