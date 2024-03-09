@@ -132,6 +132,11 @@ class TestRunner {
             }.map { (input, expected) ->
                 Arguments.of(input, expected)
             }
+//            return listOf(
+//                Arguments.of(
+//                    "aaaa\n2\n2 aa aa\n2 aa aa", "2"
+//                ),
+//            )
         }
     }
 }
