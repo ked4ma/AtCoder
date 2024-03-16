@@ -16,3 +16,5 @@ inline fun loop(times: Long, action: (Long) -> Unit) {
         action(index)
     }
 }
+
+fun range(n: Int) = 0 until n

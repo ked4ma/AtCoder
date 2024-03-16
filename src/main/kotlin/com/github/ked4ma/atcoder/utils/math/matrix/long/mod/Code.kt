@@ -1,8 +1,9 @@
 package com.github.ked4ma.atcoder.utils.math.matrix.long.mod
 
 import com.github.ked4ma.atcoder.utils.debug.*
+import com.github.ked4ma.atcoder.utils.math.mod.*
 
-fun Array<LongArray>.powMod(k: Long, mod: Long): Array<LongArray> {
+fun Array<LongArray>.powMod(k: Long, mod: Long = MOD): Array<LongArray> {
     _debug_require(k >= 0L) { "k($k) must be larger than or equals to zero(0)." }
     val h = this.size
     val w = this.first().size
