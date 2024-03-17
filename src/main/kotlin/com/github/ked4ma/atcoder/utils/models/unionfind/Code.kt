@@ -4,7 +4,7 @@ import com.github.ked4ma.atcoder.utils.array.int.d1.*
 
 class UnionFind(val size: Int) {
     private val r = sizedIntArray(size) { -1 }
-    fun root(x: Int): Int{
+    fun root(x: Int): Int {
         if (r[x] < 0) return x
         return root(r[x])
     }
@@ -26,6 +26,8 @@ class UnionFind(val size: Int) {
     fun size(x: Int) = -r[root(x)]
     val categories: List<Int>
         get() = r.indices.map { root(it) }
+
+    fun same(x: Int, y: Int) = root(x) == root(y)
 
     override fun toString(): String {
         return r.joinToString(separator = ", ")
