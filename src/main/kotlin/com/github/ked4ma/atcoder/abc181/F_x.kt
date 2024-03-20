@@ -29,7 +29,7 @@ fun main() {
     val uf = UnionFind(n + 2)
     for ((l, i, j) in edge) {
         uf.unite(i, j)
-        if (uf.root(S) == uf.root(T)) {
+        if (uf.find(S) == uf.find(T)) {
             println(l / 2)
             return
         }

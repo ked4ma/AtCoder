@@ -21,7 +21,7 @@ fun main() {
     println(MAX)
 }
 
-class UnionFindTree(val size: Int) {
+private class UnionFindTree(val size: Int) {
     private val r = sizedArray(size, -1)
     fun root(x: Int): Int {
         if (r[x] < 0) return x

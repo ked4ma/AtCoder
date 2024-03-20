@@ -13,8 +13,8 @@ fun main() {
         val (k, a, b) = nextIntList()
         when (k) {
             1 -> {
-                val ra = uf.root(a)
-                val rb = uf.root(b)
+                val ra = uf.find(a)
+                val rb = uf.find(b)
                 if (ra == rb) return@repeat
                 val aMap = m.getOrDefault(ra, mutableMapOf(c[ra] to 1))
                 val bMap = m.getOrDefault(rb, mutableMapOf(c[rb] to 1))
@@ -29,11 +29,11 @@ fun main() {
                 from.forEach { (k, v) ->
                     to[k] = to.getOrDefault(k, 0) + v
                 }
-                m[uf.root(a)] = to
+                m[uf.find(a)] = to
             }
 
             2 -> {
-                val ra = uf.root(a)
+                val ra = uf.find(a)
                 println(m.getOrDefault(ra, mutableMapOf(c[ra] to 1)).getOrDefault(b, 0))
             }
         }
