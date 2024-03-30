@@ -10,7 +10,7 @@ class LazySegmentTree(
     private val fx: FX,
     private val fa: FA,
     private val fm: FM,
-    private val fp: FP = { m, i -> m },
+    private val fp: FP = { m, _ -> m },
     private val ex: X,
     private val em: M
 ) {
@@ -29,7 +29,7 @@ class LazySegmentTree(
     }
 
     fun set(i: Int, x: X) {
-        dat[i + n - 1] = x;
+        dat[i + n - 1] = x
     }
 
     fun build() {
