@@ -15,7 +15,7 @@ repositories {
 
 sourceSets {
     if (hasProperty("contest")) {
-        println( "src/main/kotlin/com/github/ked4ma/atcoder/${findProperty("contest")}")
+        println("src/main/kotlin/com/github/ked4ma/atcoder/${findProperty("contest")}")
         getByName("main").kotlin.setSrcDirs(
             setOf(
                 "src/main/kotlin/com/github/ked4ma/atcoder/${findProperty("contest")}",

@@ -11,4 +11,4 @@ fun Long.divMod(n: Long, mod: Long = MOD) = this.div(n, mod)
 fun Long.plus(n: Long, mod: Long) = (this + n) % mod
 fun Long.minus(n: Long, mod: Long) = (this - n + mod) % mod
 fun Long.times(n: Long, mod: Long) = (this * n) % mod
-fun Long.div(n: Long, mod: Long) = this * modinv(n, mod)
+fun Long.div(n: Long, mod: Long) = (this * modinv(n, mod)) % mod
