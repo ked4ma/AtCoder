@@ -42,3 +42,14 @@ fun _debug_println(data: Any, padding: Int? = null) {
 
 @Suppress("FunctionName")
 fun _debug_require(value: Boolean, lazyMessage: () -> Any) = require(value, lazyMessage)
+
+@Suppress("FunctionName")
+fun _debug_to_bit(n: Long): CharSequence {
+    var m = n
+    val sb = StringBuilder()
+    while (m > 0) {
+        sb.append(if (m % 2 == 1L) '1' else '0')
+        m = m shr 1
+    }
+    return sb.reversed()
+}
