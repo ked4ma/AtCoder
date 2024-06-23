@@ -12,3 +12,5 @@ fun Long.plus(n: Long, mod: Long) = (this + n) % mod
 fun Long.minus(n: Long, mod: Long) = (this - n + mod) % mod
 fun Long.times(n: Long, mod: Long) = (this * n) % mod
 fun Long.div(n: Long, mod: Long) = (this * modinv(n, mod)) % mod
+fun Collection<Long>.sumMod(mod: Long = MOD) = this.sum(mod)
+fun Collection<Long>.sum(mod: Long) = this.fold(0L) { acc, l -> acc.plusMod(l, mod) }
