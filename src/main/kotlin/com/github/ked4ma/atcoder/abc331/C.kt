@@ -3,6 +3,7 @@ package com.github.ked4ma.atcoder.abc331
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.cumlative.*
+import com.github.ked4ma.atcoder.utils.list.long.cumlative.*
 import java.util.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]

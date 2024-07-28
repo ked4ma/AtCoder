@@ -1,4 +1,4 @@
-package com.github.ked4ma.atcoder.utils.list.dim.compress
+package com.github.ked4ma.atcoder.utils.list.int.dim.compress
 
 // compress list values to size relationship
 fun List<Int>.compress(): List<Int> {

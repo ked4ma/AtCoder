@@ -3,6 +3,7 @@ package com.github.ked4ma.atcoder.abc363
 import com.github.ked4ma.atcoder.utils.debug.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.cumlative.*
+import com.github.ked4ma.atcoder.utils.list.long.cumlative.*
 import com.github.ked4ma.atcoder.utils.math.long.pow.*
 
 // make run <TASK: A/B/...> [BRANCH=contest/<CONTEST: abc000>]

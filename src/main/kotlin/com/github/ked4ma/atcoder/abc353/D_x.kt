@@ -2,6 +2,7 @@ package com.github.ked4ma.atcoder.abc353
 
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.cumlative.*
+import com.github.ked4ma.atcoder.utils.list.long.cumlative.*
 import com.github.ked4ma.atcoder.utils.math.long.pow.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 

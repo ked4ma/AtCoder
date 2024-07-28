@@ -1,6 +1,6 @@
-package com.github.ked4ma.atcoder.utils.list.inversion.count
+package com.github.ked4ma.atcoder.utils.list.int.inversion.count
 
-import com.github.ked4ma.atcoder.utils.list.dim.compress.*
+import com.github.ked4ma.atcoder.utils.list.int.dim.compress.*
 import com.github.ked4ma.atcoder.utils.models.tree.fenwick.*
 
 // calc inversion count of List

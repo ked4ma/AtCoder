@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.abc332
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import com.github.ked4ma.atcoder.utils.list.permutation.*
+import com.github.ked4ma.atcoder.utils.list.general.permutation.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 import kotlin.math.min
 

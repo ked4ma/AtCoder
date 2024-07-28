@@ -4,6 +4,7 @@ import com.github.ked4ma.atcoder.utils.array.any.d1.*
 import com.github.ked4ma.atcoder.utils.array.long.d1.*
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.cumlative.*
+import com.github.ked4ma.atcoder.utils.list.long.cumlative.*
 import com.github.ked4ma.atcoder.utils.repeat.*
 
 // make run <TASK: A/B/...> [BRANCH=feature/<CONTEST: abc000>]

@@ -1,4 +1,4 @@
-package com.github.ked4ma.atcoder.utils.list.combination
+package com.github.ked4ma.atcoder.utils.list.general.combination
 
 // get all combinations
 // e.g. [1,2,3],size:2 -> [1,2],[1,3],[2,3]

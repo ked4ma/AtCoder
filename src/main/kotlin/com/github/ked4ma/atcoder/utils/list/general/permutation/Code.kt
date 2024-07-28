@@ -1,4 +1,4 @@
-package com.github.ked4ma.atcoder.utils.list.permutation
+package com.github.ked4ma.atcoder.utils.list.general.permutation
 
 // get all permutations
 // e.g. [1,2,3],size:2 -> [1,2],[1,3],[2,1],[2,3],[3,1],[3,2]

@@ -1,7 +1,7 @@
 package com.github.ked4ma.atcoder.utils.list
 
-import com.github.ked4ma.atcoder.utils.list.combination.*
-import com.github.ked4ma.atcoder.utils.list.permutation.*
+import com.github.ked4ma.atcoder.utils.list.general.combination.*
+import com.github.ked4ma.atcoder.utils.list.general.permutation.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test

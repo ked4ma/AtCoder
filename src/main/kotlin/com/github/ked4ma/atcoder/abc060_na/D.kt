@@ -2,6 +2,7 @@ package com.github.ked4ma.atcoder.abc060_na
 
 import com.github.ked4ma.atcoder.utils.input.default.*
 import com.github.ked4ma.atcoder.utils.list.cumlative.*
+import com.github.ked4ma.atcoder.utils.list.long.cumlative.*
 import kotlin.math.max
 
 fun main() {
