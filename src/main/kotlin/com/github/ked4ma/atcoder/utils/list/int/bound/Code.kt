@@ -1,3 +1,5 @@
+package com.github.ked4ma.atcoder.utils.list.int.bound
+
 /**
  * ref: https://webbibouroku.com/Blog/Article/cs-lowerbound-upperbound
  */

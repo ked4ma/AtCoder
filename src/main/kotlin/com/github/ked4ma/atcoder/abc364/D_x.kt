@@ -1,8 +1,8 @@
 package com.github.ked4ma.atcoder.abc364
 
 import com.github.ked4ma.atcoder.utils.input.default.*
-import lowerBound
-import upperBound
+import com.github.ked4ma.atcoder.utils.list.int.bound.lowerBound
+import com.github.ked4ma.atcoder.utils.list.int.bound.upperBound
 
 // make run <TASK: A/B/...> [BRANCH=contest/<CONTEST: abc000>]
 fun main() {
