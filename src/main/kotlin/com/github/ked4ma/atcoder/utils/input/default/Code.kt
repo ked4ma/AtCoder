@@ -2,6 +2,7 @@ package com.github.ked4ma.atcoder.utils.input.default
 
 // ## Input
 fun next() = readln()
+fun nextCharArray() = next().toCharArray()
 fun nextInt() = readln().toInt()
 fun nextLong() = next().toLong()
 fun nextDouble() = next().toDouble()
