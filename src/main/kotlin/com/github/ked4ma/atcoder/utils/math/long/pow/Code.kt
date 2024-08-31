@@ -40,7 +40,7 @@ fun Long.powMod(n: Int, mod: Long): Long {
     var m = this
     while (i > 0L) {
         if (i and 1 == 1) {
-            res *= m
+            res = res.timesMod(m, mod)
         }
         m = m.timesMod(m, mod)
         i = i shr 1
