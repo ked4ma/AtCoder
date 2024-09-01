@@ -12,7 +12,7 @@ class SegmentTree(
     private val ex: X,
 ) {
     private val n: Int
-    private val dat: LongArray
+    val dat: LongArray
 
     init {
         var x = 1
