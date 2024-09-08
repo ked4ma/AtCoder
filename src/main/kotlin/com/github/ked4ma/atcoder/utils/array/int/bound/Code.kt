@@ -1,8 +1,6 @@
 package com.github.ked4ma.atcoder.utils.array.int.bound
 
-/**
- * ref: https://webbibouroku.com/Blog/Article/cs-lowerbound-upperbound
- */
+// ref: https://webbibouroku.com/Blog/Article/cs-lowerbound-upperbound
 fun IntArray.lowerBound(v: Int): Int {
     var l = 0
     var r = this.lastIndex
@@ -17,9 +15,7 @@ fun IntArray.lowerBound(v: Int): Int {
     return l
 }
 
-/**
- * ref: https://webbibouroku.com/Blog/Article/cs-lowerbound-upperbound
- */
+// ref: https://webbibouroku.com/Blog/Article/cs-lowerbound-upperbound
 fun IntArray.upperBound(v: Int): Int {
     var l = 0
     var r = this.lastIndex
