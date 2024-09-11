@@ -8,6 +8,7 @@ package com.github.ked4ma.atcoder.utils.array.permutation
  */
 fun IntArray.nextPermutation(): Boolean {
     val n = this.size
+    if (n == 1) return false
     var i = n - 2
     while (i > 0 && this[i] >= this[i + 1]) {
         i--
