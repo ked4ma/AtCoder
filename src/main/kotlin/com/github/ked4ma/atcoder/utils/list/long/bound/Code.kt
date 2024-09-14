@@ -1,10 +1,10 @@
-package com.github.ked4ma.atcoder.utils.list.int.bound
+package com.github.ked4ma.atcoder.utils.list.long.bound
 
 // ref: https://webbibouroku.com/Blog/Article/cs-lowerbound-upperbound
 // A = [1, 1, 2, 3, 3, 4], v = 3
 //               ↑
 // returns index "3"
-fun List<Int>.lowerBound(v: Int): Int {
+fun List<Long>.lowerBound(v: Long): Int {
     var l = 0
     var r = this.lastIndex
     while (l <= r) {
@@ -22,7 +22,7 @@ fun List<Int>.lowerBound(v: Int): Int {
 // A = [1, 1, 2, 3, 3, 4], v = 3
 //                     ↑
 // returns index "5"
-fun List<Int>.upperBound(v: Int): Int {
+fun List<Long>.upperBound(v: Long): Int {
     var l = 0
     var r = this.lastIndex
     while (l <= r) {
