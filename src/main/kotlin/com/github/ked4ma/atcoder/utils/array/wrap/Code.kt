@@ -3,6 +3,7 @@ package com.github.ked4ma.atcoder.utils.array.wrap
 class WrappedArray<T>(private val arrayAccessor: ArrayAccessor<T>) : ArrayAccessor<T> by arrayAccessor {
 
     companion object {
+        @Suppress("UNCHECKED_CAST")
         inline fun <reified T> of(size: Int, noinline init: (Int) -> T): WrappedArray<T> {
             val arr = when (T::class) {
                 Int::class -> IntArrayAccessor.of(IntArray(size, init as (Int) -> Int))
