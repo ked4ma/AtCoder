@@ -4,6 +4,6 @@ fun sizedDoubleArray(row: Int, default: Double): DoubleArray {
     return DoubleArray(row) { default }
 }
 
-fun sizedDoubleArray(row: Int, default: () -> Double): DoubleArray {
-    return DoubleArray(row) { default.invoke() }
+fun sizedDoubleArray(row: Int, default: (Int) -> Double): DoubleArray {
+    return DoubleArray(row) { i -> default.invoke(i) }
 }

@@ -4,6 +4,6 @@ fun sizedLongArray(row: Int, default: Long): LongArray {
     return LongArray(row) { default }
 }
 
-fun sizedLongArray(row: Int, default: () -> Long): LongArray {
-    return LongArray(row) { default.invoke() }
+fun sizedLongArray(row: Int, default: (Int) -> Long): LongArray {
+    return LongArray(row) { i -> default.invoke(i) }
 }
