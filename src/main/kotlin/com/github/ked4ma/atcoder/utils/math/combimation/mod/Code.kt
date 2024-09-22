@@ -15,15 +15,23 @@ class CombinationMod(n: Int, private val mod: Long = MOD) {
         finv[1] = 1
         inv[1] = 1
         for (i in 2..n) {
-            fac[i] = fac[i - 1] * i
-            inv[i] = mod - inv[(mod % i).toInt()] * (mod / i) % mod
-            finv[i] = finv[i - 1] * inv[i]
+            fac[i] = fac[i - 1].timesMod(i.toLong(), mod)
+            inv[i] = mod - inv[(mod % i).toInt()].timesMod(mod / i, mod)
+            finv[i] = finv[i - 1].timesMod(inv[i], mod)
         }
     }
 
-    fun query(n: Int, k: Int): Long {
-        if (n < k) return 0
-        if (n < 0 || k < 0) return 0
-        return (fac[n] * finv[k] * finv[n - k]).mod(mod)
+    fun aCb(a: Int, b: Int): Long {
+        if (a < b) return 0
+        if (a < 0 || b < 0) return 0
+        return fac[a].timesMod(finv[b], mod).timesMod(finv[a - b], mod)
+    }
+
+    // duplicated combination
+    // ref: https://frontiesta.com/homogeneous/#toc2
+    // oo|o||ooo -> o:6, |:3
+    // split six "o" into 4 groups -> 4H6
+    fun nHk(n: Int, k: Int): Long {
+        return aCb(n + k - 1, k)
     }
 }
