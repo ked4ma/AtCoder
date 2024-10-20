@@ -33,7 +33,7 @@ fun main() {
  * @param size num of elements
  * @param unionBySize enable "union-by-size" (default: true)
  */
-class UnionFind(val size: Int, private val unionBySize: Boolean = true) {
+private class UnionFind(val size: Int, private val unionBySize: Boolean = true) {
     private val r = sizedIntArray(size) { -1 }
 
     private val nodes = sized2DIntArray(size, 10, -1)
