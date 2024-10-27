@@ -54,7 +54,7 @@ fun main() {
     for (i in range(1 shl K)) {
         _debug_println(i)
         val ndp = sizedLongArray(1 shl K, 0)
-        val c = 2L.powMod(cnt[i], MOD) - 1
+        val c = 2L.powMod(cnt[i].toLong(), MOD) - 1
         for (j in range(1 shl K)) {
             ndp[i or j] += dp[j] * c
             ndp[i or j] %= MOD
