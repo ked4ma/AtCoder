@@ -2,7 +2,7 @@ package com.github.ked4ma.atcoder.utils.models.number.mod.long
 
 import com.github.ked4ma.atcoder.utils.math.mod.*
 
-data class ModLong(private val value: Long, private val mod: Long = MOD) : Number(), Comparable<ModLong> {
+data class ModLong(private val value: Long, val mod: Long = MOD) : Number(), Comparable<ModLong> {
     override fun toByte(): Byte = value.toByte()
     override fun toChar(): Char = value.toInt().toChar()
     override fun toDouble(): Double = value.toDouble()
@@ -12,10 +12,10 @@ data class ModLong(private val value: Long, private val mod: Long = MOD) : Numbe
     override fun toShort(): Short = value.toShort()
     override fun compareTo(other: ModLong): Int = value.compareTo(other.value)
 
-    operator fun plus(n: ModLong): ModLong = ((value + n.value) % mod).toModLong(mod)
-    operator fun minus(n: ModLong): ModLong = ((value - n.value + mod) % mod).toModLong(mod)
-    operator fun times(n: ModLong): ModLong = ((value * n.value) % mod).toModLong(mod)
-    operator fun div(n: ModLong): ModLong = (value * modinv(n.value, mod)).toModLong(mod)
+    operator fun plus(n: ModLong): ModLong = this.plus(n.value)
+    operator fun minus(n: ModLong): ModLong = this.minus(n.value)
+    operator fun times(n: ModLong): ModLong = this.times(n.value)
+    operator fun div(n: ModLong): ModLong = this.div(n.value)
 
     operator fun plus(n: Long): ModLong = ((value + n) % mod).toModLong(mod)
     operator fun minus(n: Long): ModLong = ((value - n + mod) % mod).toModLong(mod)
@@ -40,5 +40,7 @@ data class ModLong(private val value: Long, private val mod: Long = MOD) : Numbe
     }
 }
 
+fun Int.toModLong() = this.toLong().toModLong()
+fun Int.toModLong(mod: Long) = this.toLong().toModLong(mod)
 fun Long.toModLong() = ModLong(this)
 fun Long.toModLong(mod: Long) = ModLong(this, mod)
