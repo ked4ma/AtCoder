@@ -4,6 +4,10 @@ package com.github.ked4ma.atcoder.utils.list.long.bound
 // A = [1, 1, 2, 3, 3, 4], v = 3
 //               ↑
 // returns index "3"
+// ==========
+// A = [1, 1, 3, 4, 4, 6], v = 2
+//            ↑
+// returns index "2"
 fun List<Long>.lowerBound(v: Long): Int {
     var l = 0
     var r = this.lastIndex

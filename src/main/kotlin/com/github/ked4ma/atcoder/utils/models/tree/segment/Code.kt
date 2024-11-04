@@ -33,18 +33,20 @@ class SegmentTree(
         }
     }
 
-    fun init(data: Iterable<Long>) {
+    fun init(data: Iterable<Long>): SegmentTree {
         data.forEachIndexed { i, x ->
             set(i, x)
         }
         build()
+        return this
     }
 
-    fun init(data: LongArray) {
+    fun init(data: LongArray): SegmentTree {
         data.forEachIndexed { i, x ->
             set(i, x)
         }
         build()
+        return this
     }
 
     fun update(i: Int, x: X) {
